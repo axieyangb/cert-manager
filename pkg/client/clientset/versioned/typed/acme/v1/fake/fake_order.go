@@ -36,9 +36,9 @@ type FakeOrders struct {
 	ns   string
 }
 
-var ordersResource = schema.GroupVersionResource{Group: "acme.cert-manager.io", Version: "v1", Resource: "orders"}
+var ordersResource = schema.GroupVersionResource{Group: "acme.anthos-cert-manager.io", Version: "v1", Resource: "orders"}
 
-var ordersKind = schema.GroupVersionKind{Group: "acme.cert-manager.io", Version: "v1", Kind: "Order"}
+var ordersKind = schema.GroupVersionKind{Group: "acme.anthos-cert-manager.io", Version: "v1", Kind: "Order"}
 
 // Get takes name of the order, and returns the corresponding order object, and an error if there is any.
 func (c *FakeOrders) Get(ctx context.Context, name string, options v1.GetOptions) (result *acmev1.Order, err error) {

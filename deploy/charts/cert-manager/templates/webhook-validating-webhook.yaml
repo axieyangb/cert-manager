@@ -9,15 +9,15 @@ metadata:
     app.kubernetes.io/component: "webhook"
     {{- include "labels" . | nindent 4 }}
   annotations:
-    cert-manager.io/inject-ca-from-secret: {{ printf "%s/%s-ca" (include "cert-manager.namespace" .) (include "webhook.fullname" .) | quote}}
+    anthos-cert-manager.io/inject-ca-from-secret: {{ printf "%s/%s-ca" (include "cert-manager.namespace" .) (include "webhook.fullname" .) | quote}}
     {{- with .Values.webhook.validatingWebhookConfigurationAnnotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
 webhooks:
-  - name: webhook.cert-manager.io
+  - name: webhook.anthos-cert-manager.io
     namespaceSelector:
       matchExpressions:
-      - key: "cert-manager.io/disable-validation"
+      - key: "anthos-cert-manager.io/disable-validation"
         operator: "NotIn"
         values:
         - "true"
@@ -27,8 +27,8 @@ webhooks:
         - {{ include "cert-manager.namespace" . }}
     rules:
       - apiGroups:
-          - "cert-manager.io"
-          - "acme.cert-manager.io"
+          - "anthos-cert-manager.io"
+          - "acme.anthos-cert-manager.io"
         apiVersions:
           - "v1"
         operations:

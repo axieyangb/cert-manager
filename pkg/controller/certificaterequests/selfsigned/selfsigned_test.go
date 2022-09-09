@@ -151,7 +151,7 @@ func TestSign(t *testing.T) {
 			Type:               cmapi.CertificateRequestConditionDenied,
 			Status:             cmmeta.ConditionTrue,
 			Reason:             "Foo",
-			Message:            "Certificate request has been denied by cert-manager.io",
+			Message:            "Certificate request has been denied by anthos-cert-manager.io",
 			LastTransitionTime: &metaFixedClockStart,
 		}),
 	)
@@ -159,8 +159,8 @@ func TestSign(t *testing.T) {
 		gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
 			Type:               cmapi.CertificateRequestConditionApproved,
 			Status:             cmmeta.ConditionTrue,
-			Reason:             "cert-manager.io",
-			Message:            "Certificate request has been approved by cert-manager.io",
+			Reason:             "anthos-cert-manager.io",
+			Message:            "Certificate request has been approved by anthos-cert-manager.io",
 			LastTransitionTime: &metaFixedClockStart,
 		}),
 	)
@@ -238,7 +238,7 @@ func TestSign(t *testing.T) {
 				},
 			},
 		},
-		"a CertificateRequest with no cert-manager.io/selfsigned-private-key annotation should fail": {
+		"a CertificateRequest with no anthos-cert-manager.io/selfsigned-private-key annotation should fail": {
 			certificateRequest: gen.CertificateRequestFrom(baseCR,
 				// no annotation
 				gen.DeleteCertificateRequestAnnotation(cmapi.CertificateRequestPrivateKeyAnnotationKey),
@@ -250,7 +250,7 @@ func TestSign(t *testing.T) {
 					gen.DeleteCertificateRequestAnnotation(cmapi.CertificateRequestPrivateKeyAnnotationKey),
 				), baseIssuer},
 				ExpectedEvents: []string{
-					`Warning MissingAnnotation Annotation "cert-manager.io/private-key-secret-name" missing or reference empty: secret name missing`,
+					`Warning MissingAnnotation Annotation "anthos-cert-manager.io/private-key-secret-name" missing or reference empty: secret name missing`,
 				},
 				ExpectedActions: []testpkg.Action{
 					testpkg.NewAction(coretesting.NewUpdateSubresourceAction(
@@ -263,7 +263,7 @@ func TestSign(t *testing.T) {
 								Type:               cmapi.CertificateRequestConditionReady,
 								Status:             cmmeta.ConditionFalse,
 								Reason:             cmapi.CertificateRequestReasonFailed,
-								Message:            `Annotation "cert-manager.io/private-key-secret-name" missing or reference empty: secret name missing`,
+								Message:            `Annotation "anthos-cert-manager.io/private-key-secret-name" missing or reference empty: secret name missing`,
 								LastTransitionTime: &metaFixedClockStart,
 							}),
 							gen.SetCertificateRequestFailureTime(metaFixedClockStart),
@@ -272,7 +272,7 @@ func TestSign(t *testing.T) {
 				},
 			},
 		},
-		"a CertificateRequest with a cert-manager.io/private-key-secret-name annotation but empty string should fail": {
+		"a CertificateRequest with a anthos-cert-manager.io/private-key-secret-name annotation but empty string should fail": {
 			certificateRequest: gen.CertificateRequestFrom(baseCR,
 				// no data in annotation
 				gen.SetCertificateRequestAnnotations(map[string]string{cmapi.CertificateRequestPrivateKeyAnnotationKey: ""}),
@@ -284,7 +284,7 @@ func TestSign(t *testing.T) {
 					gen.SetCertificateRequestAnnotations(map[string]string{cmapi.CertificateRequestPrivateKeyAnnotationKey: ""}),
 				), baseIssuer},
 				ExpectedEvents: []string{
-					`Warning MissingAnnotation Annotation "cert-manager.io/private-key-secret-name" missing or reference empty: secret name missing`,
+					`Warning MissingAnnotation Annotation "anthos-cert-manager.io/private-key-secret-name" missing or reference empty: secret name missing`,
 				},
 				ExpectedActions: []testpkg.Action{
 					testpkg.NewAction(coretesting.NewUpdateSubresourceAction(
@@ -297,7 +297,7 @@ func TestSign(t *testing.T) {
 								Type:               cmapi.CertificateRequestConditionReady,
 								Status:             cmmeta.ConditionFalse,
 								Reason:             cmapi.CertificateRequestReasonFailed,
-								Message:            `Annotation "cert-manager.io/private-key-secret-name" missing or reference empty: secret name missing`,
+								Message:            `Annotation "anthos-cert-manager.io/private-key-secret-name" missing or reference empty: secret name missing`,
 								LastTransitionTime: &metaFixedClockStart,
 							}),
 							gen.SetCertificateRequestFailureTime(metaFixedClockStart),
@@ -338,7 +338,7 @@ func TestSign(t *testing.T) {
 				KubeObjects:        []runtime.Object{invalidKeySecret},
 				CertManagerObjects: []runtime.Object{baseCR.DeepCopy(), baseIssuer},
 				ExpectedEvents: []string{
-					`Normal ErrorParsingKey Failed to get key "test-rsa-key" referenced in annotation "cert-manager.io/private-key-secret-name": error decoding private key PEM block`,
+					`Normal ErrorParsingKey Failed to get key "test-rsa-key" referenced in annotation "anthos-cert-manager.io/private-key-secret-name": error decoding private key PEM block`,
 				},
 				ExpectedActions: []testpkg.Action{
 					testpkg.NewAction(coretesting.NewUpdateSubresourceAction(
@@ -350,7 +350,7 @@ func TestSign(t *testing.T) {
 								Type:               cmapi.CertificateRequestConditionReady,
 								Status:             cmmeta.ConditionFalse,
 								Reason:             cmapi.CertificateRequestReasonPending,
-								Message:            `Failed to get key "test-rsa-key" referenced in annotation "cert-manager.io/private-key-secret-name": error decoding private key PEM block`,
+								Message:            `Failed to get key "test-rsa-key" referenced in annotation "anthos-cert-manager.io/private-key-secret-name": error decoding private key PEM block`,
 								LastTransitionTime: &metaFixedClockStart,
 							}),
 						),

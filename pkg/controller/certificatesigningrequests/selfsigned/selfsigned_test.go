@@ -120,7 +120,7 @@ func TestProcessItem(t *testing.T) {
 	csrBundle := mustCryptoBundle(t)
 	baseCSR := gen.CertificateSigningRequest("test-cr",
 		gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
-		gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/default-unit-test-ns."+baseIssuer.Name),
+		gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/default-unit-test-ns."+baseIssuer.Name),
 		gen.SetCertificateSigningRequestDuration("1440h"),
 		gen.SetCertificateSigningRequestUsername("user-1"),
 		gen.SetCertificateSigningRequestGroups([]string{"group-1", "group-2"}),
@@ -169,7 +169,7 @@ func TestProcessItem(t *testing.T) {
 			builder: &testpkg.Builder{
 				CertManagerObjects: []runtime.Object{baseIssuer.DeepCopy()},
 				ExpectedEvents: []string{
-					`Warning MissingAnnotation Missing private key reference annotation: "experimental.cert-manager.io/private-key-secret-name"`,
+					`Warning MissingAnnotation Missing private key reference annotation: "experimental.anthos-cert-manager.io/private-key-secret-name"`,
 				},
 
 				ExpectedActions: []testpkg.Action{
@@ -209,7 +209,7 @@ func TestProcessItem(t *testing.T) {
 								Type:               certificatesv1.CertificateFailed,
 								Status:             corev1.ConditionTrue,
 								Reason:             "MissingAnnotation",
-								Message:            `Missing private key reference annotation: "experimental.cert-manager.io/private-key-secret-name"`,
+								Message:            `Missing private key reference annotation: "experimental.anthos-cert-manager.io/private-key-secret-name"`,
 								LastTransitionTime: metaFixedClockStart,
 								LastUpdateTime:     metaFixedClockStart,
 							}),
@@ -225,7 +225,7 @@ func TestProcessItem(t *testing.T) {
 					Status: corev1.ConditionTrue,
 				}),
 				gen.AddCertificateSigningRequestAnnotations(map[string]string{
-					"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+					"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 				}),
 			),
 			builder: &testpkg.Builder{
@@ -269,7 +269,7 @@ func TestProcessItem(t *testing.T) {
 					Status: corev1.ConditionTrue,
 				}),
 				gen.AddCertificateSigningRequestAnnotations(map[string]string{
-					"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+					"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 				}),
 			),
 			builder: &testpkg.Builder{
@@ -323,7 +323,7 @@ func TestProcessItem(t *testing.T) {
 					Status: corev1.ConditionTrue,
 				}),
 				gen.AddCertificateSigningRequestAnnotations(map[string]string{
-					"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+					"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 				}),
 				gen.SetCertificateSigningRequestRequest([]byte("garbage data")),
 			),
@@ -364,7 +364,7 @@ func TestProcessItem(t *testing.T) {
 						"",
 						gen.CertificateSigningRequestFrom(baseCSR.DeepCopy(),
 							gen.AddCertificateSigningRequestAnnotations(map[string]string{
-								"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+								"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 							}),
 							gen.SetCertificateSigningRequestRequest([]byte("garbage data")),
 							gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
@@ -391,7 +391,7 @@ func TestProcessItem(t *testing.T) {
 					Status: corev1.ConditionTrue,
 				}),
 				gen.AddCertificateSigningRequestAnnotations(map[string]string{
-					"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+					"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 				}),
 				gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
 			),
@@ -431,7 +431,7 @@ func TestProcessItem(t *testing.T) {
 						"",
 						gen.CertificateSigningRequestFrom(baseCSR.DeepCopy(),
 							gen.AddCertificateSigningRequestAnnotations(map[string]string{
-								"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+								"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 							}),
 							gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
 							gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
@@ -458,7 +458,7 @@ func TestProcessItem(t *testing.T) {
 					Status: corev1.ConditionTrue,
 				}),
 				gen.AddCertificateSigningRequestAnnotations(map[string]string{
-					"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+					"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 				}),
 				gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
 			),
@@ -502,7 +502,7 @@ func TestProcessItem(t *testing.T) {
 						"",
 						gen.CertificateSigningRequestFrom(baseCSR.DeepCopy(),
 							gen.AddCertificateSigningRequestAnnotations(map[string]string{
-								"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+								"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 							}),
 							gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
 							gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
@@ -529,7 +529,7 @@ func TestProcessItem(t *testing.T) {
 					Status: corev1.ConditionTrue,
 				}),
 				gen.AddCertificateSigningRequestAnnotations(map[string]string{
-					"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+					"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 				}),
 				gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
 			),
@@ -573,7 +573,7 @@ func TestProcessItem(t *testing.T) {
 						"",
 						gen.CertificateSigningRequestFrom(baseCSR.DeepCopy(),
 							gen.AddCertificateSigningRequestAnnotations(map[string]string{
-								"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+								"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 							}),
 							gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
 							gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
@@ -657,9 +657,9 @@ func TestSign(t *testing.T) {
 		"when the CertificateSigningRequest has the duration field set, it should appear as notAfter on the signed certificate": {
 			csr: gen.CertificateSigningRequest("csr-1",
 				gen.AddCertificateSigningRequestAnnotations(map[string]string{
-					"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+					"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 				}),
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/default-unit-test-ns.issuer-1"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/default-unit-test-ns.issuer-1"),
 				gen.SetCertificateSigningRequestDuration("30m"),
 				gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
 			),
@@ -692,9 +692,9 @@ func TestSign(t *testing.T) {
 		"when the CertificateSigningRequest has the expiration seconds field set, it should appear as notAfter on the signed certificate": {
 			csr: gen.CertificateSigningRequest("csr-1",
 				gen.AddCertificateSigningRequestAnnotations(map[string]string{
-					"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+					"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 				}),
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/default-unit-test-ns.issuer-1"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/default-unit-test-ns.issuer-1"),
 				gen.SetCertificateSigningRequestExpirationSeconds(444),
 				gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
 			),
@@ -727,9 +727,9 @@ func TestSign(t *testing.T) {
 		"when the CertificateSigningRequest has the isCA field set, it should appear on the signed certificate": {
 			csr: gen.CertificateSigningRequest("csr-1",
 				gen.AddCertificateSigningRequestAnnotations(map[string]string{
-					"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+					"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 				}),
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/default-unit-test-ns.issuer-1"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/default-unit-test-ns.issuer-1"),
 				gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
 				gen.SetCertificateSigningRequestIsCA(true),
 			),
@@ -741,10 +741,10 @@ func TestSign(t *testing.T) {
 		"when the Issuer has crlDistributionPoints set, it should appear on the signed ca ": {
 			csr: gen.CertificateSigningRequest("cr-1",
 				gen.AddCertificateSigningRequestAnnotations(map[string]string{
-					"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+					"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 				}),
 				gen.SetCertificateSigningRequestRequest(csrBundle.csrPEM),
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/default-unit-test-ns.issuer-1"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/default-unit-test-ns.issuer-1"),
 			),
 			issuer: gen.IssuerFrom(baseIssuer,
 				gen.SetIssuerSelfSigned(cmapi.SelfSignedIssuer{

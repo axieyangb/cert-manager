@@ -358,7 +358,7 @@ type CertificateStatus struct {
 	// The current 'revision' of the certificate as issued.
 	//
 	// When a CertificateRequest resource is created, it will have the
-	// `cert-manager.io/certificate-revision` set to one greater than the
+	// `anthos-cert-manager.io/certificate-revision` set to one greater than the
 	// current value of this field.
 	//
 	// Upon issuance, this field will be set to the value of the annotation

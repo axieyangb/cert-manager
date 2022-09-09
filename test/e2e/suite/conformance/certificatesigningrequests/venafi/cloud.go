@@ -110,12 +110,12 @@ func (c *cloud) createIssuer(f *framework.Framework) string {
 	issuer, err = f.Helper().WaitIssuerReady(issuer, time.Minute*5)
 	Expect(err).ToNot(HaveOccurred())
 
-	return fmt.Sprintf("issuers.cert-manager.io/%s.%s", issuer.Namespace, issuer.Name)
+	return fmt.Sprintf("issuers.anthos-cert-manager.io/%s.%s", issuer.Namespace, issuer.Name)
 }
 
 // createClusterIssuer creates and returns name of a Venafi Cloud
 // ClusterIssuer. The name is of the form
-// "clusterissuers.cert-manager.io/issuer-ab3de1".
+// "clusterissuers.anthos-cert-manager.io/issuer-ab3de1".
 func (c *cloud) createClusterIssuer(f *framework.Framework) string {
 	By("Creating a Venafi Cloud ClusterIssuer")
 
@@ -140,5 +140,5 @@ func (c *cloud) createClusterIssuer(f *framework.Framework) string {
 	issuer, err = f.Helper().WaitClusterIssuerReady(issuer, time.Minute*5)
 	Expect(err).ToNot(HaveOccurred())
 
-	return fmt.Sprintf("clusterissuers.cert-manager.io/%s", issuer.Name)
+	return fmt.Sprintf("clusterissuers.anthos-cert-manager.io/%s", issuer.Name)
 }

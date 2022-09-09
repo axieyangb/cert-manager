@@ -17,5 +17,5 @@ limitations under the License.
 // +k8s:deepcopy-gen=package,register
 
 // Package certmanager is the internal version of the API.
-// +groupName=cert-manager.io
+// +groupName=anthos-cert-manager.io
 package certmanager

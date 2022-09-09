@@ -32,7 +32,7 @@ type AcmeV1Interface interface {
 	OrdersGetter
 }
 
-// AcmeV1Client is used to interact with features provided by the acme.cert-manager.io group.
+// AcmeV1Client is used to interact with features provided by the acme.anthos-cert-manager.io group.
 type AcmeV1Client struct {
 	restClient rest.Interface
 }

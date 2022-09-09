@@ -39,7 +39,7 @@ package policies
 //     NOT READY | status:             |  |        | kind: CertificateRequest                    |
 //               |   revision: nil -------+        | metadata:                                   |
 //               |   conditions:       |  |        |   annotations:                              |
-//               |   - type: Issuing   |  |        |     cert-manager.io/certificate-revision: 1 |
+//               |   - type: Issuing   |  |        |     anthos-cert-manager.io/certificate-revision: 1 |
 //               |     status: True    |  +------->| status:                                     |
 //               +---------------------+    "next" |   conditions:                               |
 //                         |                       |    - type: Ready                            |
@@ -55,7 +55,7 @@ package policies
 //               +---------------------+           | kind: CertificateRequest                    |
 //   CERTIFICATE | kind: Certificate   |           | metadata:                                   |
 //         READY | status:             |  "current"|   annotations:                              |
-//               |   revision: 1 ---------+------->|     cert-manager.io/certificate-revision: 1 |
+//               |   revision: 1 ---------+------->|     anthos-cert-manager.io/certificate-revision: 1 |
 //               |   conditions:       |  |        | status:                                     |
 //               |    - type: Issuing  |  |        |   conditions:                               |
 //               |      status: False  |  |        |    - type: Ready                            |
@@ -88,7 +88,7 @@ package policies
 //                     existing                     | kind: CertificateRequest                    |
 //                      ready                       | metadata:                                   |
 //                    certificate                   |   annotations:                              |
-//                         |                        |     cert-manager.io/certificate-revision: 7 |
+//                         |                        |     anthos-cert-manager.io/certificate-revision: 7 |
 //                         |                        | status:                                     |
 //                         |               "current"|   conditions:                               |
 //                         v               +------->|    - type: Ready                            |
@@ -111,7 +111,7 @@ package policies
 //                         |                        | kind: CertificateRequest                    |
 //                         |                        | metadata:                                   |
 //                         |                        |   annotations:                              |
-//                         |                        |     cert-manager.io/certificate-revision: 7 |
+//                         |                        |     anthos-cert-manager.io/certificate-revision: 7 |
 //                         |                        | status:                                     |
 //                         v                        |   conditions:                               |
 //                +---------------------+ "current" |    - type: Ready                            |
@@ -122,7 +122,7 @@ package policies
 //                |    - type: Issuing  |  |        | kind: CertificateRequest                    |
 //                |      status: True   |  |        | metadata:                                   |
 //                |      reason: Pending|  |------->|   annotations:                              |
-//                |    - type: Ready    |    "next" |     cert-manager.io/certificate-revision: 8 |
+//                |    - type: Ready    |    "next" |     anthos-cert-manager.io/certificate-revision: 8 |
 //                |      status: False  |           | status:                                     |
 //                +---------------------+           |   conditions:                               |
 //                                                  |    - type: Ready                            |
@@ -146,7 +146,7 @@ package policies
 //                         v               |        | kind: CertificateRequest                    |
 //               +---------------------+   |        | metadata:                                   |
 //   CERTIFICATE | kind: Certificate   |   |        |   annotations:                              |
-//    IS FAILING | status:             |   |        |     cert-manager.io/certificate-revision: 1 |
+//    IS FAILING | status:             |   |        |     anthos-cert-manager.io/certificate-revision: 1 |
 //               |   revision: nil --------+        | status:                                     |
 //               |   conditions:       |   |        |   conditions:                               |
 //               |    - type: Issuing  |   +------->|    - type: Failed                           |
@@ -173,7 +173,7 @@ package policies
 //     IS SET TO | status:             |   |        | kind: CertificateRequest                    |
 //   "REISSUING" |   revision: nil --------+        | metadata:                                   |
 //       DUE TO  |   conditions:       |   |        |   annotations:                              |
-//     MISMATCH  |    - type: Issuing  |   |        |     cert-manager.io/certificate-revision: 1 |
+//     MISMATCH  |    - type: Issuing  |   |        |     anthos-cert-manager.io/certificate-revision: 1 |
 //               |      status: True   |   |        | status:                                     |
 //               |      reason: Pending|   |------->|   conditions:                               |
 //               |    - type: Ready    |     "next" |    - type: Failed                           |
@@ -199,7 +199,7 @@ package policies
 //     REQUEST IS |   revision: nil --------+        | kind: CertificateRequest                    |
 //       REPLACED |   conditions:        |  |        | metadata:                                   |
 //                |    - type: Ready     |  |        |   annotations:                              |
-//                |      status: False   |  |        |     cert-manager.io/certificate-revision: 1 |
+//                |      status: False   |  |        |     anthos-cert-manager.io/certificate-revision: 1 |
 //                |    - type: Issuing   |  |------->| status:                                     |
 //                |      status: True    |    "next" |   conditions:                               |
 //                |      reason: Pending |           |    - type: Ready                            |

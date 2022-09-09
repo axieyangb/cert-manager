@@ -9,16 +9,16 @@ metadata:
     app.kubernetes.io/component: "webhook"
     {{- include "labels" . | nindent 4 }}
   annotations:
-    cert-manager.io/inject-ca-from-secret: {{ printf "%s/%s-ca" (include "cert-manager.namespace" .) (include "webhook.fullname" .) | quote }}
+    anthos-cert-manager.io/inject-ca-from-secret: {{ printf "%s/%s-ca" (include "cert-manager.namespace" .) (include "webhook.fullname" .) | quote }}
     {{- with .Values.webhook.mutatingWebhookConfigurationAnnotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
 webhooks:
-  - name: webhook.cert-manager.io
+  - name: webhook.anthos-cert-manager.io
     rules:
       - apiGroups:
-          - "cert-manager.io"
-          - "acme.cert-manager.io"
+          - "anthos-cert-manager.io"
+          - "acme.anthos-cert-manager.io"
         apiVersions:
           - "v1"
         operations:

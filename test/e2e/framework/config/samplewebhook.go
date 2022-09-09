@@ -29,7 +29,7 @@ type DNS01Webhook struct {
 }
 
 func (d *DNS01Webhook) AddFlags(fs *flag.FlagSet) {
-	fs.StringVar(&d.GroupName, "dns01-webhook-group-name", "acme.testing.cert-manager.io", "GroupName of the deployed DNS01 webhook.")
+	fs.StringVar(&d.GroupName, "dns01-webhook-group-name", "acme.testing.anthos-cert-manager.io", "GroupName of the deployed DNS01 webhook.")
 	fs.StringVar(&d.SolverName, "dns01-webhook-solver-name", "my-custom-solver", "SolverName to use with the DNS01 webhook.")
 }
 

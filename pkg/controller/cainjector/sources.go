@@ -59,7 +59,7 @@ type caDataSource interface {
 }
 
 // kubeconfigDataSource reads the ca bundle provided as part of the struct
-// instantiation if it has the 'cert-manager.io/inject-apiserver-ca'
+// instantiation if it has the 'anthos-cert-manager.io/inject-apiserver-ca'
 // annotation.
 type kubeconfigDataSource struct {
 	apiserverCABundle []byte
@@ -84,7 +84,7 @@ func (c *kubeconfigDataSource) ApplyTo(ctx context.Context, mgr ctrl.Manager, se
 }
 
 // certificateDataSource reads a CA bundle by fetching the Certificate named in
-// the 'cert-manager.io/inject-ca-from' annotation in the form
+// the 'anthos-cert-manager.io/inject-ca-from' annotation in the form
 // 'namespace/name'.
 type certificateDataSource struct {
 	client client.Reader
@@ -170,7 +170,7 @@ func (c *certificateDataSource) ApplyTo(ctx context.Context, mgr ctrl.Manager, s
 }
 
 // secretDataSource reads a CA bundle from a Secret resource named using the
-// 'cert-manager.io/inject-ca-from-secret' annotation in the form
+// 'anthos-cert-manager.io/inject-ca-from-secret' annotation in the form
 // 'namespace/name'.
 type secretDataSource struct {
 	client client.Reader

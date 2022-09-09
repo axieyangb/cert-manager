@@ -1,6 +1,6 @@
 # Documentation
 
-The cert-manager documentation can be found on [cert-manager.io](https://cert-manager.io/docs).
+The cert-manager documentation can be found on [anthos-cert-manager.io](https://anthos-cert-manager.io/docs).
 
 ## Contributing
 

@@ -78,7 +78,7 @@ func init() {
 				apiutil.IssuerSelfSigned, NewSelfSigned,
 
 				// Handle informed Secrets which may be referenced by the
-				// "experimental.cert-manager.io/private-key-secret-name" annotation.
+				// "experimental.anthos-cert-manager.io/private-key-secret-name" annotation.
 				func(ctx *controllerpkg.Context, log logr.Logger, queue workqueue.RateLimitingInterface) ([]cache.InformerSynced, error) {
 					secretInformer := ctx.KubeSharedInformerFactory.Core().V1().Secrets().Informer()
 					certificateSigningRequestLister := ctx.KubeSharedInformerFactory.Certificates().V1().CertificateSigningRequests().Lister()
@@ -117,7 +117,7 @@ func NewSelfSigned(ctx *controllerpkg.Context) certificatesigningrequests.Signer
 // resource if signing was successful. Returns an error which, if not nil,
 // should trigger a retry.
 // CertificateSigningRequests must have the
-// "experimental.cert-manager.io/private-key-secret-name" annotation present to
+// "experimental.anthos-cert-manager.io/private-key-secret-name" annotation present to
 // be signed. This annotation must reference a valid Secret containing a
 // private key for signing.
 func (s *SelfSigned) Sign(ctx context.Context, csr *certificatesv1.CertificateSigningRequest, issuerObj cmapi.GenericIssuer) error {

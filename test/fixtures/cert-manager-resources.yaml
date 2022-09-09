@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: cert-manager.io/v1
+apiVersion: anthos-cert-manager.io/v1
 kind: Issuer
 metadata:
   name: selfsigned-issuer
@@ -22,7 +22,7 @@ metadata:
 spec:
   selfSigned: {}
 ---
-apiVersion: cert-manager.io/v1
+apiVersion: anthos-cert-manager.io/v1
 kind: Certificate
 metadata:
   name: test1
@@ -33,12 +33,12 @@ spec:
   dnsNames:
   - example.com
   issuerRef:
-    group: cert-manager.io
+    group: anthos-cert-manager.io
     kind: Issuer
     name: selfsigned-issuer
   secretName: test1
 ---
-apiVersion: cert-manager.io/v1
+apiVersion: anthos-cert-manager.io/v1
 kind: Certificate
 metadata:
   name: test2
@@ -49,7 +49,7 @@ spec:
   dnsNames:
   - example.com
   issuerRef:
-    group: cert-manager.io
+    group: anthos-cert-manager.io
     kind: Issuer
     name: selfsigned-issuer
   secretName: test2

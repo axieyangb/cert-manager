@@ -56,7 +56,7 @@ func TestController_Sync(t *testing.T) {
 			csr: gen.CertificateSigningRequest("test",
 				gen.SetCertificateSigningRequestSignerName("%698~1")),
 		},
-		"signer group is not cert-manager.io": {
+		"signer group is not anthos-cert-manager.io": {
 			builder: &testpkg.Builder{},
 			csr: gen.CertificateSigningRequest("test",
 				gen.SetCertificateSigningRequestSignerName("issuers.foo.io/foo-issuer")),
@@ -64,7 +64,7 @@ func TestController_Sync(t *testing.T) {
 		"CertificateSigningRequest has failed": {
 			builder: &testpkg.Builder{},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateFailed,
 				})),
@@ -72,7 +72,7 @@ func TestController_Sync(t *testing.T) {
 		"CertificateSigningRequest has been denied": {
 			builder: &testpkg.Builder{},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateDenied,
 				})),
@@ -84,12 +84,12 @@ func TestController_Sync(t *testing.T) {
 				},
 			},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/foo-issuer")),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/foo-issuer")),
 		},
 		"Certificate has already been issued": {
 			builder: &testpkg.Builder{},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,
 				}),
@@ -98,7 +98,7 @@ func TestController_Sync(t *testing.T) {
 		"Signer is not Issuer or ClusterIssuer": {
 			builder: &testpkg.Builder{},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("foo.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("foo.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,
 				})),
@@ -110,7 +110,7 @@ func TestController_Sync(t *testing.T) {
 				},
 			},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,
 				})),
@@ -125,7 +125,7 @@ func TestController_Sync(t *testing.T) {
 				},
 			},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/default.foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/default.foo-issuer"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,
 				})),
@@ -139,7 +139,7 @@ func TestController_Sync(t *testing.T) {
 				},
 			},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/default.foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/default.foo-issuer"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,
 				})),
@@ -151,7 +151,7 @@ func TestController_Sync(t *testing.T) {
 						gen.SetIssuerSelfSigned(cmapi.SelfSignedIssuer{})),
 				},
 				ExpectedEvents: []string{
-					"Warning ErrorParseDuration Failed to parse requested duration: failed to parse requested duration on annotation \"experimental.cert-manager.io/request-duration\": time: invalid duration \"foo\"",
+					"Warning ErrorParseDuration Failed to parse requested duration: failed to parse requested duration on annotation \"experimental.anthos-cert-manager.io/request-duration\": time: invalid duration \"foo\"",
 				},
 
 				ExpectedActions: []testpkg.Action{
@@ -160,7 +160,7 @@ func TestController_Sync(t *testing.T) {
 						"status",
 						"",
 						gen.CertificateSigningRequest("test",
-							gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/foo-issuer"),
+							gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/foo-issuer"),
 							gen.SetCertificateSigningRequestDuration("foo"),
 							gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 								Type: certificatesv1.CertificateApproved,
@@ -169,7 +169,7 @@ func TestController_Sync(t *testing.T) {
 								Type:               certificatesv1.CertificateFailed,
 								Status:             corev1.ConditionTrue,
 								Reason:             "ErrorParseDuration",
-								Message:            `Failed to parse requested duration: failed to parse requested duration on annotation "experimental.cert-manager.io/request-duration": time: invalid duration "foo"`,
+								Message:            `Failed to parse requested duration: failed to parse requested duration on annotation "experimental.anthos-cert-manager.io/request-duration": time: invalid duration "foo"`,
 								LastTransitionTime: metaFixedTime,
 								LastUpdateTime:     metaFixedTime,
 							})),
@@ -177,7 +177,7 @@ func TestController_Sync(t *testing.T) {
 				},
 			},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestDuration("foo"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,
@@ -199,7 +199,7 @@ func TestController_Sync(t *testing.T) {
 						"status",
 						"",
 						gen.CertificateSigningRequest("test",
-							gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/foo-issuer"),
+							gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/foo-issuer"),
 							gen.SetCertificateSigningRequestDuration("599s"),
 							gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 								Type: certificatesv1.CertificateApproved,
@@ -216,7 +216,7 @@ func TestController_Sync(t *testing.T) {
 				},
 			},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestDuration("599s"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,
@@ -235,7 +235,7 @@ func TestController_Sync(t *testing.T) {
 				},
 			},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,
 				})),
@@ -252,7 +252,7 @@ func TestController_Sync(t *testing.T) {
 				},
 			},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,
 				})),
@@ -275,7 +275,7 @@ func TestController_Sync(t *testing.T) {
 				},
 			},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,
 				})),
@@ -297,7 +297,7 @@ func TestController_Sync(t *testing.T) {
 				},
 			},
 			csr: gen.CertificateSigningRequest("test",
-				gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/foo-issuer"),
+				gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/foo-issuer"),
 				gen.SetCertificateSigningRequestDuration("600s"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type: certificatesv1.CertificateApproved,

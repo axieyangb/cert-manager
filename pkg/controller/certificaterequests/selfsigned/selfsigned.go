@@ -70,7 +70,7 @@ func init() {
 				NewSelfSigned,
 
 				// Handle informed Secrets which may be referenced by the
-				// "cert-manager.io/private-key-secret-name" annotation.
+				// "anthos-cert-manager.io/private-key-secret-name" annotation.
 				func(ctx *controllerpkg.Context, log logr.Logger, queue workqueue.RateLimitingInterface) ([]cache.InformerSynced, error) {
 					secretInformer := ctx.KubeSharedInformerFactory.Core().V1().Secrets().Informer()
 					certificateRequestLister := ctx.SharedInformerFactory.Certmanager().V1().CertificateRequests().Lister()

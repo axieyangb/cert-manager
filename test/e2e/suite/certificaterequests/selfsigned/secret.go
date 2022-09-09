@@ -72,11 +72,11 @@ var _ = framework.CertManagerDescribe("CertificateRequests SelfSigned Secret", f
 		request, err = f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Create(context.TODO(), &cmapi.CertificateRequest{
 			ObjectMeta: metav1.ObjectMeta{
 				GenerateName: "selfsigned-", Namespace: f.Namespace.Name,
-				Annotations: map[string]string{"cert-manager.io/private-key-secret-name": "selfsigned-test"},
+				Annotations: map[string]string{"anthos-cert-manager.io/private-key-secret-name": "selfsigned-test"},
 			},
 			Spec: cmapi.CertificateRequestSpec{
 				Request:   bundle.CSRBytes,
-				IssuerRef: cmmeta.ObjectReference{Name: issuer.GetName(), Kind: "Issuer", Group: "cert-manager.io"},
+				IssuerRef: cmmeta.ObjectReference{Name: issuer.GetName(), Kind: "Issuer", Group: "anthos-cert-manager.io"},
 			},
 		}, metav1.CreateOptions{})
 		Expect(err).NotTo(HaveOccurred())
@@ -128,11 +128,11 @@ var _ = framework.CertManagerDescribe("CertificateRequests SelfSigned Secret", f
 		request, err = f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Create(context.TODO(), &cmapi.CertificateRequest{
 			ObjectMeta: metav1.ObjectMeta{
 				GenerateName: "selfsigned-", Namespace: f.Namespace.Name,
-				Annotations: map[string]string{"cert-manager.io/private-key-secret-name": "selfsigned-test"},
+				Annotations: map[string]string{"anthos-cert-manager.io/private-key-secret-name": "selfsigned-test"},
 			},
 			Spec: cmapi.CertificateRequestSpec{
 				Request:   bundle.CSRBytes,
-				IssuerRef: cmmeta.ObjectReference{Name: issuer.GetName(), Kind: "Issuer", Group: "cert-manager.io"},
+				IssuerRef: cmmeta.ObjectReference{Name: issuer.GetName(), Kind: "Issuer", Group: "anthos-cert-manager.io"},
 			},
 		}, metav1.CreateOptions{})
 		Expect(err).NotTo(HaveOccurred())
@@ -174,11 +174,11 @@ var _ = framework.CertManagerDescribe("CertificateRequests SelfSigned Secret", f
 		request, err = f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Create(context.TODO(), &cmapi.CertificateRequest{
 			ObjectMeta: metav1.ObjectMeta{
 				GenerateName: "selfsigned-", Namespace: f.Namespace.Name,
-				Annotations: map[string]string{"cert-manager.io/private-key-secret-name": "selfsigned-test"},
+				Annotations: map[string]string{"anthos-cert-manager.io/private-key-secret-name": "selfsigned-test"},
 			},
 			Spec: cmapi.CertificateRequestSpec{
 				Request:   bundle.CSRBytes,
-				IssuerRef: cmmeta.ObjectReference{Name: issuer.GetName(), Kind: "ClusterIssuer", Group: "cert-manager.io"},
+				IssuerRef: cmmeta.ObjectReference{Name: issuer.GetName(), Kind: "ClusterIssuer", Group: "anthos-cert-manager.io"},
 			},
 		}, metav1.CreateOptions{})
 		Expect(err).NotTo(HaveOccurred())
@@ -230,11 +230,11 @@ var _ = framework.CertManagerDescribe("CertificateRequests SelfSigned Secret", f
 		request, err = f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Create(context.TODO(), &cmapi.CertificateRequest{
 			ObjectMeta: metav1.ObjectMeta{
 				GenerateName: "selfsigned-", Namespace: f.Namespace.Name,
-				Annotations: map[string]string{"cert-manager.io/private-key-secret-name": "selfsigned-test"},
+				Annotations: map[string]string{"anthos-cert-manager.io/private-key-secret-name": "selfsigned-test"},
 			},
 			Spec: cmapi.CertificateRequestSpec{
 				Request:   bundle.CSRBytes,
-				IssuerRef: cmmeta.ObjectReference{Name: issuer.GetName(), Kind: "ClusterIssuer", Group: "cert-manager.io"},
+				IssuerRef: cmmeta.ObjectReference{Name: issuer.GetName(), Kind: "ClusterIssuer", Group: "anthos-cert-manager.io"},
 			},
 		}, metav1.CreateOptions{})
 		Expect(err).NotTo(HaveOccurred())

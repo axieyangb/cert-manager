@@ -118,7 +118,7 @@ func TestController(t *testing.T) {
 			signerImpl:  signerExpectNoCall,
 			sarReaction: sarReactionExpectNoCall,
 		},
-		"do nothing if a key references a CertificateSigningRequest that has a malformed SignerName for cert-manager.io": {
+		"do nothing if a key references a CertificateSigningRequest that has a malformed SignerName for anthos-cert-manager.io": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
 				gen.SetCertificateSigningRequestSignerName("malformed.signer.name/"),
@@ -126,10 +126,10 @@ func TestController(t *testing.T) {
 			signerImpl:  signerExpectNoCall,
 			sarReaction: sarReactionExpectNoCall,
 		},
-		"if CertificateSigningRequest references the cert-manager.io signer group but the type is not recognised, should ignore": {
+		"if CertificateSigningRequest references the anthos-cert-manager.io signer group but the type is not recognised, should ignore": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("foo.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("foo.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type:    certificatesv1.CertificateApproved,
 					Status:  corev1.ConditionTrue,
@@ -140,7 +140,7 @@ func TestController(t *testing.T) {
 			signerImpl:  signerExpectNoCall,
 			sarReaction: sarReactionExpectNoCall,
 		},
-		"do nothing if CertificateSigningRequest has a SignerName not for cert-manager.io": {
+		"do nothing if CertificateSigningRequest has a SignerName not for anthos-cert-manager.io": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
 				gen.SetCertificateSigningRequestSignerName("issuers.my-group.io/hello.world"),
@@ -151,7 +151,7 @@ func TestController(t *testing.T) {
 		"do nothing if CertificateSigningRequest is marked as Failed": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type:    certificatesv1.CertificateFailed,
 					Status:  corev1.ConditionTrue,
@@ -165,7 +165,7 @@ func TestController(t *testing.T) {
 		"fire event if CertificateSigningRequest is no yet approved": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 			),
 			signerImpl:  signerExpectNoCall,
 			sarReaction: sarReactionExpectNoCall,
@@ -174,7 +174,7 @@ func TestController(t *testing.T) {
 		"do nothing if CertificateSigningRequest already has a non empty Certificate present": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type:    certificatesv1.CertificateApproved,
 					Status:  corev1.ConditionTrue,
@@ -189,7 +189,7 @@ func TestController(t *testing.T) {
 		"if CertificateSigningRequest references an Issuer that does not exist, should fire an event that it can't be found": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type:    certificatesv1.CertificateApproved,
 					Status:  corev1.ConditionTrue,
@@ -205,7 +205,7 @@ func TestController(t *testing.T) {
 		"if CertificateSigningRequest references an Issuer that does not yet have a type, should fire an event it doesn't have a type": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type:    certificatesv1.CertificateApproved,
 					Status:  corev1.ConditionTrue,
@@ -221,7 +221,7 @@ func TestController(t *testing.T) {
 		"if CertificateSigningRequest references an Issuer which does not match the same signer type, should ignore": {
 			signerType: apiutil.IssuerSelfSigned,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type:    certificatesv1.CertificateApproved,
 					Status:  corev1.ConditionTrue,
@@ -240,7 +240,7 @@ func TestController(t *testing.T) {
 		"do nothing if CertificateSigningRequest references a signer that is not 'issuers' or 'clusterissuers'": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("not-issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("not-issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 					Type:    certificatesv1.CertificateApproved,
 					Status:  corev1.ConditionTrue,
@@ -254,7 +254,7 @@ func TestController(t *testing.T) {
 		"if CertificateSigningRequest references a issuers signer but the SubjectAccessReview errors, should error": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestUsername("user-1"),
 				gen.SetCertificateSigningRequestGroups([]string{"group-1", "group-2"}),
 				gen.SetCertificateSigningRequestUID("uid-1"),
@@ -285,7 +285,7 @@ func TestController(t *testing.T) {
 						UID: "uid-1",
 
 						ResourceAttributes: &authzv1.ResourceAttributes{
-							Group:     "cert-manager.io",
+							Group:     "anthos-cert-manager.io",
 							Resource:  "signers",
 							Verb:      "reference",
 							Namespace: "hello",
@@ -305,7 +305,7 @@ func TestController(t *testing.T) {
 		"if CertificateSigningRequest references a issuers signer but the requesting user does not have permissions, should update Failed": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestUsername("user-1"),
 				gen.SetCertificateSigningRequestGroups([]string{"group-1", "group-2"}),
 				gen.SetCertificateSigningRequestUID("uid-1"),
@@ -340,7 +340,7 @@ func TestController(t *testing.T) {
 						UID: "uid-1",
 
 						ResourceAttributes: &authzv1.ResourceAttributes{
-							Group:     "cert-manager.io",
+							Group:     "anthos-cert-manager.io",
 							Resource:  "signers",
 							Verb:      "reference",
 							Namespace: "hello",
@@ -359,7 +359,7 @@ func TestController(t *testing.T) {
 						UID: "uid-1",
 
 						ResourceAttributes: &authzv1.ResourceAttributes{
-							Group:     "cert-manager.io",
+							Group:     "anthos-cert-manager.io",
 							Resource:  "signers",
 							Verb:      "reference",
 							Namespace: "hello",
@@ -395,7 +395,7 @@ func TestController(t *testing.T) {
 		"if CertificateSigningRequest references a issuers signer but the Issuer is not ready, fire event not Ready": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestUsername("user-1"),
 				gen.SetCertificateSigningRequestGroups([]string{"group-1", "group-2"}),
 				gen.SetCertificateSigningRequestUID("uid-1"),
@@ -422,7 +422,7 @@ func TestController(t *testing.T) {
 						UID: "uid-1",
 
 						ResourceAttributes: &authzv1.ResourceAttributes{
-							Group:     "cert-manager.io",
+							Group:     "anthos-cert-manager.io",
 							Resource:  "signers",
 							Verb:      "reference",
 							Namespace: "hello",
@@ -442,7 +442,7 @@ func TestController(t *testing.T) {
 		"if CertificateSigningRequest called invoked sign but it errors, should return error": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestUsername("user-1"),
 				gen.SetCertificateSigningRequestGroups([]string{"group-1", "group-2"}),
 				gen.SetCertificateSigningRequestUID("uid-1"),
@@ -475,7 +475,7 @@ func TestController(t *testing.T) {
 						UID: "uid-1",
 
 						ResourceAttributes: &authzv1.ResourceAttributes{
-							Group:     "cert-manager.io",
+							Group:     "anthos-cert-manager.io",
 							Resource:  "signers",
 							Verb:      "reference",
 							Namespace: "hello",
@@ -501,7 +501,7 @@ func TestController(t *testing.T) {
 		"if CertificateSigningRequest called invoked sign and doesn't error, should return no error": {
 			signerType: apiutil.IssuerCA,
 			existingCSR: gen.CertificateSigningRequest("csr-1",
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/hello.world"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/hello.world"),
 				gen.SetCertificateSigningRequestUsername("user-1"),
 				gen.SetCertificateSigningRequestGroups([]string{"group-1", "group-2"}),
 				gen.SetCertificateSigningRequestUID("uid-1"),
@@ -534,7 +534,7 @@ func TestController(t *testing.T) {
 						UID: "uid-1",
 
 						ResourceAttributes: &authzv1.ResourceAttributes{
-							Group:     "cert-manager.io",
+							Group:     "anthos-cert-manager.io",
 							Resource:  "signers",
 							Verb:      "reference",
 							Namespace: "hello",

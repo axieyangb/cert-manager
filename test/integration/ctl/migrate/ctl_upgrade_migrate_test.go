@@ -80,7 +80,7 @@ func TestCtlUpgradeMigrate(t *testing.T) {
 	// Create the control plane with the TestType conversion handlers registered
 	scheme := newScheme()
 	// name of the testtype CRD resource
-	crdName := "testtypes.testgroup.testing.cert-manager.io"
+	crdName := "testtypes.testgroup.testing.anthos-cert-manager.io"
 	restCfg, stop := framework.RunControlPlane(t, context.Background(),
 		framework.WithCRDDirectory("../../../../pkg/webhook/handlers/testdata/apis/testgroup/crds"),
 		framework.WithWebhookConversionHandler(handlers.NewSchemeBackedConverter(testlogger.NewTestLogger(t), scheme)))
@@ -88,7 +88,7 @@ func TestCtlUpgradeMigrate(t *testing.T) {
 
 	// Ensure the OpenAPI endpoint has been updated with the TestType CRD
 	framework.WaitForOpenAPIResourcesToBeLoaded(t, ctx, restCfg, schema.GroupVersionKind{
-		Group:   "testgroup.testing.cert-manager.io",
+		Group:   "testgroup.testing.anthos-cert-manager.io",
 		Version: "v1",
 		Kind:    "TestType",
 	})
@@ -180,7 +180,7 @@ func TestCtlUpgradeMigrate_FailsIfStorageVersionDoesNotEqualTargetVersion(t *tes
 	// Create the control plane with the TestType conversion handlers registered
 	scheme := newScheme()
 	// name of the testtype CRD resource
-	crdName := "testtypes.testgroup.testing.cert-manager.io"
+	crdName := "testtypes.testgroup.testing.anthos-cert-manager.io"
 	restCfg, stop := framework.RunControlPlane(t, context.Background(),
 		framework.WithCRDDirectory("../../../../pkg/webhook/handlers/testdata/apis/testgroup/crds"),
 		framework.WithWebhookConversionHandler(handlers.NewSchemeBackedConverter(testlogger.NewTestLogger(t), scheme)))
@@ -188,7 +188,7 @@ func TestCtlUpgradeMigrate_FailsIfStorageVersionDoesNotEqualTargetVersion(t *tes
 
 	// Ensure the OpenAPI endpoint has been updated with the TestType CRD
 	framework.WaitForOpenAPIResourcesToBeLoaded(t, ctx, restCfg, schema.GroupVersionKind{
-		Group:   "testgroup.testing.cert-manager.io",
+		Group:   "testgroup.testing.anthos-cert-manager.io",
 		Version: "v1",
 		Kind:    "TestType",
 	})
@@ -232,7 +232,7 @@ func TestCtlUpgradeMigrate_SkipsMigrationIfNothingToDo(t *testing.T) {
 	// Create the control plane with the TestType conversion handlers registered
 	scheme := newScheme()
 	// name of the testtype CRD resource
-	crdName := "testtypes.testgroup.testing.cert-manager.io"
+	crdName := "testtypes.testgroup.testing.anthos-cert-manager.io"
 	restCfg, stop := framework.RunControlPlane(t, context.Background(),
 		framework.WithCRDDirectory("../../../../pkg/webhook/handlers/testdata/apis/testgroup/crds"),
 		framework.WithWebhookConversionHandler(handlers.NewSchemeBackedConverter(testlogger.NewTestLogger(t), scheme)))
@@ -240,7 +240,7 @@ func TestCtlUpgradeMigrate_SkipsMigrationIfNothingToDo(t *testing.T) {
 
 	// Ensure the OpenAPI endpoint has been updated with the TestType CRD
 	framework.WaitForOpenAPIResourcesToBeLoaded(t, ctx, restCfg, schema.GroupVersionKind{
-		Group:   "testgroup.testing.cert-manager.io",
+		Group:   "testgroup.testing.anthos-cert-manager.io",
 		Version: "v1",
 		Kind:    "TestType",
 	})
@@ -292,7 +292,7 @@ func TestCtlUpgradeMigrate_ForcesMigrationIfSkipStoredVersionCheckIsEnabled(t *t
 	// Create the control plane with the TestType conversion handlers registered
 	scheme := newScheme()
 	// name of the testtype CRD resource
-	crdName := "testtypes.testgroup.testing.cert-manager.io"
+	crdName := "testtypes.testgroup.testing.anthos-cert-manager.io"
 	restCfg, stop := framework.RunControlPlane(t, context.Background(),
 		framework.WithCRDDirectory("../../../../pkg/webhook/handlers/testdata/apis/testgroup/crds"),
 		framework.WithWebhookConversionHandler(handlers.NewSchemeBackedConverter(testlogger.NewTestLogger(t), scheme)))
@@ -300,7 +300,7 @@ func TestCtlUpgradeMigrate_ForcesMigrationIfSkipStoredVersionCheckIsEnabled(t *t
 
 	// Ensure the OpenAPI endpoint has been updated with the TestType CRD
 	framework.WaitForOpenAPIResourcesToBeLoaded(t, ctx, restCfg, schema.GroupVersionKind{
-		Group:   "testgroup.testing.cert-manager.io",
+		Group:   "testgroup.testing.anthos-cert-manager.io",
 		Version: "v1",
 		Kind:    "TestType",
 	})

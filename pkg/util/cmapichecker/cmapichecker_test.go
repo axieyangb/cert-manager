@@ -60,12 +60,12 @@ func newFakeCmapiChecker() (*fakeErrorClient, Interface, error) {
 }
 
 const (
-	errCertManagerCRDsMapping  = `error finding the scope of the object: failed to get restmapping: no matches for kind "Certificate" in group "cert-manager.io"`
-	errCertManagerCRDsNotFound = `the server could not find the requested resource (post certificates.cert-manager.io)`
+	errCertManagerCRDsMapping  = `error finding the scope of the object: failed to get restmapping: no matches for kind "Certificate" in group "anthos-cert-manager.io"`
+	errCertManagerCRDsNotFound = `the server could not find the requested resource (post certificates.anthos-cert-manager.io)`
 
-	errMutatingWebhookServiceFailure     = `Internal error occurred: failed calling webhook "webhook.cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": service "cert-manager-webhook" not found`
-	errMutatingWebhookDeploymentFailure  = `Internal error occurred: failed calling webhook "webhook.cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": dial tcp 10.96.38.90:443: connect: connection refused`
-	errMutatingWebhookCertificateFailure = `Internal error occurred: failed calling webhook "webhook.cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": x509: certificate signed by unknown authority (possibly because of "x509: ECDSA verification failure" while trying to verify candidate authority certificate "cert-manager-webhook-ca"`
+	errMutatingWebhookServiceFailure     = `Internal error occurred: failed calling webhook "webhook.anthos-cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": service "cert-manager-webhook" not found`
+	errMutatingWebhookDeploymentFailure  = `Internal error occurred: failed calling webhook "webhook.anthos-cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": dial tcp 10.96.38.90:443: connect: connection refused`
+	errMutatingWebhookCertificateFailure = `Internal error occurred: failed calling webhook "webhook.anthos-cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": x509: certificate signed by unknown authority (possibly because of "x509: ECDSA verification failure" while trying to verify candidate authority certificate "cert-manager-webhook-ca"`
 
 	// These /convert error examples test that we can correctly parse errors
 	// while connecting to the conversion webhook,
@@ -75,9 +75,9 @@ const (
 	// be removed too.
 	// TODO: Add tests for errors when connecting to the /validate
 	// ValidatingWebhook endpoint.
-	errConversionWebhookServiceFailure     = `conversion webhook for cert-manager.io/v1alpha2, Kind=Certificate failed: Post "https://cert-manager-webhook.cert-manager.svc:443/convert?timeout=30s": service "cert-manager-webhook" not found`
-	errConversionWebhookDeploymentFailure  = `conversion webhook for cert-manager.io/v1alpha2, Kind=Certificate failed: Post "https://cert-manager-webhook.cert-manager.svc:443/convert?timeout=30s": dial tcp 10.96.38.90:443: connect: connection refused`
-	errConversionWebhookCertificateFailure = `conversion webhook for cert-manager.io/v1alpha2, Kind=Certificate failed: Post "https://cert-manager-webhook.cert-manager.svc:443/convert?timeout=30s": x509: certificate signed by unknown authority`
+	errConversionWebhookServiceFailure     = `conversion webhook for anthos-cert-manager.io/v1alpha2, Kind=Certificate failed: Post "https://cert-manager-webhook.cert-manager.svc:443/convert?timeout=30s": service "cert-manager-webhook" not found`
+	errConversionWebhookDeploymentFailure  = `conversion webhook for anthos-cert-manager.io/v1alpha2, Kind=Certificate failed: Post "https://cert-manager-webhook.cert-manager.svc:443/convert?timeout=30s": dial tcp 10.96.38.90:443: connect: connection refused`
+	errConversionWebhookCertificateFailure = `conversion webhook for anthos-cert-manager.io/v1alpha2, Kind=Certificate failed: Post "https://cert-manager-webhook.cert-manager.svc:443/convert?timeout=30s": x509: certificate signed by unknown authority`
 )
 
 func TestCmapiChecker(t *testing.T) {

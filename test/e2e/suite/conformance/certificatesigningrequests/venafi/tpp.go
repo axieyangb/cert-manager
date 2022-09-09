@@ -107,7 +107,7 @@ func (t *tpp) createIssuer(f *framework.Framework) string {
 	issuer, err = f.CertManagerClientSet.CertmanagerV1().Issuers(f.Namespace.Name).Create(context.TODO(), issuer, metav1.CreateOptions{})
 	Expect(err).NotTo(HaveOccurred(), "failed to create issuer for venafi")
 
-	return fmt.Sprintf("issuers.cert-manager.io/%s.%s", issuer.Namespace, issuer.Name)
+	return fmt.Sprintf("issuers.anthos-cert-manager.io/%s.%s", issuer.Namespace, issuer.Name)
 }
 
 func (t *tpp) createClusterIssuer(f *framework.Framework) string {
@@ -129,5 +129,5 @@ func (t *tpp) createClusterIssuer(f *framework.Framework) string {
 	issuer, err = f.CertManagerClientSet.CertmanagerV1().ClusterIssuers().Create(context.TODO(), issuer, metav1.CreateOptions{})
 	Expect(err).NotTo(HaveOccurred(), "failed to create issuer for venafi")
 
-	return fmt.Sprintf("clusterissuers.cert-manager.io/%s", issuer.Name)
+	return fmt.Sprintf("clusterissuers.anthos-cert-manager.io/%s", issuer.Name)
 }

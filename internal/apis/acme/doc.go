@@ -17,5 +17,5 @@ limitations under the License.
 // +k8s:deepcopy-gen=package,register
 
 // Package acme is the internal version of the API.
-// +groupName=acme.cert-manager.io
+// +groupName=acme.anthos-cert-manager.io
 package acme

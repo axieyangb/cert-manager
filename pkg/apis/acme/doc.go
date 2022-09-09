@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// +groupName=acme.cert-manager.io
+// +groupName=acme.anthos-cert-manager.io
 
 // Package acme contains types in the acme cert-manager API group
 package acme
 
-const GroupName = "acme.cert-manager.io"
+const GroupName = "acme.anthos-cert-manager.io"

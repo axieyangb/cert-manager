@@ -112,7 +112,7 @@ func createSelfSignedIssuer(f *framework.Framework) string {
 	issuer, err = f.Helper().WaitIssuerReady(issuer, time.Minute*5)
 	Expect(err).ToNot(HaveOccurred())
 
-	return fmt.Sprintf("issuers.cert-manager.io/%s.%s", f.Namespace.Name, issuer.Name)
+	return fmt.Sprintf("issuers.anthos-cert-manager.io/%s.%s", f.Namespace.Name, issuer.Name)
 }
 
 func createSelfSignedClusterIssuer(f *framework.Framework) string {
@@ -135,7 +135,7 @@ func createSelfSignedClusterIssuer(f *framework.Framework) string {
 	issuer, err = f.Helper().WaitClusterIssuerReady(issuer, time.Minute*5)
 	Expect(err).ToNot(HaveOccurred())
 
-	return fmt.Sprintf("clusterissuers.cert-manager.io/%s", issuer.Name)
+	return fmt.Sprintf("clusterissuers.anthos-cert-manager.io/%s", issuer.Name)
 }
 
 func deleteSelfSignedClusterIssuer(f *framework.Framework, signerName string) {

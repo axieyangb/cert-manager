@@ -176,7 +176,7 @@ func Test_SecretsManager(t *testing.T) {
 						WithData(map[string][]byte{corev1.TLSCertKey: baseCertBundle.CertBytes, corev1.TLSPrivateKeyKey: []byte("test-key"), cmmeta.TLSCAKey: []byte("test-ca")}).
 						WithType(corev1.SecretTypeTLS).
 						WithOwnerReferences(&applymetav1.OwnerReferenceApplyConfiguration{
-							APIVersion: pointer.String("cert-manager.io/v1"), Kind: pointer.String("Certificate"),
+							APIVersion: pointer.String("anthos-cert-manager.io/v1"), Kind: pointer.String("Certificate"),
 							Name: pointer.String("test"), UID: &expUID,
 							Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true),
 						})
@@ -271,7 +271,7 @@ func Test_SecretsManager(t *testing.T) {
 						}).
 						WithType(corev1.SecretTypeTLS).
 						WithOwnerReferences(&applymetav1.OwnerReferenceApplyConfiguration{
-							APIVersion: pointer.String("cert-manager.io/v1"), Kind: pointer.String("Certificate"),
+							APIVersion: pointer.String("anthos-cert-manager.io/v1"), Kind: pointer.String("Certificate"),
 							Name: pointer.String("test"), UID: &expUID,
 							Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true),
 						})
@@ -362,7 +362,7 @@ func Test_SecretsManager(t *testing.T) {
 						}).
 						WithType(corev1.SecretTypeTLS).
 						WithOwnerReferences(&applymetav1.OwnerReferenceApplyConfiguration{
-							APIVersion: pointer.String("cert-manager.io/v1"), Kind: pointer.String("Certificate"),
+							APIVersion: pointer.String("anthos-cert-manager.io/v1"), Kind: pointer.String("Certificate"),
 							Name: pointer.String("test"), UID: &expUID,
 							Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true),
 						})

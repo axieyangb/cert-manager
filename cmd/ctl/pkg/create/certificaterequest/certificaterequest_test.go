@@ -127,7 +127,7 @@ func TestRun(t *testing.T) {
 		// Build clients
 		"conflicting namespaces defined in flag and file": {
 			inputFileContent: `---
-apiVersion: cert-manager.io/v1
+apiVersion: anthos-cert-manager.io/v1
 kind: Certificate
 metadata:
   name: testcert-1
@@ -139,7 +139,7 @@ spec:
   issuerRef:
     name: selfsigned-issuer
     kind: Issuer
-    group: cert-manager.io
+    group: anthos-cert-manager.io
 `,
 			inputArgs:      []string{crName},
 			inputNamespace: ns2,
@@ -149,7 +149,7 @@ spec:
 		},
 		"file passed in defines resource other than certificate": {
 			inputFileContent: `---
-apiVersion: cert-manager.io/v1
+apiVersion: anthos-cert-manager.io/v1
 kind: Issuer
 metadata:
   name: ca-issuer
@@ -174,7 +174,7 @@ spec:
 		},
 		"manifest file with multiple objects throws error": {
 			inputFileContent: `---
-apiVersion: cert-manager.io/v1
+apiVersion: anthos-cert-manager.io/v1
 kind: Issuer
 metadata:
   name: ca-issuer
@@ -183,7 +183,7 @@ spec:
   ca:
     secretName: ca-key-pair
 ---
-apiVersion: cert-manager.io/v1
+apiVersion: anthos-cert-manager.io/v1
 kind: Certificate
 metadata:
   name: testcert-1
@@ -195,7 +195,7 @@ spec:
   issuerRef:
     name: selfsigned-issuer
     kind: Issuer
-    group: cert-manager.io`,
+    group: anthos-cert-manager.io`,
 			inputArgs:      []string{crName},
 			inputNamespace: ns1,
 			keyFilename:    "",

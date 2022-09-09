@@ -44,8 +44,8 @@ var (
 		# Convert 'cert.yaml' to latest version and print to stdout.
 		{{.BuildName}} convert -f cert.yaml
 
-		# Convert kustomize overlay under current directory to 'cert-manager.io/v1alpha3'
-		{{.BuildName}} convert -k . --output-version cert-manager.io/v1alpha3`)))
+		# Convert kustomize overlay under current directory to 'anthos-cert-manager.io/v1alpha3'
+		{{.BuildName}} convert -k . --output-version anthos-cert-manager.io/v1alpha3`)))
 
 	longDesc = templates.LongDesc(i18n.T(`
 Convert cert-manager config files between different API versions. Both YAML
@@ -100,7 +100,7 @@ func NewCmdConvert(ctx context.Context, ioStreams genericclioptions.IOStreams) *
 		},
 	}
 
-	cmd.Flags().StringVar(&o.OutputVersion, "output-version", o.OutputVersion, "Output the formatted object with the given group version (for ex: 'cert-manager.io/v1alpha3').")
+	cmd.Flags().StringVar(&o.OutputVersion, "output-version", o.OutputVersion, "Output the formatted object with the given group version (for ex: 'anthos-cert-manager.io/v1alpha3').")
 	cmdutil.AddFilenameOptionFlags(cmd, &o.FilenameOptions, "Path to a file containing cert-manager resources to be converted.")
 	o.PrintFlags.AddFlags(cmd)
 

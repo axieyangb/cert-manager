@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/component: "cainjector"
     {{- include "labels" . | nindent 4 }}
 rules:
-  - apiGroups: ["cert-manager.io"]
+  - apiGroups: ["anthos-cert-manager.io"]
     resources: ["certificates"]
     verbs: ["get", "list", "watch"]
   - apiGroups: [""]

@@ -27,27 +27,27 @@ It is loosely based upon the work of [kube-lego](https://github.com/jetstack/kub
 and has borrowed some wisdom from other similar projects such as
 [kube-cert-manager](https://github.com/PalmStoneGames/kube-cert-manager).
 
-![cert-manager high level overview diagram](https://cert-manager.io/images/high-level-overview.svg)
+![cert-manager high level overview diagram](https://anthos-cert-manager.io/images/high-level-overview.svg)
 
 ## Documentation
 
-Documentation for cert-manager can be found at [cert-manager.io](https://cert-manager.io/docs/).
+Documentation for cert-manager can be found at [anthos-cert-manager.io](https://anthos-cert-manager.io/docs/).
 
 Issues and PRs for documentation should be filed in the [website repo](https://github.com/cert-manager/website/).
 
 For the common use-case of automatically issuing TLS certificates for
-Ingress resources, see the [cert-manager nginx-ingress quick start guide](https://cert-manager.io/docs/tutorials/acme/nginx-ingress/).
+Ingress resources, see the [cert-manager nginx-ingress quick start guide](https://anthos-cert-manager.io/docs/tutorials/acme/nginx-ingress/).
 
 ### Installation
 
-We document [installation](https://cert-manager.io/docs/installation/) on the website.
+We document [installation](https://anthos-cert-manager.io/docs/installation/) on the website.
 
 ## Troubleshooting
 
 If you encounter any issues whilst using cert-manager, we have a number of ways to get help:
 
-- A [troubleshooting guide](https://cert-manager.io/docs/faq/troubleshooting/) on our website.
-- Our official [Kubernetes Slack channel](https://cert-manager.io/docs/contributing/#slack) - the quickest way to ask!
+- A [troubleshooting guide](https://anthos-cert-manager.io/docs/faq/troubleshooting/) on our website.
+- Our official [Kubernetes Slack channel](https://anthos-cert-manager.io/docs/contributing/#slack) - the quickest way to ask!
 - [Searching for an existing issue](https://github.com/cert-manager/cert-manager/issues).
 
 If you believe you've found a bug, and cannot find an existing issue, feel free to [open a new issue](https://github.com/cert-manager/cert-manager/issues)!
@@ -63,19 +63,19 @@ and clicking "Join Group". A Google account is required to join the group.
 
 We have several public meetings which any member of our Google Group is more than welcome to join!
 
-Check out the details on [our website](https://cert-manager.io/docs/contributing/#meetings). Feel
+Check out the details on [our website](https://anthos-cert-manager.io/docs/contributing/#meetings). Feel
 free to drop in and ask questions, chat with us or just to say hi!
 
 ## Contributing
 
 We welcome pull requests with open arms! There's a lot of work to do here, and
 we're especially concerned with ensuring the longevity and reliability of the
-project. The [contributing guide](https://cert-manager.io/docs/contributing/)
+project. The [contributing guide](https://anthos-cert-manager.io/docs/contributing/)
 will help you get started.
 
 ## Coding Conventions
 
-Code style guidelines are documented on the [coding conventions](https://cert-manager.io/docs/contributing/coding-conventions/) page
+Code style guidelines are documented on the [coding conventions](https://anthos-cert-manager.io/docs/contributing/coding-conventions/) page
 of the cert-manager website. Please try to follow those guidelines if you're submitting a pull request for cert-manager.
 
 ## Importing cert-manager as a Module
@@ -87,7 +87,7 @@ the code is currently publicly exported.
 The lack of a Go module compatibility guarantee does not affect API version guarantees
 under the [Kubernetes Deprecation Policy](https://kubernetes.io/docs/reference/using-api/deprecation-policy/).
 
-For more details see [Importing cert-manager in Go](https://cert-manager.io/docs/contributing/importing/) on the
+For more details see [Importing cert-manager in Go](https://anthos-cert-manager.io/docs/contributing/importing/) on the
 cert-manager website.
 
 The import path for cert-manager versions 1.8 and later is `github.com/cert-manager/cert-manager`.
@@ -103,6 +103,6 @@ Follow the instructions in [SECURITY.md](./SECURITY.md) to make a report.
 ## Changelog
 
 [Every release](https://github.com/cert-manager/cert-manager/releases) on GitHub has a changelog,
-and we also publish release notes on [the website](https://cert-manager.io/docs/release-notes/).
+and we also publish release notes on [the website](https://anthos-cert-manager.io/docs/release-notes/).
 
 <sub><sup>Logo design by [Zoe Paterson](https://zoepatersonmedia.com)</sup></sub>

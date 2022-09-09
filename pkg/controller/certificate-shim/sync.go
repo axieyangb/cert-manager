@@ -564,23 +564,23 @@ func certNeedsUpdate(a, b *cmapi.Certificate) bool {
 // resource, such as the GCE ingress controller. The the following
 // annotation on an Ingress named "my-ingress":
 //
-//	acme.cert-manager.io/http01-edit-in-place: "true"
+//	acme.anthos-cert-manager.io/http01-edit-in-place: "true"
 //
 // configures the Certificate with two annotations:
 //
-//	acme.cert-manager.io/http01-override-ingress-name: my-ingress
-//	cert-manager.io/issue-temporary-certificate: "true"
+//	acme.anthos-cert-manager.io/http01-override-ingress-name: my-ingress
+//	anthos-cert-manager.io/issue-temporary-certificate: "true"
 //
 // (2)
 // The ingress-class Ingress annotation allows users to override the
 // Issuer's acme.solvers[0].http01.ingress.class. For example, on the
 // Ingress:
 //
-//	acme.cert-manager.io/http01-ingress-class: traefik
+//	acme.anthos-cert-manager.io/http01-ingress-class: traefik
 //
 // configures the Certificate using the override-ingress-class annotation:
 //
-//	acme.cert-manager.io/http01-override-ingress-class: traefik
+//	acme.anthos-cert-manager.io/http01-override-ingress-class: traefik
 func setIssuerSpecificConfig(crt *cmapi.Certificate, ingLike metav1.Object) {
 	ingAnnotations := ingLike.GetAnnotations()
 	if ingAnnotations == nil {
@@ -614,8 +614,8 @@ func setIssuerSpecificConfig(crt *cmapi.Certificate, ingLike metav1.Object) {
 // hasShimAnnotation returns true if the given ingress-like resource contains
 // one of the trigger annotations:
 //
-//	cert-manager.io/issuer
-//	cert-manager.io/cluster-issuer
+//	anthos-cert-manager.io/issuer
+//	anthos-cert-manager.io/cluster-issuer
 //
 // The autoCertificateAnnotations can also be used to customize additional
 // annotations to trigger a Certificate shim. For example, for Ingress
@@ -648,10 +648,10 @@ func hasShimAnnotation(ingLike metav1.Object, autoCertificateAnnotations []strin
 // the default issuer given to the controller is used. We look up the following
 // Ingress annotations:
 //
-//	cert-manager.io/cluster-issuer
-//	cert-manager.io/issuer
-//	cert-manager.io/issuer-kind
-//	cert-manager.io/issuer-group
+//	anthos-cert-manager.io/cluster-issuer
+//	anthos-cert-manager.io/issuer
+//	anthos-cert-manager.io/issuer-kind
+//	anthos-cert-manager.io/issuer-group
 func issuerForIngressLike(defaults controller.IngressShimOptions, ingLike metav1.Object) (name, kind, group string, err error) {
 	var errs []string
 

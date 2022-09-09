@@ -84,7 +84,7 @@ func TestProcessItem(t *testing.T) {
 
 	baseCSR := gen.CertificateSigningRequest("test-cr",
 		gen.SetCertificateSigningRequestRequest(csrPEM),
-		gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/default-unit-test-ns.test-issuer"),
+		gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/default-unit-test-ns.test-issuer"),
 		gen.SetCertificateSigningRequestDuration("1440h"),
 		gen.SetCertificateSigningRequestUsername("user-1"),
 		gen.SetCertificateSigningRequestGroups([]string{"group-1", "group-2"}),
@@ -240,7 +240,7 @@ func TestProcessItem(t *testing.T) {
 			builder: &testpkg.Builder{
 				CertManagerObjects: []runtime.Object{baseIssuer.DeepCopy()},
 				ExpectedEvents: []string{
-					`Warning ErrorParseDuration Failed to parse requested duration: failed to parse requested duration on annotation "experimental.cert-manager.io/request-duration": time: invalid duration "bad-duration"`,
+					`Warning ErrorParseDuration Failed to parse requested duration: failed to parse requested duration on annotation "experimental.anthos-cert-manager.io/request-duration": time: invalid duration "bad-duration"`,
 				},
 				ExpectedActions: []testpkg.Action{
 					testpkg.NewAction(coretesting.NewCreateAction(
@@ -280,7 +280,7 @@ func TestProcessItem(t *testing.T) {
 								Type:               certificatesv1.CertificateFailed,
 								Status:             corev1.ConditionTrue,
 								Reason:             "ErrorParseDuration",
-								Message:            `Failed to parse requested duration: failed to parse requested duration on annotation "experimental.cert-manager.io/request-duration": time: invalid duration "bad-duration"`,
+								Message:            `Failed to parse requested duration: failed to parse requested duration on annotation "experimental.anthos-cert-manager.io/request-duration": time: invalid duration "bad-duration"`,
 								LastTransitionTime: metaFixedClockStart,
 								LastUpdateTime:     metaFixedClockStart,
 							}),

@@ -175,7 +175,7 @@ func TestSign(t *testing.T) {
 			Type:               cmapi.CertificateRequestConditionDenied,
 			Status:             cmmeta.ConditionTrue,
 			Reason:             "Foo",
-			Message:            "Certificate request has been denied by cert-manager.io",
+			Message:            "Certificate request has been denied by anthos-cert-manager.io",
 			LastTransitionTime: &metaFixedClockStart,
 		}),
 	)
@@ -183,8 +183,8 @@ func TestSign(t *testing.T) {
 		gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
 			Type:               cmapi.CertificateRequestConditionApproved,
 			Status:             cmmeta.ConditionTrue,
-			Reason:             "cert-manager.io",
-			Message:            "Certificate request has been approved by cert-manager.io",
+			Reason:             "anthos-cert-manager.io",
+			Message:            "Certificate request has been approved by anthos-cert-manager.io",
 			LastTransitionTime: &metaFixedClockStart,
 		}),
 	)
@@ -197,11 +197,11 @@ func TestSign(t *testing.T) {
 		}),
 	)
 
-	tppCRWithCustomFields := gen.CertificateRequestFrom(tppCR, gen.SetCertificateRequestAnnotations(map[string]string{"venafi.cert-manager.io/custom-fields": `[{"name": "cert-manager-test", "value": "test ok"}]`}))
+	tppCRWithCustomFields := gen.CertificateRequestFrom(tppCR, gen.SetCertificateRequestAnnotations(map[string]string{"venafi.anthos-cert-manager.io/custom-fields": `[{"name": "cert-manager-test", "value": "test ok"}]`}))
 
-	tppCRWithInvalidCustomFields := gen.CertificateRequestFrom(tppCR, gen.SetCertificateRequestAnnotations(map[string]string{"venafi.cert-manager.io/custom-fields": `[{"name": cert-manager-test}]`}))
+	tppCRWithInvalidCustomFields := gen.CertificateRequestFrom(tppCR, gen.SetCertificateRequestAnnotations(map[string]string{"venafi.anthos-cert-manager.io/custom-fields": `[{"name": cert-manager-test}]`}))
 
-	tppCRWithInvalidCustomFieldType := gen.CertificateRequestFrom(tppCR, gen.SetCertificateRequestAnnotations(map[string]string{"venafi.cert-manager.io/custom-fields": `[{"name": "cert-manager-test", "value": "test ok", "type": "Bool"}]`}))
+	tppCRWithInvalidCustomFieldType := gen.CertificateRequestFrom(tppCR, gen.SetCertificateRequestAnnotations(map[string]string{"venafi.anthos-cert-manager.io/custom-fields": `[{"name": "cert-manager-test", "value": "test ok", "type": "Bool"}]`}))
 
 	cloudCR := gen.CertificateRequestFrom(baseCR,
 		gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
@@ -740,7 +740,7 @@ func TestSign(t *testing.T) {
 			builder: &controllertest.Builder{
 				CertManagerObjects: []runtime.Object{tppCRWithInvalidCustomFields.DeepCopy(), tppIssuer.DeepCopy()},
 				ExpectedEvents: []string{
-					`Warning CustomFieldsError Failed to parse "venafi.cert-manager.io/custom-fields" annotation: invalid character 'c' looking for beginning of value`,
+					`Warning CustomFieldsError Failed to parse "venafi.anthos-cert-manager.io/custom-fields" annotation: invalid character 'c' looking for beginning of value`,
 				},
 				ExpectedActions: []controllertest.Action{
 					controllertest.NewAction(coretesting.NewUpdateSubresourceAction(
@@ -752,7 +752,7 @@ func TestSign(t *testing.T) {
 								Type:               cmapi.CertificateRequestConditionReady,
 								Status:             cmmeta.ConditionFalse,
 								Reason:             cmapi.CertificateRequestReasonFailed,
-								Message:            "Failed to parse \"venafi.cert-manager.io/custom-fields\" annotation: invalid character 'c' looking for beginning of value",
+								Message:            "Failed to parse \"venafi.anthos-cert-manager.io/custom-fields\" annotation: invalid character 'c' looking for beginning of value",
 								LastTransitionTime: &metaFixedClockStart,
 							}),
 							gen.SetCertificateRequestFailureTime(metaFixedClockStart),

@@ -15,6 +15,6 @@ limitations under the License.
 */
 
 //
-// +domain=cert-manager.io
+// +domain=anthos-cert-manager.io
 
 package apis

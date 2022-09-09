@@ -91,7 +91,7 @@ func (k *kubernetes) createIssuer(f *framework.Framework) string {
 	issuer, err = f.Helper().WaitIssuerReady(issuer, time.Minute*5)
 	Expect(err).ToNot(HaveOccurred())
 
-	return fmt.Sprintf("issuers.cert-manager.io/%s.%s", issuer.Namespace, issuer.Name)
+	return fmt.Sprintf("issuers.anthos-cert-manager.io/%s.%s", issuer.Namespace, issuer.Name)
 }
 
 func (k *kubernetes) createClusterIssuer(f *framework.Framework) string {
@@ -111,7 +111,7 @@ func (k *kubernetes) createClusterIssuer(f *framework.Framework) string {
 	issuer, err = f.Helper().WaitClusterIssuerReady(issuer, time.Minute*5)
 	Expect(err).ToNot(HaveOccurred())
 
-	return fmt.Sprintf("clusterissuers.cert-manager.io/%s", issuer.Name)
+	return fmt.Sprintf("clusterissuers.anthos-cert-manager.io/%s", issuer.Name)
 }
 
 func (k *kubernetes) delete(f *framework.Framework, signerName string) {

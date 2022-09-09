@@ -215,7 +215,7 @@ func Test_ProcessItem(t *testing.T) {
 
 	baseCSR := gen.CertificateSigningRequest("test-csr",
 		gen.SetCertificateSigningRequestRequest(csrPEM),
-		gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/default-unit-test-ns.test-issuer"),
+		gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/default-unit-test-ns.test-issuer"),
 		gen.SetCertificateSigningRequestDuration("1440h"),
 		gen.SetCertificateSigningRequestUsername("user-1"),
 		gen.SetCertificateSigningRequestGroups([]string{"group-1", "group-2"}),
@@ -411,7 +411,7 @@ func Test_ProcessItem(t *testing.T) {
 						gen.SetIssuerACME(cmacme.ACMEIssuer{EnableDurationFeature: true}),
 					)},
 				ExpectedEvents: []string{
-					`Warning ErrorParseDuration Failed to parse requested duration: failed to parse requested duration on annotation "experimental.cert-manager.io/request-duration": time: invalid duration "garbage-data"`,
+					`Warning ErrorParseDuration Failed to parse requested duration: failed to parse requested duration on annotation "experimental.anthos-cert-manager.io/request-duration": time: invalid duration "garbage-data"`,
 				},
 				ExpectedActions: []testpkg.Action{
 					testpkg.NewAction(coretesting.NewCreateAction(
@@ -451,7 +451,7 @@ func Test_ProcessItem(t *testing.T) {
 								Type:               certificatesv1.CertificateFailed,
 								Status:             corev1.ConditionTrue,
 								Reason:             "ErrorParseDuration",
-								Message:            `Failed to parse requested duration: failed to parse requested duration on annotation "experimental.cert-manager.io/request-duration": time: invalid duration "garbage-data"`,
+								Message:            `Failed to parse requested duration: failed to parse requested duration on annotation "experimental.anthos-cert-manager.io/request-duration": time: invalid duration "garbage-data"`,
 								LastTransitionTime: metaFixedClockStart,
 								LastUpdateTime:     metaFixedClockStart,
 							}),
@@ -947,7 +947,7 @@ func Test_buildOrder(t *testing.T) {
 	csr := gen.CertificateSigningRequest("test",
 		gen.SetCertificateSigningRequestDuration("1h"),
 		gen.SetCertificateSigningRequestRequest(csrPEM),
-		gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-ns.test-name"),
+		gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-ns.test-name"),
 	)
 
 	tests := map[string]struct {
@@ -966,7 +966,7 @@ func Test_buildOrder(t *testing.T) {
 					IssuerRef: cmmeta.ObjectReference{
 						Name:  "test-name",
 						Kind:  "Issuer",
-						Group: "cert-manager.io",
+						Group: "anthos-cert-manager.io",
 					},
 				},
 			},
@@ -983,7 +983,7 @@ func Test_buildOrder(t *testing.T) {
 					IssuerRef: cmmeta.ObjectReference{
 						Name:  "test-name",
 						Kind:  "Issuer",
-						Group: "cert-manager.io",
+						Group: "anthos-cert-manager.io",
 					},
 				},
 			},
@@ -1018,7 +1018,7 @@ func Test_buildOrder(t *testing.T) {
 		"test-comparison-that-is-at-the-fifty-two-character-l",
 		gen.SetCertificateSigningRequestDuration("1h"),
 		gen.SetCertificateSigningRequestRequest(csrPEM),
-		gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-ns.test-name"),
+		gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-ns.test-name"),
 	)
 	orderOne, err := new(ACME).buildOrder(longCSROne, req, gen.Issuer("test-name", gen.SetIssuerACME(cmacme.ACMEIssuer{})))
 	if err != nil {
@@ -1031,7 +1031,7 @@ func Test_buildOrder(t *testing.T) {
 			"test-comparison-that-is-at-the-fifty-two-character-l-two",
 			gen.SetCertificateSigningRequestDuration("1h"),
 			gen.SetCertificateSigningRequestRequest(csrPEM),
-			gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-ns.test-name"),
+			gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-ns.test-name"),
 		)
 
 		orderTwo, err := new(ACME).buildOrder(longCSRTwo, req, gen.Issuer("test-name", gen.SetIssuerACME(cmacme.ACMEIssuer{})))

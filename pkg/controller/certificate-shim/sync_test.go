@@ -50,8 +50,8 @@ func Test_hasShimAnnotation(t *testing.T) {
 
 	t.Run("ingress", func(t *testing.T) {
 		tests := []testT{
-			{Annot: map[string]string{"cert-manager.io/issuer": ""}, Want: true},
-			{Annot: map[string]string{"cert-manager.io/cluster-issuer": ""}, Want: true},
+			{Annot: map[string]string{"anthos-cert-manager.io/issuer": ""}, Want: true},
+			{Annot: map[string]string{"anthos-cert-manager.io/cluster-issuer": ""}, Want: true},
 			{Annot: map[string]string{"kubernetes.io/tls-acme": "true"}, Want: true},
 			{Annot: map[string]string{"kubernetes.io/tls-acme": "false"}, Want: false},
 			{Annot: map[string]string{"kubernetes.io/tls-acme": ""}, Want: false},
@@ -474,7 +474,7 @@ func TestSync(t *testing.T) {
 			Issuer:              clusterIssuer,
 			DefaultIssuerName:   "issuer-name",
 			DefaultIssuerKind:   "ClusterIssuer",
-			DefaultIssuerGroup:  "cert-manager.io",
+			DefaultIssuerGroup:  "anthos-cert-manager.io",
 			ClusterIssuerLister: []runtime.Object{clusterIssuer},
 			IngressLike: &networkingv1.Ingress{
 				ObjectMeta: metav1.ObjectMeta{
@@ -508,7 +508,7 @@ func TestSync(t *testing.T) {
 						IssuerRef: cmmeta.ObjectReference{
 							Name:  "issuer-name",
 							Kind:  "ClusterIssuer",
-							Group: "cert-manager.io",
+							Group: "anthos-cert-manager.io",
 						},
 						Usages: cmapi.DefaultKeyUsages(),
 					},
@@ -648,7 +648,7 @@ func TestSync(t *testing.T) {
 				},
 			},
 			DefaultIssuerKind:  "Issuer",
-			DefaultIssuerGroup: "cert-manager.io",
+			DefaultIssuerGroup: "anthos-cert-manager.io",
 			CertificateLister: []runtime.Object{
 				&cmapi.Certificate{
 					ObjectMeta: metav1.ObjectMeta{
@@ -662,7 +662,7 @@ func TestSync(t *testing.T) {
 						IssuerRef: cmmeta.ObjectReference{
 							Name:  "issuer-name",
 							Kind:  "Issuer",
-							Group: "cert-manager.io",
+							Group: "anthos-cert-manager.io",
 						},
 						Usages: cmapi.DefaultKeyUsages(),
 					},
@@ -1288,7 +1288,7 @@ func TestSync(t *testing.T) {
 					Annotations: map[string]string{
 						cmapi.IngressIssuerNameAnnotationKey: "issuer-name",
 						cmapi.IssuerKindAnnotationKey:        "Issuer",
-						cmapi.IssuerGroupAnnotationKey:       "cert-manager.io",
+						cmapi.IssuerGroupAnnotationKey:       "anthos-cert-manager.io",
 					},
 					UID: types.UID("ingress-name"),
 				},
@@ -1315,7 +1315,7 @@ func TestSync(t *testing.T) {
 						IssuerRef: cmmeta.ObjectReference{
 							Name:  "issuer-name",
 							Kind:  "Issuer",
-							Group: "cert-manager.io",
+							Group: "anthos-cert-manager.io",
 						},
 						Usages: cmapi.DefaultKeyUsages(),
 					},
@@ -1335,7 +1335,7 @@ func TestSync(t *testing.T) {
 						IssuerRef: cmmeta.ObjectReference{
 							Name:  "issuer-name",
 							Kind:  "Issuer",
-							Group: "cert-manager.io",
+							Group: "anthos-cert-manager.io",
 						},
 						Usages: cmapi.DefaultKeyUsages(),
 					},
@@ -1356,7 +1356,7 @@ func TestSync(t *testing.T) {
 					Annotations: map[string]string{
 						cmapi.IngressIssuerNameAnnotationKey: "issuer-name",
 						cmapi.IssuerKindAnnotationKey:        "Issuer",
-						cmapi.IssuerGroupAnnotationKey:       "cert-manager.io",
+						cmapi.IssuerGroupAnnotationKey:       "anthos-cert-manager.io",
 					},
 					UID: types.UID("ingress-name"),
 				},
@@ -1384,7 +1384,7 @@ func TestSync(t *testing.T) {
 					Annotations: map[string]string{
 						cmapi.IngressIssuerNameAnnotationKey:        "issuer-name",
 						cmapi.IssuerKindAnnotationKey:               "Issuer",
-						cmapi.IssuerGroupAnnotationKey:              "cert-manager.io",
+						cmapi.IssuerGroupAnnotationKey:              "anthos-cert-manager.io",
 						cmapi.RenewBeforeAnnotationKey:              "invalid renew before value",
 						cmapi.RevisionHistoryLimitAnnotationKey:     "invalid revision history limit value",
 						cmapi.PrivateKeyAlgorithmAnnotationKey:      "invalid private key algorithm value",
@@ -1418,7 +1418,7 @@ func TestSync(t *testing.T) {
 					Annotations: map[string]string{
 						cmapi.IngressClusterIssuerNameAnnotationKey: "issuer-name",
 						cmapi.CommonNameAnnotationKey:               "my-cn",
-						"cert-manager.io/usages":                    "signing,digital signature,content commitment",
+						"anthos-cert-manager.io/usages":             "signing,digital signature,content commitment",
 					},
 					UID: types.UID("ingress-name"),
 				},
@@ -1924,7 +1924,7 @@ func TestSync(t *testing.T) {
 			Issuer:              clusterIssuer,
 			DefaultIssuerName:   "issuer-name",
 			DefaultIssuerKind:   "ClusterIssuer",
-			DefaultIssuerGroup:  "cert-manager.io",
+			DefaultIssuerGroup:  "anthos-cert-manager.io",
 			ClusterIssuerLister: []runtime.Object{clusterIssuer},
 			IngressLike: &gwapi.Gateway{
 				ObjectMeta: metav1.ObjectMeta{
@@ -2133,7 +2133,7 @@ func TestSync(t *testing.T) {
 				},
 			},
 			DefaultIssuerKind:  "Issuer",
-			DefaultIssuerGroup: "cert-manager.io",
+			DefaultIssuerGroup: "anthos-cert-manager.io",
 			CertificateLister: []runtime.Object{
 				&cmapi.Certificate{
 					ObjectMeta: metav1.ObjectMeta{
@@ -2147,7 +2147,7 @@ func TestSync(t *testing.T) {
 						IssuerRef: cmmeta.ObjectReference{
 							Name:  "issuer-name",
 							Kind:  "Issuer",
-							Group: "cert-manager.io",
+							Group: "anthos-cert-manager.io",
 						},
 						Usages: cmapi.DefaultKeyUsages(),
 					},
@@ -2459,7 +2459,7 @@ func TestSync(t *testing.T) {
 					Annotations: map[string]string{
 						cmapi.IngressIssuerNameAnnotationKey: "issuer-name",
 						cmapi.IssuerKindAnnotationKey:        "Issuer",
-						cmapi.IssuerGroupAnnotationKey:       "cert-manager.io",
+						cmapi.IssuerGroupAnnotationKey:       "anthos-cert-manager.io",
 					},
 					UID: types.UID("gateway-name"),
 				},
@@ -2496,7 +2496,7 @@ func TestSync(t *testing.T) {
 						IssuerRef: cmmeta.ObjectReference{
 							Name:  "issuer-name",
 							Kind:  "Issuer",
-							Group: "cert-manager.io",
+							Group: "anthos-cert-manager.io",
 						},
 						Usages: cmapi.DefaultKeyUsages(),
 					},
@@ -2516,7 +2516,7 @@ func TestSync(t *testing.T) {
 						IssuerRef: cmmeta.ObjectReference{
 							Name:  "issuer-name",
 							Kind:  "Issuer",
-							Group: "cert-manager.io",
+							Group: "anthos-cert-manager.io",
 						},
 						Usages: cmapi.DefaultKeyUsages(),
 					},
@@ -2534,7 +2534,7 @@ func TestSync(t *testing.T) {
 					Annotations: map[string]string{
 						cmapi.IngressIssuerNameAnnotationKey: "issuer-name",
 						cmapi.IssuerKindAnnotationKey:        "Issuer",
-						cmapi.IssuerGroupAnnotationKey:       "cert-manager.io",
+						cmapi.IssuerGroupAnnotationKey:       "anthos-cert-manager.io",
 					},
 					UID: types.UID("gateway-name"),
 				},
@@ -2601,7 +2601,7 @@ func TestSync(t *testing.T) {
 						IssuerRef: cmmeta.ObjectReference{
 							Name:  "issuer-name",
 							Kind:  "Issuer",
-							Group: "cert-manager.io",
+							Group: "anthos-cert-manager.io",
 						},
 						Usages: cmapi.DefaultKeyUsages(),
 					},
@@ -2619,7 +2619,7 @@ func TestSync(t *testing.T) {
 					Annotations: map[string]string{
 						cmapi.IngressIssuerNameAnnotationKey: "issuer-name",
 						cmapi.IssuerKindAnnotationKey:        "Issuer",
-						cmapi.IssuerGroupAnnotationKey:       "cert-manager.io",
+						cmapi.IssuerGroupAnnotationKey:       "anthos-cert-manager.io",
 					},
 					UID: types.UID("gateway-name"),
 				},
@@ -2673,7 +2673,7 @@ func TestSync(t *testing.T) {
 						IssuerRef: cmmeta.ObjectReference{
 							Name:  "issuer-name",
 							Kind:  "Issuer",
-							Group: "cert-manager.io",
+							Group: "anthos-cert-manager.io",
 						},
 						Usages: cmapi.DefaultKeyUsages(),
 					},
@@ -2690,7 +2690,7 @@ func TestSync(t *testing.T) {
 						IssuerRef: cmmeta.ObjectReference{
 							Name:  "issuer-name",
 							Kind:  "Issuer",
-							Group: "cert-manager.io",
+							Group: "anthos-cert-manager.io",
 						},
 						Usages: cmapi.DefaultKeyUsages(),
 					},
@@ -2707,7 +2707,7 @@ func TestSync(t *testing.T) {
 					Annotations: map[string]string{
 						cmapi.IngressIssuerNameAnnotationKey: "issuer-name",
 						cmapi.IssuerKindAnnotationKey:        "Issuer",
-						cmapi.IssuerGroupAnnotationKey:       "cert-manager.io",
+						cmapi.IssuerGroupAnnotationKey:       "anthos-cert-manager.io",
 						cmapi.RenewBeforeAnnotationKey:       "invalid renew before value",
 					},
 					UID: types.UID("gateway-name"),
@@ -2746,7 +2746,7 @@ func TestSync(t *testing.T) {
 					Annotations: map[string]string{
 						cmapi.IngressClusterIssuerNameAnnotationKey: "issuer-name",
 						cmapi.CommonNameAnnotationKey:               "my-cn",
-						"cert-manager.io/usages":                    "signing,digital signature,content commitment",
+						"anthos-cert-manager.io/usages":             "signing,digital signature,content commitment",
 					},
 					UID: types.UID("gateway-name"),
 				},
@@ -2927,10 +2927,10 @@ func TestIssuerForIngress(t *testing.T) {
 			}),
 			DefaultName:   "default-name",
 			DefaultKind:   "ClusterIssuer",
-			DefaultGroup:  "cert-manager.io",
+			DefaultGroup:  "anthos-cert-manager.io",
 			ExpectedName:  "default-name",
 			ExpectedKind:  "ClusterIssuer",
-			ExpectedGroup: "cert-manager.io",
+			ExpectedGroup: "anthos-cert-manager.io",
 		},
 		{
 			Ingress:       buildIngress("name", "namespace", nil),
@@ -2948,7 +2948,7 @@ func TestIssuerForIngress(t *testing.T) {
 				cmapi.IngressIssuerNameAnnotationKey:        "issuer",
 				cmapi.IssuerGroupAnnotationKey:              "group.io",
 			}),
-			ExpectedError: errors.New(`both "cert-manager.io/issuer" and "cert-manager.io/cluster-issuer" may not be set, both "cert-manager.io/cluster-issuer" and "cert-manager.io/issuer-group" may not be set`),
+			ExpectedError: errors.New(`both "anthos-cert-manager.io/issuer" and "anthos-cert-manager.io/cluster-issuer" may not be set, both "anthos-cert-manager.io/cluster-issuer" and "anthos-cert-manager.io/issuer-group" may not be set`),
 		},
 	}
 	for _, test := range tests {

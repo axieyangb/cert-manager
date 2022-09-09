@@ -607,9 +607,9 @@ func TestValidateCertificate(t *testing.T) {
 					SecretName: "abc",
 					SecretTemplate: &internalcmapi.CertificateSecretTemplate{
 						Annotations: map[string]string{
-							"app.com/valid":                    "valid",
-							"cert-manager.io/alt-names":        "example.com",
-							"cert-manager.io/certificate-name": "selfsigned-cert",
+							"app.com/valid":                           "valid",
+							"anthos-cert-manager.io/alt-names":        "example.com",
+							"anthos-cert-manager.io/certificate-name": "selfsigned-cert",
 						},
 					},
 					IssuerRef: cmmeta.ObjectReference{
@@ -619,8 +619,8 @@ func TestValidateCertificate(t *testing.T) {
 			},
 			a: someAdmissionRequest,
 			errs: []*field.Error{
-				field.Invalid(fldPath.Child("secretTemplate", "annotations"), "cert-manager.io/alt-names", "cert-manager.io/* annotations are not allowed"),
-				field.Invalid(fldPath.Child("secretTemplate", "annotations"), "cert-manager.io/certificate-name", "cert-manager.io/* annotations are not allowed"),
+				field.Invalid(fldPath.Child("secretTemplate", "annotations"), "anthos-cert-manager.io/alt-names", "anthos-cert-manager.io/* annotations are not allowed"),
+				field.Invalid(fldPath.Child("secretTemplate", "annotations"), "anthos-cert-manager.io/certificate-name", "anthos-cert-manager.io/* annotations are not allowed"),
 			},
 		},
 		"invalid due to too long 'CertificateSecretTemplate' annotations": {

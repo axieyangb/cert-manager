@@ -360,7 +360,7 @@ Conditions:
 DNS Names:
 - www.example.com
 Events:  <none>
-error when getting Issuer: issuers.cert-manager.io "non-existing-issuer" not found
+error when getting Issuer: issuers.anthos-cert-manager.io "non-existing-issuer" not found
 error when finding Secret "example-tls": secrets "example-tls" not found
 Not Before: <none>
 Not After: .*
@@ -402,7 +402,7 @@ Conditions:
 DNS Names:
 - www.example.com
 Events:  <none>
-error when getting ClusterIssuer: clusterissuers.cert-manager.io "non-existing-clusterissuer" not found
+error when getting ClusterIssuer: clusterissuers.anthos-cert-manager.io "non-existing-clusterissuer" not found
 error when finding Secret "example-tls": secrets "example-tls" not found
 Not Before: <none>
 Not After: .*

@@ -82,7 +82,7 @@ func init() {
 		gen.SetCertificateDNSNames("cert-manager.test"),
 		gen.SetCertificateIPs("10.0.0.1"),
 		gen.SetCertificateURIs("spiffe://cert-manager.test"),
-		gen.SetCertificateEmails("test@cert-manager.io"),
+		gen.SetCertificateEmails("test@anthos-cert-manager.io"),
 		gen.SetCertificateIsCA(true),
 		gen.SetCertificateKeyAlgorithm(v1.ECDSAKeyAlgorithm),
 		gen.SetCertificateIsCA(false),
@@ -344,7 +344,7 @@ func Test_describeValidFor(t *testing.T) {
 	IP Addresses: 
 		- 10.0.0.1
 	Email Addresses: 
-		- test@cert-manager.io
+		- test@anthos-cert-manager.io
 	Usages: 
 		- digital signature
 		- key encipherment

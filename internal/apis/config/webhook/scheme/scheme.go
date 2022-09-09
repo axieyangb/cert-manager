@@ -25,7 +25,7 @@ import (
 )
 
 // NewSchemeAndCodecs is a utility function that returns a Scheme and CodecFactory
-// that understand the types in the config.cert-manager.io API group. Passing mutators allows
+// that understand the types in the config.anthos-cert-manager.io API group. Passing mutators allows
 // for adjusting the behavior of the CodecFactory, for example enable strict decoding.
 func NewSchemeAndCodecs(mutators ...serializer.CodecFactoryOptionsMutator) (*runtime.Scheme, *serializer.CodecFactory, error) {
 	scheme := runtime.NewScheme()

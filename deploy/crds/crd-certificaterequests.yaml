@@ -1,14 +1,14 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: certificaterequests.cert-manager.io
+  name: certificaterequests.anthos-cert-manager.io
   labels:
     app: '{{ template "cert-manager.name" . }}'
     app.kubernetes.io/name: '{{ template "cert-manager.name" . }}'
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     # Generated labels {{- include "labels" . | nindent 4 }}
 spec:
-  group: cert-manager.io
+  group: anthos-cert-manager.io
   names:
     kind: CertificateRequest
     listKind: CertificateRequestList
@@ -90,7 +90,7 @@ spec:
                   description: IsCA will request to mark the certificate as valid for certificate signing when submitting to the issuer. This will automatically add the `cert sign` usage to the list of `usages`.
                   type: boolean
                 issuerRef:
-                  description: IssuerRef is a reference to the issuer for this CertificateRequest.  If the `kind` field is not set, or set to `Issuer`, an Issuer resource with the given name in the same namespace as the CertificateRequest will be used.  If the `kind` field is set to `ClusterIssuer`, a ClusterIssuer with the provided name will be used. The `name` field in this stanza is required at all times. The group field refers to the API group of the issuer which defaults to `cert-manager.io` if empty.
+                  description: IssuerRef is a reference to the issuer for this CertificateRequest.  If the `kind` field is not set, or set to `Issuer`, an Issuer resource with the given name in the same namespace as the CertificateRequest will be used.  If the `kind` field is set to `ClusterIssuer`, a ClusterIssuer with the provided name will be used. The `name` field in this stanza is required at all times. The group field refers to the API group of the issuer which defaults to `anthos-cert-manager.io` if empty.
                   type: object
                   required:
                     - name

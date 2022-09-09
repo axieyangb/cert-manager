@@ -1,4 +1,4 @@
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: anthos-cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
   name: ca-issuer
@@ -10,4 +10,4 @@ spec:
   issuerRef:
     name: selfsigned-issuer
     kind: Issuer
-    group: cert-manager.io
+    group: anthos-cert-manager.io

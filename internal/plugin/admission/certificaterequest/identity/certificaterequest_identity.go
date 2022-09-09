@@ -55,7 +55,7 @@ func NewPlugin() admission.Interface {
 
 func (p *certificateRequestIdentity) Mutate(ctx context.Context, request admissionv1.AdmissionRequest, obj runtime.Object) error {
 	// Only run this admission plugin for the certificaterequests/status sub-resource
-	if request.RequestResource.Group != "cert-manager.io" ||
+	if request.RequestResource.Group != "anthos-cert-manager.io" ||
 		request.RequestResource.Resource != "certificaterequests" ||
 		request.Operation != admissionv1.Create {
 		return nil
@@ -75,7 +75,7 @@ func (p *certificateRequestIdentity) Mutate(ctx context.Context, request admissi
 
 func (p *certificateRequestIdentity) Validate(ctx context.Context, request admissionv1.AdmissionRequest, oldObj, obj runtime.Object) ([]string, error) {
 	// Only run this admission plugin for CertificateRequest resources
-	if request.RequestResource.Group != "cert-manager.io" ||
+	if request.RequestResource.Group != "anthos-cert-manager.io" ||
 		request.RequestResource.Resource != "certificaterequests" {
 		return nil, nil
 	}

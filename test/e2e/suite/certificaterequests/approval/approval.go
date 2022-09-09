@@ -124,12 +124,12 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 			Rules: []rbacv1.PolicyRule{
 				{
 					Verbs:     []string{"create"},
-					APIGroups: []string{"cert-manager.io"},
+					APIGroups: []string{"anthos-cert-manager.io"},
 					Resources: []string{"certificaterequests"},
 				},
 				{
 					Verbs:     []string{"update"},
-					APIGroups: []string{"cert-manager.io"},
+					APIGroups: []string{"anthos-cert-manager.io"},
 					Resources: []string{"certificaterequests/status"},
 				},
 			},
@@ -241,7 +241,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 	It("attempting to approve a certificate request without the approve permission should error", func() {
 		createCRD(crdclient, group, "issuers", "Issuer", crdapi.NamespaceScoped)
 		approvedCR := request.DeepCopy()
-		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		err := retry.OnError(retry.DefaultBackoff, retryOnNotFound(approvedCR.Spec.IssuerRef), func() error {
 			_, err := saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), approvedCR, metav1.UpdateOptions{})
 			return err
@@ -252,7 +252,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 	It("attempting to deny a certificate request without the approve permission should error", func() {
 		createCRD(crdclient, group, "issuers", "Issuer", crdapi.NamespaceScoped)
 		deniedCR := request.DeepCopy()
-		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		err := retry.OnError(retry.DefaultBackoff, retryOnNotFound(deniedCR.Spec.IssuerRef), func() error {
 			_, err := saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), deniedCR, metav1.UpdateOptions{})
 			return err
@@ -265,7 +265,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		approvedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 
 		Consistently(func() bool {
 			err := retry.OnError(retry.DefaultBackoff, isTimeoutError, func() error {
@@ -281,7 +281,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		deniedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		Consistently(func() bool {
 			err := retry.OnError(retry.DefaultBackoff, isTimeoutError, func() error {
 				_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), deniedCR, metav1.UpdateOptions{})
@@ -297,7 +297,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		approvedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		Expect(retry.OnError(retry.DefaultBackoff, retryOnNotFound(approvedCR.Spec.IssuerRef), func() error {
 			_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), approvedCR, metav1.UpdateOptions{})
 			return err
@@ -310,7 +310,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		deniedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		Expect(retry.OnError(retry.DefaultBackoff, retryOnNotFound(deniedCR.Spec.IssuerRef), func() error {
 			_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), deniedCR, metav1.UpdateOptions{})
 			return err
@@ -323,7 +323,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		approvedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		Expect(retry.OnError(retry.DefaultBackoff, retryOnNotFound(approvedCR.Spec.IssuerRef), func() error {
 			_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), approvedCR, metav1.UpdateOptions{})
 			return err
@@ -336,7 +336,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		approvedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		err = retry.OnError(retry.DefaultBackoff, retryOnNotFound(approvedCR.Spec.IssuerRef), func() error {
 			_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), approvedCR, metav1.UpdateOptions{})
 			return err
@@ -350,7 +350,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		approvedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		Expect(retry.OnError(retry.DefaultBackoff, retryOnNotFound(approvedCR.Spec.IssuerRef), func() error {
 			_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), approvedCR, metav1.UpdateOptions{})
 			return err
@@ -363,7 +363,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		approvedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(approvedCR, cmapi.CertificateRequestConditionApproved, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		err = retry.OnError(retry.DefaultBackoff, retryOnNotFound(approvedCR.Spec.IssuerRef), func() error {
 			_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), approvedCR, metav1.UpdateOptions{})
 			return err
@@ -379,7 +379,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		deniedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		Expect(retry.OnError(retry.DefaultBackoff, retryOnNotFound(deniedCR.Spec.IssuerRef), func() error {
 			_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), deniedCR, metav1.UpdateOptions{})
 			return err
@@ -392,7 +392,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		deniedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		err = retry.OnError(retry.DefaultBackoff, retryOnNotFound(deniedCR.Spec.IssuerRef), func() error {
 			_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), deniedCR, metav1.UpdateOptions{})
 			return err
@@ -406,7 +406,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		deniedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		Expect(retry.OnError(retry.DefaultBackoff, retryOnNotFound(deniedCR.Spec.IssuerRef), func() error {
 			_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), deniedCR, metav1.UpdateOptions{})
 			return err
@@ -419,7 +419,7 @@ var _ = framework.CertManagerDescribe("Approval CertificateRequests", func() {
 
 		deniedCR, err := f.CertManagerClientSet.CertmanagerV1().CertificateRequests(f.Namespace.Name).Get(context.TODO(), request.Name, metav1.GetOptions{})
 		Expect(err).NotTo(HaveOccurred())
-		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "cert-manager.io", "e2e")
+		apiutil.SetCertificateRequestCondition(deniedCR, cmapi.CertificateRequestConditionDenied, cmmeta.ConditionTrue, "anthos-cert-manager.io", "e2e")
 		err = retry.OnError(retry.DefaultBackoff, retryOnNotFound(deniedCR.Spec.IssuerRef), func() error {
 			_, err = saclient.CertmanagerV1().CertificateRequests(f.Namespace.Name).UpdateStatus(context.TODO(), deniedCR, metav1.UpdateOptions{})
 			return err
@@ -466,7 +466,7 @@ func bindServiceAccountToApprove(f *framework.Framework, sa *corev1.ServiceAccou
 		},
 		Rules: []rbacv1.PolicyRule{
 			{
-				APIGroups:     []string{"cert-manager.io"},
+				APIGroups:     []string{"anthos-cert-manager.io"},
 				Resources:     []string{"signers"},
 				Verbs:         []string{"approve"},
 				ResourceNames: []string{resourceName},

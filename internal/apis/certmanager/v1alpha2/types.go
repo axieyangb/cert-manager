@@ -19,32 +19,32 @@ package v1alpha2
 // Common annotation keys added to resources.
 const (
 	// Annotation key for DNS subjectAltNames.
-	AltNamesAnnotationKey = "cert-manager.io/alt-names"
+	AltNamesAnnotationKey = "anthos-cert-manager.io/alt-names"
 
 	// Annotation key for IP subjectAltNames.
-	IPSANAnnotationKey = "cert-manager.io/ip-sans"
+	IPSANAnnotationKey = "anthos-cert-manager.io/ip-sans"
 
 	// Annotation key for URI subjectAltNames.
-	URISANAnnotationKey = "cert-manager.io/uri-sans"
+	URISANAnnotationKey = "anthos-cert-manager.io/uri-sans"
 
 	// Annotation key for certificate common name.
-	CommonNameAnnotationKey = "cert-manager.io/common-name"
+	CommonNameAnnotationKey = "anthos-cert-manager.io/common-name"
 
 	// Annotation key the 'name' of the Issuer resource.
-	IssuerNameAnnotationKey = "cert-manager.io/issuer-name"
+	IssuerNameAnnotationKey = "anthos-cert-manager.io/issuer-name"
 
 	// Annotation key for the 'kind' of the Issuer resource.
-	IssuerKindAnnotationKey = "cert-manager.io/issuer-kind"
+	IssuerKindAnnotationKey = "anthos-cert-manager.io/issuer-kind"
 
 	// Annotation key for the 'group' of the Issuer resource.
-	IssuerGroupAnnotationKey = "cert-manager.io/issuer-group"
+	IssuerGroupAnnotationKey = "anthos-cert-manager.io/issuer-group"
 
 	// Annotation key for the name of the certificate that a resource is related to.
-	CertificateNameKey = "cert-manager.io/certificate-name"
+	CertificateNameKey = "anthos-cert-manager.io/certificate-name"
 
 	// Annotation key used to denote whether a Secret is named on a Certificate
 	// as a 'next private key' Secret resource.
-	IsNextPrivateKeySecretLabelKey = "cert-manager.io/next-private-key"
+	IsNextPrivateKeySecretLabelKey = "anthos-cert-manager.io/next-private-key"
 )
 
 // Deprecated annotation names for Secrets
@@ -57,14 +57,14 @@ const (
 const (
 	// issuerNameAnnotation can be used to override the issuer specified on the
 	// created Certificate resource.
-	IngressIssuerNameAnnotationKey = "cert-manager.io/issuer"
+	IngressIssuerNameAnnotationKey = "anthos-cert-manager.io/issuer"
 	// clusterIssuerNameAnnotation can be used to override the issuer specified on the
 	// created Certificate resource. The Certificate will reference the
 	// specified *ClusterIssuer* instead of normal issuer.
-	IngressClusterIssuerNameAnnotationKey = "cert-manager.io/cluster-issuer"
+	IngressClusterIssuerNameAnnotationKey = "anthos-cert-manager.io/cluster-issuer"
 	// acmeIssuerHTTP01IngressClassAnnotation can be used to override the http01 ingressClass
 	// if the challenge type is set to http01
-	IngressACMEIssuerHTTP01IngressClassAnnotationKey = "acme.cert-manager.io/http01-ingress-class"
+	IngressACMEIssuerHTTP01IngressClassAnnotationKey = "acme.anthos-cert-manager.io/http01-ingress-class"
 
 	// IngressClassAnnotationKey picks a specific "class" for the Ingress. The
 	// controller only processes Ingresses with this annotation either unset, or
@@ -79,10 +79,10 @@ const (
 	// on the resource.
 	// This annotation *may* not be present, and is used by the 'self signing'
 	// issuer type to self-sign certificates.
-	CertificateRequestPrivateKeyAnnotationKey = "cert-manager.io/private-key-secret-name"
+	CertificateRequestPrivateKeyAnnotationKey = "anthos-cert-manager.io/private-key-secret-name"
 
 	// Annotation to declare the CertificateRequest "revision", belonging to a Certificate Resource
-	CertificateRequestRevisionAnnotationKey = "cert-manager.io/certificate-revision"
+	CertificateRequestRevisionAnnotationKey = "anthos-cert-manager.io/certificate-revision"
 )
 
 const (
@@ -91,7 +91,7 @@ const (
 	// If it is present, a temporary internally signed certificate will be
 	// stored in the target Secret resource whilst the real Issuer is processing
 	// the certificate request.
-	IssueTemporaryCertificateAnnotation = "cert-manager.io/issue-temporary-certificate"
+	IssueTemporaryCertificateAnnotation = "anthos-cert-manager.io/issue-temporary-certificate"
 )
 
 // Common/known resource kinds.
@@ -106,25 +106,25 @@ const (
 	// WantInjectAnnotation is the annotation that specifies that a particular
 	// object wants injection of CAs.  It takes the form of a reference to a certificate
 	// as namespace/name.
-	WantInjectAnnotation = "cert-manager.io/inject-ca-from"
+	WantInjectAnnotation = "anthos-cert-manager.io/inject-ca-from"
 
 	// WantInjectAPIServerCAAnnotation, if set to "true", will make the cainjector
 	// inject the CA certificate for the Kubernetes apiserver into the resource.
 	// It discovers the apiserver's CA by inspecting the service account credentials
 	// mounted into the cainjector pod.
-	WantInjectAPIServerCAAnnotation = "cert-manager.io/inject-apiserver-ca"
+	WantInjectAPIServerCAAnnotation = "anthos-cert-manager.io/inject-apiserver-ca"
 
 	// WantInjectFromSecretAnnotation is the annotation that specifies that a particular
 	// object wants injection of CAs. It takes the form of a reference to a Secret
 	// as namespace/name.
-	WantInjectFromSecretAnnotation = "cert-manager.io/inject-ca-from-secret"
+	WantInjectFromSecretAnnotation = "anthos-cert-manager.io/inject-ca-from-secret"
 
 	// AllowsInjectionFromSecretAnnotation is an annotation that must be added
 	// to Secret resource that want to denote that they can be directly
 	// injected into injectables that have a `inject-ca-from-secret` annotation.
 	// If an injectable references a Secret that does NOT have this annotation,
 	// the cainjector will refuse to inject the secret.
-	AllowsInjectionFromSecretAnnotation = "cert-manager.io/allow-direct-injection"
+	AllowsInjectionFromSecretAnnotation = "anthos-cert-manager.io/allow-direct-injection"
 )
 
 // Issuer specific Annotations
@@ -133,7 +133,7 @@ const (
 	// This will only work with Venafi TPP v19.3 and higher
 	// The value is an array with objects containing the name and value keys
 	// for example: `[{"name": "custom-field", "value": "custom-value"}]`
-	VenafiCustomFieldsAnnotationKey = "venafi.cert-manager.io/custom-fields"
+	VenafiCustomFieldsAnnotationKey = "venafi.anthos-cert-manager.io/custom-fields"
 )
 
 // KeyUsage specifies valid usage contexts for keys.

@@ -70,7 +70,7 @@ func TestNewChallengeServer(t *testing.T) {
 			cfg: Config{
 				GenericConfig: newFakeRecommendedConfig(),
 				ExtraConfig: ExtraConfig{
-					SolverGroup: "test-solvers.cert-manager.io",
+					SolverGroup: "test-solvers.anthos-cert-manager.io",
 					Solvers: []webhook.Solver{
 						noOpSolver{name: "solver-1"},
 					},
@@ -83,7 +83,7 @@ func TestNewChallengeServer(t *testing.T) {
 			cfg: Config{
 				GenericConfig: newFakeRecommendedConfig(),
 				ExtraConfig: ExtraConfig{
-					SolverGroup: "test-solvers.cert-manager.io",
+					SolverGroup: "test-solvers.anthos-cert-manager.io",
 					Solvers: []webhook.Solver{
 						noOpSolver{name: "solver-1"},
 						noOpSolver{name: "solver-2"},

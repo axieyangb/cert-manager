@@ -31,7 +31,7 @@ import (
 	"github.com/cert-manager/cert-manager/pkg/acme/webhook/apiserver"
 )
 
-const defaultEtcdPathPrefix = "/registry/acme.cert-manager.io"
+const defaultEtcdPathPrefix = "/registry/acme.anthos-cert-manager.io"
 
 type WebhookServerOptions struct {
 	RecommendedOptions *genericoptions.RecommendedOptions

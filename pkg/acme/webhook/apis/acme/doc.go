@@ -14,11 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// +groupName=webhook.acme.cert-manager.io
+// +groupName=webhook.acme.anthos-cert-manager.io
 
 // Package acme contains type definitions for ACME ChallengePayload resources
 package acme
 
 const (
-	GroupName = "webhook.acme.cert-manager.io"
+	GroupName = "webhook.acme.anthos-cert-manager.io"
 )

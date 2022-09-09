@@ -5,9 +5,9 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.8.0
   creationTimestamp: null
-  name: testtypes.testgroup.testing.cert-manager.io
+  name: testtypes.testgroup.testing.anthos-cert-manager.io
 spec:
-  group: testgroup.testing.cert-manager.io
+  group: testgroup.testing.anthos-cert-manager.io
   names:
     kind: TestType
     listKind: TestTypeList

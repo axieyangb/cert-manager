@@ -74,7 +74,7 @@ func ApplyClusterIssuerStatus(ctx context.Context, cl cmclient.Interface, fieldM
 // Only the name, namespace, and status field values will be copied and encoded
 // into the serialized slice. All other fields will be left at their zero
 // value.  TypeMeta will be populated with the Kind "Issuer" and API Version
-// "cert-manager.io/v1" respectively.
+// "anthos-cert-manager.io/v1" respectively.
 func serializeApplyIssuerStatus(issuer *cmapi.Issuer) ([]byte, error) {
 	issuer = &cmapi.Issuer{
 		TypeMeta:   metav1.TypeMeta{Kind: cmapi.IssuerKind, APIVersion: cmapi.SchemeGroupVersion.Identifier()},
@@ -92,7 +92,7 @@ func serializeApplyIssuerStatus(issuer *cmapi.Issuer) ([]byte, error) {
 // JSON. Only the name, and status field values will be copied and encoded into
 // the serialized slice. All other fields will be left at their zero value.
 // TypeMeta will be populated with the Kind "ClusterIssuer" and API Version
-// "cert-manager.io/v1" respectively.
+// "anthos-cert-manager.io/v1" respectively.
 func serializeApplyClusterIssuerStatus(issuer *cmapi.ClusterIssuer) ([]byte, error) {
 	issuer = &cmapi.ClusterIssuer{
 		TypeMeta:   metav1.TypeMeta{Kind: cmapi.ClusterIssuerKind, APIVersion: cmapi.SchemeGroupVersion.Identifier()},

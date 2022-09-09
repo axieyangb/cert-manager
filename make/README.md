@@ -13,15 +13,15 @@ make help
 If you think that the documentation in `make help` is insufficient or that an important
 make target isn't documented, we'd consider that a bug. Please feel free to raise an issue!
 
-Most of the rest of the documentation for the cert-manager build system is on the [cert-manager website](https://cert-manager.io/docs/):
+Most of the rest of the documentation for the cert-manager build system is on the [cert-manager website](https://anthos-cert-manager.io/docs/):
 
-- [Building cert-manager](https://cert-manager.io/docs/contributing/building/) -
+- [Building cert-manager](https://anthos-cert-manager.io/docs/contributing/building/) -
   A guide to different commands which are useful for building cert-manager components locally.
-- [CRDs](https://cert-manager.io/docs/contributing/crds/) -
+- [CRDs](https://anthos-cert-manager.io/docs/contributing/crds/) -
   Information on updating, verifying and generating code centered around the cert-manager [CRDs](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
-- [Developing with Kind](https://cert-manager.io/docs/contributing/kind/) -
+- [Developing with Kind](https://anthos-cert-manager.io/docs/contributing/kind/) -
   Setting up a local development cluster using [Kind](https://kind.sigs.k8s.io)
-- [Running End-to-End Tests](https://cert-manager.io/docs/contributing/e2e/) -
+- [Running End-to-End Tests](https://anthos-cert-manager.io/docs/contributing/e2e/) -
   Details on cert-manager's end-to-end test suite and how it can be run
 
 ## Changing the Makefiles
@@ -109,6 +109,6 @@ Usually, that's what you want; it ensures that you're using the exact same tools
 same versions - as other developers.
 
 Some tools must be installed locally, however. The build system will alert you if a required
-tool cannot be found, and these tools are documented [on the website](https://cert-manager.io/docs/contributing/building/#prerequisites).
+tool cannot be found, and these tools are documented [on the website](https://anthos-cert-manager.io/docs/contributing/building/#prerequisites).
 
-Specifically, note that you can choose to use your system version of Go or to [download a vendored copy](https://cert-manager.io/docs/contributing/building/#go-versions).
+Specifically, note that you can choose to use your system version of Go or to [download a vendored copy](https://anthos-cert-manager.io/docs/contributing/building/#go-versions).

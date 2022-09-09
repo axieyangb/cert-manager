@@ -96,7 +96,7 @@ var _ = framework.CertManagerDescribe("UserInfo CertificateRequests", func() {
 			Rules: []rbacv1.PolicyRule{
 				{
 					Verbs:     []string{"create"},
-					APIGroups: []string{"cert-manager.io"},
+					APIGroups: []string{"anthos-cert-manager.io"},
 					Resources: []string{"certificaterequests"},
 				},
 			},

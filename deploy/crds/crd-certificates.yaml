@@ -1,14 +1,14 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: certificates.cert-manager.io
+  name: certificates.anthos-cert-manager.io
   labels:
     app: '{{ template "cert-manager.name" . }}'
     app.kubernetes.io/name: '{{ template "cert-manager.name" . }}'
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     # Generated labels {{- include "labels" . | nindent 4 }}
 spec:
-  group: cert-manager.io
+  group: anthos-cert-manager.io
   names:
     kind: Certificate
     listKind: CertificateList
@@ -364,7 +364,7 @@ spec:
                   type: string
                   format: date-time
                 revision:
-                  description: "The current 'revision' of the certificate as issued. \n When a CertificateRequest resource is created, it will have the `cert-manager.io/certificate-revision` set to one greater than the current value of this field. \n Upon issuance, this field will be set to the value of the annotation on the CertificateRequest resource used to issue the certificate. \n Persisting the value on the CertificateRequest resource allows the certificates controller to know whether a request is part of an old issuance or if it is part of the ongoing revision's issuance by checking if the revision value in the annotation is greater than this field."
+                  description: "The current 'revision' of the certificate as issued. \n When a CertificateRequest resource is created, it will have the `anthos-cert-manager.io/certificate-revision` set to one greater than the current value of this field. \n Upon issuance, this field will be set to the value of the annotation on the CertificateRequest resource used to issue the certificate. \n Persisting the value on the CertificateRequest resource allows the certificates controller to know whether a request is part of an old issuance or if it is part of the ongoing revision's issuance by checking if the revision value in the annotation is greater than this field."
                   type: integer
       served: true
       storage: true

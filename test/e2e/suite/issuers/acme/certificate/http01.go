@@ -57,7 +57,7 @@ var _ = framework.CertManagerDescribe("ACME Certificate (HTTP01)", func() {
 	certificateSecretName := "test-acme-certificate"
 	// fixedIngressName is the name of an ingress resource that is configured
 	// with a challenge solve.
-	// To utilise this solver, add the 'testing.cert-manager.io/fixed-ingress: "true"' label.
+	// To utilise this solver, add the 'testing.anthos-cert-manager.io/fixed-ingress: "true"' label.
 	fixedIngressName := "testingress"
 
 	// ACME Issuer does not return a ca.crt. See:
@@ -77,7 +77,7 @@ var _ = framework.CertManagerDescribe("ACME Certificate (HTTP01)", func() {
 			{
 				Selector: &cmacme.CertificateDNSNameSelector{
 					MatchLabels: map[string]string{
-						"testing.cert-manager.io/fixed-ingress": "true",
+						"testing.anthos-cert-manager.io/fixed-ingress": "true",
 					},
 				},
 				HTTP01: &cmacme.ACMEChallengeSolverHTTP01{
@@ -244,14 +244,14 @@ var _ = framework.CertManagerDescribe("ACME Certificate (HTTP01)", func() {
 			ingClient := f.KubeClientSet.NetworkingV1().Ingresses(f.Namespace.Name)
 			By("Creating an Ingress with the issuer name annotation set")
 			_, err := ingClient.Create(context.TODO(), util.NewIngress(certificateSecretName, certificateSecretName, map[string]string{
-				"cert-manager.io/issuer": issuerName,
+				"anthos-cert-manager.io/issuer": issuerName,
 			}, acmeIngressDomain), metav1.CreateOptions{})
 			Expect(err).NotTo(HaveOccurred())
 		case util.HasIngresses(f.KubeClientSet.Discovery(), networkingv1beta1.SchemeGroupVersion.String()):
 			ingClient := f.KubeClientSet.NetworkingV1beta1().Ingresses(f.Namespace.Name)
 			By("Creating an Ingress with the issuer name annotation set")
 			_, err := ingClient.Create(context.TODO(), util.NewV1Beta1Ingress(certificateSecretName, certificateSecretName, map[string]string{
-				"cert-manager.io/issuer": issuerName,
+				"anthos-cert-manager.io/issuer": issuerName,
 			}, acmeIngressDomain), metav1.CreateOptions{})
 			Expect(err).NotTo(HaveOccurred())
 		default:
@@ -407,7 +407,7 @@ var _ = framework.CertManagerDescribe("ACME Certificate (HTTP01)", func() {
 		)
 		cert.Namespace = f.Namespace.Name
 		cert.Labels = map[string]string{
-			"testing.cert-manager.io/fixed-ingress": "true",
+			"testing.anthos-cert-manager.io/fixed-ingress": "true",
 		}
 
 		cert, err = certClient.Create(context.TODO(), cert, metav1.CreateOptions{})

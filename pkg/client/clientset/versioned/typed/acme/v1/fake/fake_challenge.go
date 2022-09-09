@@ -36,9 +36,9 @@ type FakeChallenges struct {
 	ns   string
 }
 
-var challengesResource = schema.GroupVersionResource{Group: "acme.cert-manager.io", Version: "v1", Resource: "challenges"}
+var challengesResource = schema.GroupVersionResource{Group: "acme.anthos-cert-manager.io", Version: "v1", Resource: "challenges"}
 
-var challengesKind = schema.GroupVersionKind{Group: "acme.cert-manager.io", Version: "v1", Kind: "Challenge"}
+var challengesKind = schema.GroupVersionKind{Group: "acme.anthos-cert-manager.io", Version: "v1", Kind: "Challenge"}
 
 // Get takes name of the challenge, and returns the corresponding challenge object, and an error if there is any.
 func (c *FakeChallenges) Get(ctx context.Context, name string, options v1.GetOptions) (result *acmev1.Challenge, err error) {

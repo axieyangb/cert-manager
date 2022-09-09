@@ -89,7 +89,7 @@ type CertificateRequestSpec struct {
 	// used.  If the `kind` field is set to `ClusterIssuer`, a ClusterIssuer with
 	// the provided name will be used. The `name` field in this stanza is
 	// required at all times. The group field refers to the API group of the
-	// issuer which defaults to `cert-manager.io` if empty.
+	// issuer which defaults to `anthos-cert-manager.io` if empty.
 	IssuerRef cmmeta.ObjectReference `json:"issuerRef"`
 
 	// The PEM-encoded x509 certificate signing request to be submitted to the

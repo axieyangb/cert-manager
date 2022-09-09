@@ -48,10 +48,10 @@ const (
 	testdataResourcesOutAsListV1beta1        = "./testdata/convert/output/resources_as_list_v1beta1.yaml"
 	testdataResourcesOutAsListV1             = "./testdata/convert/output/resources_as_list_v1.yaml"
 
-	targetv1alpha2 = "cert-manager.io/v1alpha2"
-	targetv1alpha3 = "cert-manager.io/v1alpha3"
-	targetv1beta1  = "cert-manager.io/v1beta1"
-	targetv1       = "cert-manager.io/v1"
+	targetv1alpha2 = "anthos-cert-manager.io/v1alpha2"
+	targetv1alpha3 = "anthos-cert-manager.io/v1alpha3"
+	targetv1beta1  = "anthos-cert-manager.io/v1beta1"
+	targetv1       = "anthos-cert-manager.io/v1"
 )
 
 func TestCtlConvert(t *testing.T) {

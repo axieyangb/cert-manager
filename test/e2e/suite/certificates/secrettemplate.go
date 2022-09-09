@@ -60,7 +60,7 @@ var _ = framework.CertManagerDescribe("Certificate SecretTemplate", func() {
 				IssuerRef: cmmeta.ObjectReference{
 					Name:  issuerName,
 					Kind:  "Issuer",
-					Group: "cert-manager.io",
+					Group: "anthos-cert-manager.io",
 				},
 				SecretTemplate: secretTemplate,
 			},

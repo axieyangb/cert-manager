@@ -36,8 +36,8 @@ func Test_serializeApply(t *testing.T) {
 	// type object, object meta object, and spec. status should be empty. Empty
 	// spec should be deterministic.
 	const (
-		expReg      = `^{"kind":"CertificateRequest","apiVersion":"cert-manager.io/v1","metadata":{.*},"spec":{.*},"status":{}}$`
-		expEmptyReg = `^{"kind":"CertificateRequest","apiVersion":"cert-manager.io/v1","metadata":{.*},"spec":{"issuerRef":{"name":""},"request":null},"status":{}}$`
+		expReg      = `^{"kind":"CertificateRequest","apiVersion":"anthos-cert-manager.io/v1","metadata":{.*},"spec":{.*},"status":{}}$`
+		expEmptyReg = `^{"kind":"CertificateRequest","apiVersion":"anthos-cert-manager.io/v1","metadata":{.*},"spec":{"issuerRef":{"name":""},"request":null},"status":{}}$`
 		numJobs     = 10000
 	)
 
@@ -91,8 +91,8 @@ func Test_serializeApplyStatus(t *testing.T) {
 	// meta/type object, empty spec. Status should be matched both via regex, and
 	// when empty.
 	const (
-		expReg   = `^{"kind":"CertificateRequest","apiVersion":"cert-manager.io/v1","metadata":{"name":"foo","namespace":"bar","creationTimestamp":null},"spec":{"issuerRef":{"name":""},"request":null},"status":{.*}}$`
-		expEmpty = `{"kind":"CertificateRequest","apiVersion":"cert-manager.io/v1","metadata":{"name":"foo","namespace":"bar","creationTimestamp":null},"spec":{"issuerRef":{"name":""},"request":null},"status":{}}`
+		expReg   = `^{"kind":"CertificateRequest","apiVersion":"anthos-cert-manager.io/v1","metadata":{"name":"foo","namespace":"bar","creationTimestamp":null},"spec":{"issuerRef":{"name":""},"request":null},"status":{.*}}$`
+		expEmpty = `{"kind":"CertificateRequest","apiVersion":"anthos-cert-manager.io/v1","metadata":{"name":"foo","namespace":"bar","creationTimestamp":null},"spec":{"issuerRef":{"name":""},"request":null},"status":{}}`
 		numJobs  = 10000
 	)
 

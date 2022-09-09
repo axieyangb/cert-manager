@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// +groupName=webhook.config.cert-manager.io
+// +groupName=webhook.config.anthos-cert-manager.io
 
 // Package webhook contains types used to configure the webhook
 package webhook
 
-const GroupName = "webhook.config.cert-manager.io"
+const GroupName = "webhook.config.anthos-cert-manager.io"

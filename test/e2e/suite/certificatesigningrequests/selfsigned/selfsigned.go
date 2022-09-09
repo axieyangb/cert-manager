@@ -75,11 +75,11 @@ var _ = framework.CertManagerDescribe("CertificateSigningRequests SelfSigned Sec
 		request, err = f.KubeClientSet.CertificatesV1().CertificateSigningRequests().Create(context.TODO(), &certificatesv1.CertificateSigningRequest{
 			ObjectMeta: metav1.ObjectMeta{
 				GenerateName: "selfsigned-",
-				Annotations:  map[string]string{"experimental.cert-manager.io/private-key-secret-name": "selfsigned-test"},
+				Annotations:  map[string]string{"experimental.anthos-cert-manager.io/private-key-secret-name": "selfsigned-test"},
 			},
 			Spec: certificatesv1.CertificateSigningRequestSpec{
 				Request:    bundle.CSRBytes,
-				SignerName: fmt.Sprintf("issuers.cert-manager.io/%s.%s", f.Namespace.Name, issuer.GetName()),
+				SignerName: fmt.Sprintf("issuers.anthos-cert-manager.io/%s.%s", f.Namespace.Name, issuer.GetName()),
 				Usages:     []certificatesv1.KeyUsage{certificatesv1.UsageClientAuth, certificatesv1.UsageServerAuth},
 			},
 		}, metav1.CreateOptions{})
@@ -88,7 +88,7 @@ var _ = framework.CertManagerDescribe("CertificateSigningRequests SelfSigned Sec
 		By("approving request")
 		request.Status.Conditions = append(request.Status.Conditions, certificatesv1.CertificateSigningRequestCondition{
 			Type: certificatesv1.CertificateApproved, Status: corev1.ConditionTrue,
-			Reason: "Approved", Message: "approved for cert-manager.io selfigned e2e test",
+			Reason: "Approved", Message: "approved for anthos-cert-manager.io selfigned e2e test",
 			LastUpdateTime: metav1.NewTime(time.Now()), LastTransitionTime: metav1.NewTime(time.Now()),
 		})
 		request, err = f.KubeClientSet.CertificatesV1().CertificateSigningRequests().UpdateApproval(context.TODO(), request.Name, request, metav1.UpdateOptions{})
@@ -143,11 +143,11 @@ var _ = framework.CertManagerDescribe("CertificateSigningRequests SelfSigned Sec
 		request, err = f.KubeClientSet.CertificatesV1().CertificateSigningRequests().Create(context.TODO(), &certificatesv1.CertificateSigningRequest{
 			ObjectMeta: metav1.ObjectMeta{
 				GenerateName: "selfsigned-",
-				Annotations:  map[string]string{"experimental.cert-manager.io/private-key-secret-name": "selfsigned-test"},
+				Annotations:  map[string]string{"experimental.anthos-cert-manager.io/private-key-secret-name": "selfsigned-test"},
 			},
 			Spec: certificatesv1.CertificateSigningRequestSpec{
 				Request:    bundle.CSRBytes,
-				SignerName: fmt.Sprintf("issuers.cert-manager.io/%s.%s", f.Namespace.Name, issuer.GetName()),
+				SignerName: fmt.Sprintf("issuers.anthos-cert-manager.io/%s.%s", f.Namespace.Name, issuer.GetName()),
 				Usages:     []certificatesv1.KeyUsage{certificatesv1.UsageClientAuth, certificatesv1.UsageServerAuth},
 			},
 		}, metav1.CreateOptions{})
@@ -156,7 +156,7 @@ var _ = framework.CertManagerDescribe("CertificateSigningRequests SelfSigned Sec
 		By("approving request")
 		request.Status.Conditions = append(request.Status.Conditions, certificatesv1.CertificateSigningRequestCondition{
 			Type: certificatesv1.CertificateApproved, Status: corev1.ConditionTrue,
-			Reason: "Approved", Message: "approved for cert-manager.io selfigned e2e test",
+			Reason: "Approved", Message: "approved for anthos-cert-manager.io selfigned e2e test",
 			LastUpdateTime: metav1.NewTime(time.Now()), LastTransitionTime: metav1.NewTime(time.Now()),
 		})
 		request, err = f.KubeClientSet.CertificatesV1().CertificateSigningRequests().UpdateApproval(context.TODO(), request.Name, request, metav1.UpdateOptions{})
@@ -201,11 +201,11 @@ var _ = framework.CertManagerDescribe("CertificateSigningRequests SelfSigned Sec
 		request, err = f.KubeClientSet.CertificatesV1().CertificateSigningRequests().Create(context.TODO(), &certificatesv1.CertificateSigningRequest{
 			ObjectMeta: metav1.ObjectMeta{
 				GenerateName: "selfsigned-",
-				Annotations:  map[string]string{"experimental.cert-manager.io/private-key-secret-name": "selfsigned-test"},
+				Annotations:  map[string]string{"experimental.anthos-cert-manager.io/private-key-secret-name": "selfsigned-test"},
 			},
 			Spec: certificatesv1.CertificateSigningRequestSpec{
 				Request:    bundle.CSRBytes,
-				SignerName: fmt.Sprintf("clusterissuers.cert-manager.io/" + issuer.GetName()),
+				SignerName: fmt.Sprintf("clusterissuers.anthos-cert-manager.io/" + issuer.GetName()),
 				Usages:     []certificatesv1.KeyUsage{certificatesv1.UsageClientAuth, certificatesv1.UsageServerAuth},
 			},
 		}, metav1.CreateOptions{})
@@ -214,7 +214,7 @@ var _ = framework.CertManagerDescribe("CertificateSigningRequests SelfSigned Sec
 		By("approving request")
 		request.Status.Conditions = append(request.Status.Conditions, certificatesv1.CertificateSigningRequestCondition{
 			Type: certificatesv1.CertificateApproved, Status: corev1.ConditionTrue,
-			Reason: "Approved", Message: "approved for cert-manager.io selfigned e2e test",
+			Reason: "Approved", Message: "approved for anthos-cert-manager.io selfigned e2e test",
 			LastUpdateTime: metav1.NewTime(time.Now()), LastTransitionTime: metav1.NewTime(time.Now()),
 		})
 		request, err = f.KubeClientSet.CertificatesV1().CertificateSigningRequests().UpdateApproval(context.TODO(), request.Name, request, metav1.UpdateOptions{})
@@ -269,11 +269,11 @@ var _ = framework.CertManagerDescribe("CertificateSigningRequests SelfSigned Sec
 		request, err = f.KubeClientSet.CertificatesV1().CertificateSigningRequests().Create(context.TODO(), &certificatesv1.CertificateSigningRequest{
 			ObjectMeta: metav1.ObjectMeta{
 				GenerateName: "selfsigned-",
-				Annotations:  map[string]string{"experimental.cert-manager.io/private-key-secret-name": "selfsigned-test"},
+				Annotations:  map[string]string{"experimental.anthos-cert-manager.io/private-key-secret-name": "selfsigned-test"},
 			},
 			Spec: certificatesv1.CertificateSigningRequestSpec{
 				Request:    bundle.CSRBytes,
-				SignerName: fmt.Sprintf("clusterissuers.cert-manager.io/" + issuer.GetName()),
+				SignerName: fmt.Sprintf("clusterissuers.anthos-cert-manager.io/" + issuer.GetName()),
 				Usages:     []certificatesv1.KeyUsage{certificatesv1.UsageClientAuth, certificatesv1.UsageServerAuth},
 			},
 		}, metav1.CreateOptions{})
@@ -282,7 +282,7 @@ var _ = framework.CertManagerDescribe("CertificateSigningRequests SelfSigned Sec
 		By("approving request")
 		request.Status.Conditions = append(request.Status.Conditions, certificatesv1.CertificateSigningRequestCondition{
 			Type: certificatesv1.CertificateApproved, Status: corev1.ConditionTrue,
-			Reason: "Approved", Message: "approved for cert-manager.io selfigned e2e test",
+			Reason: "Approved", Message: "approved for anthos-cert-manager.io selfigned e2e test",
 			LastUpdateTime: metav1.NewTime(time.Now()), LastTransitionTime: metav1.NewTime(time.Now()),
 		})
 		request, err = f.KubeClientSet.CertificatesV1().CertificateSigningRequests().UpdateApproval(context.TODO(), request.Name, request, metav1.UpdateOptions{})

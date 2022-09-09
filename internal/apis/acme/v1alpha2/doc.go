@@ -19,5 +19,5 @@ limitations under the License.
 // +k8s:defaulter-gen=TypeMeta
 // +k8s:deepcopy-gen=package,register
 
-// +groupName=acme.cert-manager.io
+// +groupName=acme.anthos-cert-manager.io
 package v1alpha2

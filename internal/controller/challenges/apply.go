@@ -66,7 +66,7 @@ func ApplyStatus(ctx context.Context, cl cmclient.Interface, fieldManager string
 // objectmeta, and spec fields will be copied and encoded into the serialized
 // slice. All other fields will be left at their zero value.
 // TypeMeta will be populated with the Kind "Challenge" and API Version
-// "acme.cert-manager.io/v1" respectively.
+// "acme.anthos-cert-manager.io/v1" respectively.
 func serializeApply(challenge *cmacme.Challenge) ([]byte, error) {
 	ch := &cmacme.Challenge{
 		TypeMeta:   metav1.TypeMeta{Kind: cmacme.ChallengeKind, APIVersion: cmacme.SchemeGroupVersion.Identifier()},
@@ -85,7 +85,7 @@ func serializeApply(challenge *cmacme.Challenge) ([]byte, error) {
 // name, namespace, and status field values will be copied and encoded into the
 // serialized slice. All other fields will be left at their zero value.
 // TypeMeta will be populated with the Kind "Challenge" and API Version
-// "acme.cert-manager.io/v1" respectively.
+// "acme.anthos-cert-manager.io/v1" respectively.
 func serializeApplyStatus(challenge *cmacme.Challenge) ([]byte, error) {
 	ch := &cmacme.Challenge{
 		TypeMeta:   metav1.TypeMeta{Kind: cmacme.ChallengeKind, APIVersion: cmacme.SchemeGroupVersion.Identifier()},

@@ -41,9 +41,9 @@ func TestValidateCertificateRequestUpdate(t *testing.T) {
 	baseCR := &cminternal.CertificateRequest{
 		ObjectMeta: metav1.ObjectMeta{
 			Annotations: map[string]string{
-				"abc":                      "123",
-				"cert-manager.io/foo":      "abc",
-				"acme.cert-manager.io/bar": "123",
+				"abc":                             "123",
+				"anthos-cert-manager.io/foo":      "abc",
+				"acme.anthos-cert-manager.io/bar": "123",
 			},
 		},
 		Spec: cminternal.CertificateRequestSpec{
@@ -73,13 +73,13 @@ func TestValidateCertificateRequestUpdate(t *testing.T) {
 		wantE        field.ErrorList
 		wantW        []string
 	}{
-		"if CertificateRequest spec and cert-manager.io annotations change, error": {
+		"if CertificateRequest spec and anthos-cert-manager.io annotations change, error": {
 			oldCR: baseCR.DeepCopy(),
 			newCR: &cminternal.CertificateRequest{
 				ObjectMeta: metav1.ObjectMeta{
 					Annotations: map[string]string{
-						"acme.cert-manager.io/bar": "123",
-						"123":                      "abc",
+						"acme.anthos-cert-manager.io/bar": "123",
+						"123":                             "abc",
 					},
 				},
 				Spec: cminternal.CertificateRequestSpec{
@@ -88,17 +88,17 @@ func TestValidateCertificateRequestUpdate(t *testing.T) {
 			},
 			a: someAdmissionRequest,
 			wantE: []*field.Error{
-				field.Forbidden(field.NewPath("metadata", "annotations", "cert-manager.io/foo"), "cannot change cert-manager annotation after creation"),
+				field.Forbidden(field.NewPath("metadata", "annotations", "anthos-cert-manager.io/foo"), "cannot change cert-manager annotation after creation"),
 				field.Forbidden(field.NewPath("spec"), "cannot change spec after creation"),
 			},
 		},
-		"if CertificateRequest spec and acme.cert-manager.io annotations change, error": {
+		"if CertificateRequest spec and acme.anthos-cert-manager.io annotations change, error": {
 			oldCR: baseCR.DeepCopy(),
 			newCR: &cminternal.CertificateRequest{
 				ObjectMeta: metav1.ObjectMeta{
 					Annotations: map[string]string{
-						"cert-manager.io/foo": "abc",
-						"123":                 "abc",
+						"anthos-cert-manager.io/foo": "abc",
+						"123":                        "abc",
 					},
 				},
 				Spec: cminternal.CertificateRequestSpec{
@@ -107,7 +107,7 @@ func TestValidateCertificateRequestUpdate(t *testing.T) {
 			},
 			a: someAdmissionRequest,
 			wantE: []*field.Error{
-				field.Forbidden(field.NewPath("metadata", "annotations", "acme.cert-manager.io/bar"), "cannot change cert-manager annotation after creation"),
+				field.Forbidden(field.NewPath("metadata", "annotations", "acme.anthos-cert-manager.io/bar"), "cannot change cert-manager annotation after creation"),
 				field.Forbidden(field.NewPath("spec"), "cannot change spec after creation"),
 			},
 		},
@@ -207,7 +207,7 @@ func TestValidateCertificateRequestUpdate(t *testing.T) {
 						{
 							Type:   cminternal.CertificateRequestConditionApproved,
 							Status: cminternalmeta.ConditionTrue,
-							Reason: "cert-manager.io",
+							Reason: "anthos-cert-manager.io",
 						},
 					},
 				},
@@ -280,7 +280,7 @@ func TestValidateCertificateRequestUpdate(t *testing.T) {
 						{
 							Type:   cminternal.CertificateRequestConditionApproved,
 							Status: cminternalmeta.ConditionTrue,
-							Reason: "cert-manager.io",
+							Reason: "anthos-cert-manager.io",
 						},
 					},
 				},
@@ -301,7 +301,7 @@ func TestValidateCertificateRequestUpdate(t *testing.T) {
 						{
 							Type:   cminternal.CertificateRequestConditionApproved,
 							Status: cminternalmeta.ConditionTrue,
-							Reason: "cert-manager.io",
+							Reason: "anthos-cert-manager.io",
 						},
 					},
 				},
@@ -346,7 +346,7 @@ func TestValidateCertificateRequestUpdate(t *testing.T) {
 						{
 							Type:   cminternal.CertificateRequestConditionApproved,
 							Status: cminternalmeta.ConditionTrue,
-							Reason: "cert-manager.io",
+							Reason: "anthos-cert-manager.io",
 						},
 					},
 				},
@@ -631,7 +631,7 @@ func TestValidateCertificateRequest(t *testing.T) {
 						{
 							Type:   cminternal.CertificateRequestConditionApproved,
 							Status: cminternalmeta.ConditionFalse,
-							Reason: "cert-manager.io",
+							Reason: "anthos-cert-manager.io",
 						},
 					},
 				},
@@ -679,7 +679,7 @@ func TestValidateCertificateRequest(t *testing.T) {
 						{
 							Type:   cminternal.CertificateRequestConditionApproved,
 							Status: cminternalmeta.ConditionFalse,
-							Reason: "cert-manager.io",
+							Reason: "anthos-cert-manager.io",
 						},
 						{
 							Type:   cminternal.CertificateRequestConditionDenied,
@@ -711,7 +711,7 @@ func TestValidateCertificateRequest(t *testing.T) {
 						{
 							Type:   cminternal.CertificateRequestConditionApproved,
 							Status: cminternalmeta.ConditionTrue,
-							Reason: "cert-manager.io",
+							Reason: "anthos-cert-manager.io",
 						},
 						{
 							Type:   cminternal.CertificateRequestConditionDenied,
@@ -739,7 +739,7 @@ func TestValidateCertificateRequest(t *testing.T) {
 						{
 							Type:   cminternal.CertificateRequestConditionApproved,
 							Status: cminternalmeta.ConditionTrue,
-							Reason: "cert-manager.io",
+							Reason: "anthos-cert-manager.io",
 						},
 						{
 							Type:   cminternal.CertificateRequestConditionApproved,

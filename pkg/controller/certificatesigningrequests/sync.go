@@ -52,7 +52,7 @@ func (c *Controller) Sync(ctx context.Context, csr *certificatesv1.CertificateSi
 	}
 
 	if ref.Group != certmanager.GroupName {
-		dbg.Info("certificate signing request signerName group does not match 'cert-manager.io' group so skipping processing")
+		dbg.Info("certificate signing request signerName group does not match 'anthos-cert-manager.io' group so skipping processing")
 		return nil
 	}
 
@@ -166,7 +166,7 @@ func (c *Controller) Sync(ctx context.Context, csr *certificatesv1.CertificateSi
 // userCanReferenceSigner will return true if the CSR requester has a bound
 // role that allows them to reference a given Namespaced signer. The user must
 // have the permissions:
-// group: cert-manager.io
+// group: anthos-cert-manager.io
 // resource: signers
 // verb: reference
 // namespace: <referenced signer namespace>

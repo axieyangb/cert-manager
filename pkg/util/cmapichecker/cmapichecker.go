@@ -39,8 +39,8 @@ var (
 )
 
 const (
-	crdsMappingError  = `error finding the scope of the object: failed to get restmapping: no matches for kind "Certificate" in group "cert-manager.io"`
-	crdsNotFoundError = `the server could not find the requested resource (post certificates.cert-manager.io)`
+	crdsMappingError  = `error finding the scope of the object: failed to get restmapping: no matches for kind "Certificate" in group "anthos-cert-manager.io"`
+	crdsNotFoundError = `the server could not find the requested resource (post certificates.anthos-cert-manager.io)`
 )
 
 var (
@@ -130,13 +130,13 @@ func (e *ApiCheckError) Unwrap() error {
 // It tries to map these error messages to a better understandable error message that
 // explains what is wrong. If it cannot create a simple error, it will return nil.
 // ErrCertManagerCRDsNotFound:
-// - error finding the scope of the object: failed to get restmapping: no matches for kind "Certificate" in group "cert-manager.io"
+// - error finding the scope of the object: failed to get restmapping: no matches for kind "Certificate" in group "anthos-cert-manager.io"
 // ErrWebhookServiceFailure:
-// - Internal error occurred: failed calling webhook "webhook.cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": service "cert-manager-webhook" not found
+// - Internal error occurred: failed calling webhook "webhook.anthos-cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": service "cert-manager-webhook" not found
 // ErrWebhookDeploymentFailure:
-// - Internal error occurred: failed calling webhook "webhook.cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": dial tcp 10.96.38.90:443: connect: connection refused
+// - Internal error occurred: failed calling webhook "webhook.anthos-cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": dial tcp 10.96.38.90:443: connect: connection refused
 // ErrWebhookCertificateFailure:
-// - Internal error occurred: failed calling webhook "webhook.cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": x509: certificate signed by unknown authority (possibly because of "x509: ECDSA verification failure" while trying to verify candidate authority certificate "cert-manager-webhook-ca")
+// - Internal error occurred: failed calling webhook "webhook.anthos-cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": x509: certificate signed by unknown authority (possibly because of "x509: ECDSA verification failure" while trying to verify candidate authority certificate "cert-manager-webhook-ca")
 func translateToSimpleError(err error) error {
 	s := err.Error()
 

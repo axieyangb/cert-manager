@@ -45,15 +45,15 @@ func Test_handleSecretReferenceWorkFunc(t *testing.T) {
 			existingCSRs: []runtime.Object{
 				gen.CertificateSigningRequest("a",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-namespace.a"),
+					gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-namespace.a"),
 				),
 				gen.CertificateSigningRequest("b",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/b"),
+					gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/b"),
 				),
 			},
 			existingIssuers: []runtime.Object{
@@ -86,15 +86,15 @@ func Test_handleSecretReferenceWorkFunc(t *testing.T) {
 			existingCSRs: []runtime.Object{
 				gen.CertificateSigningRequest("a",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-namespace.a"),
+					gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-namespace.a"),
 				),
 				gen.CertificateSigningRequest("b",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/b"),
+					gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/b"),
 				),
 			},
 			existingIssuers: []runtime.Object{
@@ -175,15 +175,15 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 			existingCSRs: []runtime.Object{
 				gen.CertificateSigningRequest("a",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-namespace.a"),
+					gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-namespace.a"),
 				),
 				gen.CertificateSigningRequest("b",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/b"),
+					gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/b"),
 				),
 			},
 			existingIssuers:          []runtime.Object{},
@@ -194,15 +194,15 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 			existingCSRs: []runtime.Object{
 				gen.CertificateSigningRequest("a",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-namespace.a"),
+					gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-namespace.a"),
 				),
 				gen.CertificateSigningRequest("b",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/b"),
+					gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/b"),
 				),
 			},
 			existingIssuers: []runtime.Object{
@@ -221,15 +221,15 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 			existingCSRs: []runtime.Object{
 				gen.CertificateSigningRequest("a",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/another-namespace.a"),
+					gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/another-namespace.a"),
 				),
 				gen.CertificateSigningRequest("b",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/b"),
+					gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/b"),
 				),
 			},
 			existingIssuers: []runtime.Object{
@@ -248,15 +248,15 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 			existingCSRs: []runtime.Object{
 				gen.CertificateSigningRequest("a",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-namespace.a"),
+					gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-namespace.a"),
 				),
 				gen.CertificateSigningRequest("b",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/b"),
+					gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/b"),
 				),
 			},
 			existingIssuers: []runtime.Object{
@@ -272,9 +272,9 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 			expectedAffected: []*certificatesv1.CertificateSigningRequest{
 				gen.CertificateSigningRequest("a",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-namespace.a"),
+					gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-namespace.a"),
 				),
 			},
 		},
@@ -282,15 +282,15 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 			existingCSRs: []runtime.Object{
 				gen.CertificateSigningRequest("a",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-namespace.a"),
+					gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-namespace.a"),
 				),
 				gen.CertificateSigningRequest("b",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/b"),
+					gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/b"),
 				),
 			},
 			existingIssuers: []runtime.Object{
@@ -306,15 +306,15 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 			expectedAffected: []*certificatesv1.CertificateSigningRequest{
 				gen.CertificateSigningRequest("a",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/test-namespace.a"),
+					gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/test-namespace.a"),
 				),
 				gen.CertificateSigningRequest("b",
 					gen.AddCertificateSigningRequestAnnotations(map[string]string{
-						"experimental.cert-manager.io/private-key-secret-name": "test-secret",
+						"experimental.anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}),
-					gen.SetCertificateSigningRequestSignerName("clusterissuers.cert-manager.io/b"),
+					gen.SetCertificateSigningRequestSignerName("clusterissuers.anthos-cert-manager.io/b"),
 				),
 			},
 		},

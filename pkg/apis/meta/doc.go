@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// +groupName=meta.cert-manager.io
+// +groupName=meta.anthos-cert-manager.io
 
 // Package meta contains meta types for cert-manager APIs
 package meta
 
-const GroupName = "meta.cert-manager.io"
+const GroupName = "meta.anthos-cert-manager.io"

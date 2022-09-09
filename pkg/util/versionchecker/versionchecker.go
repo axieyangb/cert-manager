@@ -29,7 +29,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-const certificatesCertManagerCrdName = "certificates.cert-manager.io"
+const certificatesCertManagerCrdName = "certificates.anthos-cert-manager.io"
 const certificatesCertManagerOldCrdName = "certificates.certmanager.k8s.io"
 
 var certManagerLabelSelector = map[string]string{
@@ -107,14 +107,14 @@ func NewFromClient(cl client.Client) *VersionChecker {
 }
 
 // Version determines the installed cert-manager version. First, we look for
-// the "certificates.cert-manager.io" CRD and try to extract the version from that
+// the "certificates.anthos-cert-manager.io" CRD and try to extract the version from that
 // resource's labels. Then, if it uses a webhook, that webhook service resource's
 // labels are checked for a label. Lastly the pods linked to the webhook its labels
 // are checked and the image tag is used to determine the version.
-// If no "certificates.cert-manager.io" CRD is found, the older
+// If no "certificates.anthos-cert-manager.io" CRD is found, the older
 // "certificates.certmanager.k8s.io" CRD is tried too.
 func (o *VersionChecker) Version(ctx context.Context) (*Version, error) {
-	// Use the "certificates.cert-manager.io" CRD as a starting point
+	// Use the "certificates.anthos-cert-manager.io" CRD as a starting point
 	err := o.extractVersionFromCrd(ctx, certificatesCertManagerCrdName)
 
 	if err != nil && errors.Is(err, ErrCertManagerCRDsNotFound) {

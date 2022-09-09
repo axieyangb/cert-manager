@@ -41,11 +41,11 @@ var (
 //	kind: Ingress
 //	metadata:
 //	  annotations:
-//	    cert-manager.io/common-name: example.com
-//	    cert-manager.io/duration: 2160h
-//	    cert-manager.io/renew-before: 1440h
-//	    cert-manager.io/usages: "digital signature,key encipherment"
-//	    cert-manager.io/revision-history-limit: 7
+//	    anthos-cert-manager.io/common-name: example.com
+//	    anthos-cert-manager.io/duration: 2160h
+//	    anthos-cert-manager.io/renew-before: 1440h
+//	    anthos-cert-manager.io/usages: "digital signature,key encipherment"
+//	    anthos-cert-manager.io/revision-history-limit: 7
 //
 // is mapped to the following Certificate:
 //

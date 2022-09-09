@@ -30,7 +30,7 @@ import (
 )
 
 const (
-	randomFinalizer         = "random.acme.cert-manager.io"
+	randomFinalizer         = "random.acme.anthos-cert-manager.io"
 	maxConcurrentChallenges = 60
 )
 

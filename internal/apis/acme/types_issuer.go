@@ -75,7 +75,7 @@ type ACMEIssuer struct {
 	// ACME challenges for the matching domains.
 	// Solver configurations must be provided in order to obtain certificates
 	// from an ACME server.
-	// For more information, see: https://cert-manager.io/docs/configuration/acme/
+	// For more information, see: https://anthos-cert-manager.io/docs/configuration/acme/
 	Solvers []ACMEChallengeSolver
 
 	// Enables or disables generating a new ACME account key.

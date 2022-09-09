@@ -91,7 +91,7 @@ func TestCtlCreateCRBeforeCRIsCreated(t *testing.T) {
 			inputNamespace: ns1,
 			keyFilename:    "test.key",
 			expRunErr:      true,
-			expErrMsg:      fmt.Sprintf("error creating CertificateRequest: certificaterequests.cert-manager.io %q already exists", cr5Name),
+			expErrMsg:      fmt.Sprintf("error creating CertificateRequest: certificaterequests.anthos-cert-manager.io %q already exists", cr5Name),
 			expKeyFilename: "test.key",
 		},
 	}

@@ -68,7 +68,7 @@ func ApplyStatus(ctx context.Context, cl cmclient.Interface, fieldManager string
 // serializeApply converts the given CertificateRequest object to JSON.
 // The status object is unset.
 // TypeMeta will be populated with the Kind "CertificateRequest" and API
-// Version "cert-manager.io/v1" respectively.
+// Version "anthos-cert-manager.io/v1" respectively.
 // Manually marshalling the object into JSON is required when using the Patch
 // API call for the cert-manager client.
 func serializeApply(req *cmapi.CertificateRequest) ([]byte, error) {
@@ -92,7 +92,7 @@ func serializeApply(req *cmapi.CertificateRequest) ([]byte, error) {
 // into the serialized slice. All other fields will be left at their zero
 // value.
 // TypeMeta will be populated with the Kind "CertificateRequest" and API
-// Version "cert-manager.io/v1" respectively.
+// Version "anthos-cert-manager.io/v1" respectively.
 // Manually marshalling the object into JSON is required when using the Patch
 // API call for the cert-manager client.
 func serializeApplyStatus(req *cmapi.CertificateRequest) ([]byte, error) {

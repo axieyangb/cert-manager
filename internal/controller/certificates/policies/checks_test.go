@@ -156,7 +156,7 @@ func Test_NewTriggerPolicyChain(t *testing.T) {
 				},
 			},
 			reason:  IncorrectIssuer,
-			message: "Issuing certificate as Secret was previously issued by Issuer.cert-manager.io/oldissuer",
+			message: "Issuing certificate as Secret was previously issued by Issuer.anthos-cert-manager.io/oldissuer",
 			reissue: true,
 		},
 		"trigger issuance as Secret has old/incorrect 'issuer kind' annotation": {
@@ -182,7 +182,7 @@ func Test_NewTriggerPolicyChain(t *testing.T) {
 				},
 			},
 			reason:  IncorrectIssuer,
-			message: "Issuing certificate as Secret was previously issued by OldIssuerKind.cert-manager.io/testissuer",
+			message: "Issuing certificate as Secret was previously issued by OldIssuerKind.anthos-cert-manager.io/testissuer",
 			reissue: true,
 		},
 		"trigger issuance as Secret has old/incorrect 'issuer group' annotation": {
@@ -953,10 +953,10 @@ func Test_SecretTemplateMismatchesSecretManagedFields(t *testing.T) {
 							"f:annotations": {
 								"f:foo1": {},
 								"f:foo2": {},
-								"f:cert-manager.io/certificate-name": {},
-								"f:cert-manager.io/issuer-name": {},
-								"f:cert-manager.io/issuer-kind": {},
-								"f:cert-manager.io/issuer-group": {}
+								"f:anthos-cert-manager.io/certificate-name": {},
+								"f:anthos-cert-manager.io/issuer-name": {},
+								"f:anthos-cert-manager.io/issuer-kind": {},
+								"f:anthos-cert-manager.io/issuer-group": {}
 							}
 						}}`),
 				}},
@@ -975,14 +975,14 @@ func Test_SecretTemplateMismatchesSecretManagedFields(t *testing.T) {
 							"f:annotations": {
 								"f:foo1": {},
 								"f:foo2": {},
-								"f:cert-manager.io/certificate-name": {},
-								"f:cert-manager.io/issuer-name": {},
-								"f:cert-manager.io/issuer-kind": {},
-								"f:cert-manager.io/issuer-group": {},
-								"f:cert-manager.io/common-name": {},
-								"f:cert-manager.io/alt-names":  {},
-								"f:cert-manager.io/ip-sans": {},
-								"f:cert-manager.io/uri-sans": {}
+								"f:anthos-cert-manager.io/certificate-name": {},
+								"f:anthos-cert-manager.io/issuer-name": {},
+								"f:anthos-cert-manager.io/issuer-kind": {},
+								"f:anthos-cert-manager.io/issuer-group": {},
+								"f:anthos-cert-manager.io/common-name": {},
+								"f:anthos-cert-manager.io/alt-names":  {},
+								"f:anthos-cert-manager.io/ip-sans": {},
+								"f:anthos-cert-manager.io/uri-sans": {}
 							}
 						}}`),
 				}},
@@ -1000,14 +1000,14 @@ func Test_SecretTemplateMismatchesSecretManagedFields(t *testing.T) {
 							"f:annotations": {
 								"f:foo1": {},
 								"f:foo2": {},
-								"f:cert-manager.io/certificate-name": {},
-								"f:cert-manager.io/issuer-name": {},
-								"f:cert-manager.io/issuer-kind": {},
-								"f:cert-manager.io/issuer-group": {},
-								"f:cert-manager.io/common-name": {},
-								"f:cert-manager.io/alt-names":  {},
-								"f:cert-manager.io/ip-sans": {},
-								"f:cert-manager.io/uri-sans": {}
+								"f:anthos-cert-manager.io/certificate-name": {},
+								"f:anthos-cert-manager.io/issuer-name": {},
+								"f:anthos-cert-manager.io/issuer-kind": {},
+								"f:anthos-cert-manager.io/issuer-group": {},
+								"f:anthos-cert-manager.io/common-name": {},
+								"f:anthos-cert-manager.io/alt-names":  {},
+								"f:anthos-cert-manager.io/ip-sans": {},
+								"f:anthos-cert-manager.io/uri-sans": {}
 							}
 						}}`),
 				}},
@@ -1973,7 +1973,7 @@ func Test_SecretOwnerReferenceValueMismatch(t *testing.T) {
 						OwnerReferences: []metav1.OwnerReference{
 							{APIVersion: "foo.bar/v1", Kind: "Foo", Name: "foo", UID: types.UID("abc"), Controller: pointer.Bool(false), BlockOwnerDeletion: pointer.Bool(false)},
 							{APIVersion: "bar.foo/v1", Kind: "Bar", Name: "bar", UID: types.UID("def"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
-							{APIVersion: "cert-manager.io/v1", Kind: "Certificate", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
+							{APIVersion: "anthos-cert-manager.io/v1", Kind: "Certificate", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
 						},
 					},
 				},
@@ -1991,7 +1991,7 @@ func Test_SecretOwnerReferenceValueMismatch(t *testing.T) {
 						OwnerReferences: []metav1.OwnerReference{
 							{APIVersion: "foo.bar/v1", Kind: "Foo", Name: "foo", UID: types.UID("abc"), Controller: pointer.Bool(false), BlockOwnerDeletion: pointer.Bool(false)},
 							{APIVersion: "bar.foo/v1", Kind: "Bar", Name: "bar", UID: types.UID("def"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
-							{APIVersion: "cert-manager.io/v1", Kind: "Certificate", Name: "foo", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
+							{APIVersion: "anthos-cert-manager.io/v1", Kind: "Certificate", Name: "foo", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
 						},
 					},
 				},
@@ -2053,7 +2053,7 @@ func Test_SecretOwnerReferenceValueMismatch(t *testing.T) {
 						OwnerReferences: []metav1.OwnerReference{
 							{APIVersion: "foo.bar/v1", Kind: "Foo", Name: "foo", UID: types.UID("abc"), Controller: pointer.Bool(false), BlockOwnerDeletion: pointer.Bool(false)},
 							{APIVersion: "bar.foo/v1", Kind: "Bar", Name: "bar", UID: types.UID("def"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
-							{APIVersion: "cert-manager.io/v1", Kind: "Certificate", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
+							{APIVersion: "anthos-cert-manager.io/v1", Kind: "Certificate", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
 						},
 					},
 				},
@@ -2071,7 +2071,7 @@ func Test_SecretOwnerReferenceValueMismatch(t *testing.T) {
 						OwnerReferences: []metav1.OwnerReference{
 							{APIVersion: "foo.bar/v1", Kind: "Foo", Name: "foo", UID: types.UID("abc"), Controller: pointer.Bool(false), BlockOwnerDeletion: pointer.Bool(false)},
 							{APIVersion: "bar.foo/v1", Kind: "Bar", Name: "bar", UID: types.UID("def"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
-							{APIVersion: "cert-manager.io/v1", Kind: "Certificate", Name: "foo", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
+							{APIVersion: "anthos-cert-manager.io/v1", Kind: "Certificate", Name: "foo", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
 						},
 					},
 				},
@@ -2089,7 +2089,7 @@ func Test_SecretOwnerReferenceValueMismatch(t *testing.T) {
 						OwnerReferences: []metav1.OwnerReference{
 							{APIVersion: "foo.bar/v1", Kind: "Foo", Name: "foo", UID: types.UID("abc"), Controller: pointer.Bool(false), BlockOwnerDeletion: pointer.Bool(false)},
 							{APIVersion: "bar.foo/v1", Kind: "Bar", Name: "bar", UID: types.UID("def"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
-							{APIVersion: "acme.cert-manager.io/v1", Kind: "Certificate", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
+							{APIVersion: "acme.anthos-cert-manager.io/v1", Kind: "Certificate", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
 						},
 					},
 				},
@@ -2107,7 +2107,7 @@ func Test_SecretOwnerReferenceValueMismatch(t *testing.T) {
 						OwnerReferences: []metav1.OwnerReference{
 							{APIVersion: "foo.bar/v1", Kind: "Foo", Name: "foo", UID: types.UID("abc"), Controller: pointer.Bool(false), BlockOwnerDeletion: pointer.Bool(false)},
 							{APIVersion: "bar.foo/v1", Kind: "Bar", Name: "bar", UID: types.UID("def"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
-							{APIVersion: "cert-manager.io/v1", Kind: "Issuer", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
+							{APIVersion: "anthos-cert-manager.io/v1", Kind: "Issuer", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
 						},
 					},
 				},
@@ -2125,7 +2125,7 @@ func Test_SecretOwnerReferenceValueMismatch(t *testing.T) {
 						OwnerReferences: []metav1.OwnerReference{
 							{APIVersion: "foo.bar/v1", Kind: "Foo", Name: "foo", UID: types.UID("abc"), Controller: pointer.Bool(false), BlockOwnerDeletion: pointer.Bool(false)},
 							{APIVersion: "bar.foo/v1", Kind: "Bar", Name: "bar", UID: types.UID("def"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
-							{APIVersion: "cert-manager.io/v1", Kind: "Certificate", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(false), BlockOwnerDeletion: pointer.Bool(true)},
+							{APIVersion: "anthos-cert-manager.io/v1", Kind: "Certificate", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(false), BlockOwnerDeletion: pointer.Bool(true)},
 						},
 					},
 				},
@@ -2143,7 +2143,7 @@ func Test_SecretOwnerReferenceValueMismatch(t *testing.T) {
 						OwnerReferences: []metav1.OwnerReference{
 							{APIVersion: "foo.bar/v1", Kind: "Foo", Name: "foo", UID: types.UID("abc"), Controller: pointer.Bool(false), BlockOwnerDeletion: pointer.Bool(false)},
 							{APIVersion: "bar.foo/v1", Kind: "Bar", Name: "bar", UID: types.UID("def"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
-							{APIVersion: "cert-manager.io/v1", Kind: "Certificate", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(false)},
+							{APIVersion: "anthos-cert-manager.io/v1", Kind: "Certificate", Name: "test-certificate", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(false)},
 						},
 					},
 				},

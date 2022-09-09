@@ -1,6 +1,6 @@
 apiVersion: v1
 items:
-- apiVersion: cert-manager.io/v1alpha2
+- apiVersion: anthos-cert-manager.io/v1alpha2
   kind: Certificate
   metadata:
     creationTimestamp: null
@@ -10,12 +10,12 @@ items:
     commonName: my-csi-app
     isCA: true
     issuerRef:
-      group: cert-manager.io
+      group: anthos-cert-manager.io
       kind: Issuer
       name: selfsigned-issuer
     secretName: ca-key-pair
   status: {}
-- apiVersion: cert-manager.io/v1alpha2
+- apiVersion: anthos-cert-manager.io/v1alpha2
   kind: Issuer
   metadata:
     creationTimestamp: null
@@ -25,7 +25,7 @@ items:
     ca:
       secretName: ca-key-pair
   status: {}
-- apiVersion: cert-manager.io/v1alpha2
+- apiVersion: anthos-cert-manager.io/v1alpha2
   kind: Certificate
   metadata:
     creationTimestamp: null
@@ -35,7 +35,7 @@ items:
     commonName: my-csi-app
     isCA: true
     issuerRef:
-      group: cert-manager.io
+      group: anthos-cert-manager.io
       kind: Issuer
       name: ca-issuer
     secretName: ca-key-pair

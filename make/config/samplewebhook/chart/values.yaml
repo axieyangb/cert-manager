@@ -6,7 +6,7 @@
 # solve the DNS01 challenge.
 # This group name should be **unique**, hence using your own company's domain
 # here is recommended.
-groupName: acme.testing.cert-manager.io
+groupName: acme.testing.anthos-cert-manager.io
 
 certManager:
   namespace: cert-manager

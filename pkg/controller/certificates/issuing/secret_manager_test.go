@@ -476,7 +476,7 @@ func Test_ensureSecretData(t *testing.T) {
 			secret: &corev1.Secret{
 				ObjectMeta: metav1.ObjectMeta{Namespace: "test-namespace", Name: "test-secret",
 					OwnerReferences: []metav1.OwnerReference{
-						{APIVersion: "cert-manager.io/v1", Kind: "Certificate", Name: "test-name", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
+						{APIVersion: "anthos-cert-manager.io/v1", Kind: "Certificate", Name: "test-name", UID: types.UID("uid-123"), Controller: pointer.Bool(true), BlockOwnerDeletion: pointer.Bool(true)},
 					},
 					ManagedFields: []metav1.ManagedFieldsEntry{
 						{Manager: fieldManager, FieldsV1: &metav1.FieldsV1{

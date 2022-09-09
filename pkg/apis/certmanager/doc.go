@@ -14,10 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// +groupName=cert-manager.io
+// +groupName=anthos-cert-manager.io
 // +groupGoName=Certmanager
 
 // Package certmanager is the internal version of the API.
 package certmanager
 
-const GroupName = "cert-manager.io"
+const GroupName = "anthos-cert-manager.io"

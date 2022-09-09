@@ -71,7 +71,7 @@ func ApplyStatus(ctx context.Context, cl cmclient.Interface, fieldManager string
 // serializeApply converts the given Certificate object in JSON.
 // The status field will be set empty before serializing.
 // TypeMeta will be populated with the Kind "Certificate" and API Version
-// "cert-manager.io/v1" respectively.
+// "anthos-cert-manager.io/v1" respectively.
 func serializeApply(crt *cmapi.Certificate) ([]byte, error) {
 	crt = &cmapi.Certificate{
 		TypeMeta:   metav1.TypeMeta{Kind: cmapi.CertificateKind, APIVersion: cmapi.SchemeGroupVersion.Identifier()},
@@ -90,7 +90,7 @@ func serializeApply(crt *cmapi.Certificate) ([]byte, error) {
 // name, namespace, and status field values will be copied and encoded into the
 // serialized slice. All other fields will be left at their zero value.
 // TypeMeta will be populated with the Kind "Certificate" and API Version
-// "cert-manager.io/v1" respectively.
+// "anthos-cert-manager.io/v1" respectively.
 func serializeApplyStatus(crt *cmapi.Certificate) ([]byte, error) {
 	crt = &cmapi.Certificate{
 		TypeMeta:   metav1.TypeMeta{Kind: cmapi.CertificateKind, APIVersion: cmapi.SchemeGroupVersion.Identifier()},

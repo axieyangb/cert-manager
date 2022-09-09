@@ -48,7 +48,7 @@ var _ = framework.CertManagerDescribe("ACME CertificateRequest (HTTP01)", func()
 	certificateRequestName := "test-acme-certificate-request"
 	// fixedIngressName is the name of an ingress resource that is configured
 	// with a challenge solve.
-	// To utilise this solver, add the 'testing.cert-manager.io/fixed-ingress: "true"' label.
+	// To utilise this solver, add the 'testing.anthos-cert-manager.io/fixed-ingress: "true"' label.
 	fixedIngressName := "testingress"
 
 	BeforeEach(func() {
@@ -63,7 +63,7 @@ var _ = framework.CertManagerDescribe("ACME CertificateRequest (HTTP01)", func()
 			{
 				Selector: &cmacme.CertificateDNSNameSelector{
 					MatchLabels: map[string]string{
-						"testing.cert-manager.io/fixed-ingress": "true",
+						"testing.anthos-cert-manager.io/fixed-ingress": "true",
 					},
 				},
 				HTTP01: &cmacme.ACMEChallengeSolverHTTP01{

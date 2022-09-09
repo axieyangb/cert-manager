@@ -36,9 +36,9 @@ type FakeCertificates struct {
 	ns   string
 }
 
-var certificatesResource = schema.GroupVersionResource{Group: "cert-manager.io", Version: "v1", Resource: "certificates"}
+var certificatesResource = schema.GroupVersionResource{Group: "anthos-cert-manager.io", Version: "v1", Resource: "certificates"}
 
-var certificatesKind = schema.GroupVersionKind{Group: "cert-manager.io", Version: "v1", Kind: "Certificate"}
+var certificatesKind = schema.GroupVersionKind{Group: "anthos-cert-manager.io", Version: "v1", Kind: "Certificate"}
 
 // Get takes name of the certificate, and returns the corresponding certificate object, and an error if there is any.
 func (c *FakeCertificates) Get(ctx context.Context, name string, options v1.GetOptions) (result *certmanagerv1.Certificate, err error) {

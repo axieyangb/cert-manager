@@ -17,7 +17,7 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 rules:
-  - apiGroups: ["cert-manager.io"]
+  - apiGroups: ["anthos-cert-manager.io"]
     resources: ["certificates"]
     verbs: ["create"]
 ---

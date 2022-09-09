@@ -124,11 +124,11 @@ func NewController(
 }
 
 // isNextPrivateKeyLabelSelector is a label selector used to match Secret
-// resources with the `cert-manager.io/next-private-key: "true"` label.
+// resources with the `anthos-cert-manager.io/next-private-key: "true"` label.
 var isNextPrivateKeyLabelSelector labels.Selector
 
 func init() {
-	r, err := labels.NewRequirement("cert-manager.io/next-private-key", selection.Equals, []string{"true"})
+	r, err := labels.NewRequirement("anthos-cert-manager.io/next-private-key", selection.Equals, []string{"true"})
 	if err != nil {
 		panic(err)
 	}
@@ -351,7 +351,7 @@ func (c *controller) createNewPrivateKeySecret(ctx context.Context, crt *cmapi.C
 			Name:            name,
 			OwnerReferences: []metav1.OwnerReference{*metav1.NewControllerRef(crt, certificateGvk)},
 			Labels: map[string]string{
-				"cert-manager.io/next-private-key": "true",
+				"anthos-cert-manager.io/next-private-key": "true",
 			},
 		},
 		Data: map[string][]byte{

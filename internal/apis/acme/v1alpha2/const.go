@@ -17,5 +17,5 @@ limitations under the License.
 package v1alpha2
 
 const (
-	ACMEFinalizer = "finalizer.acme.cert-manager.io"
+	ACMEFinalizer = "finalizer.acme.anthos-cert-manager.io"
 )

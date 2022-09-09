@@ -22,7 +22,7 @@ const (
 	// solver's configuration will be set to the value given here.
 	// This is especially useful for users of Ingress controllers that maintain
 	// a 1:1 mapping between endpoint IP and Ingress resource.
-	ACMECertificateHTTP01IngressNameOverride = "acme.cert-manager.io/http01-override-ingress-name"
+	ACMECertificateHTTP01IngressNameOverride = "acme.anthos-cert-manager.io/http01-override-ingress-name"
 
 	// If this annotation is specified on a Certificate or Order resource when
 	// using the HTTP01 solver type, the ingress.class field of the HTTP01
@@ -30,9 +30,9 @@ const (
 	// This is especially useful for users deploying many different ingress
 	// classes into a single cluster that want to be able to re-use a single
 	// solver for each ingress class.
-	ACMECertificateHTTP01IngressClassOverride = "acme.cert-manager.io/http01-override-ingress-class"
+	ACMECertificateHTTP01IngressClassOverride = "acme.anthos-cert-manager.io/http01-override-ingress-class"
 
 	// IngressEditInPlaceAnnotation is used to toggle the use of ingressClass instead
 	// of ingress on the created Certificate resource
-	IngressEditInPlaceAnnotationKey = "acme.cert-manager.io/http01-edit-in-place"
+	IngressEditInPlaceAnnotationKey = "acme.anthos-cert-manager.io/http01-edit-in-place"
 )

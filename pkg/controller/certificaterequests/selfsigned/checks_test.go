@@ -45,17 +45,17 @@ func Test_handleSecretReferenceWorkFunc(t *testing.T) {
 				gen.CertificateRequest("a",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "a", Kind: "Issuer", Group: "cert-manager.io",
+						Name: "a", Kind: "Issuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 				gen.CertificateRequest("b",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "b", Kind: "ClusterIssuer", Group: "cert-manager.io",
+						Name: "b", Kind: "ClusterIssuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 			},
@@ -90,17 +90,17 @@ func Test_handleSecretReferenceWorkFunc(t *testing.T) {
 				gen.CertificateRequest("a",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "a", Kind: "Issuer", Group: "cert-manager.io",
+						Name: "a", Kind: "Issuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 				gen.CertificateRequest("b",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "b", Kind: "ClusterIssuer", Group: "cert-manager.io",
+						Name: "b", Kind: "ClusterIssuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 			},
@@ -178,17 +178,17 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 				gen.CertificateRequest("a",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "a", Kind: "Issuer", Group: "cert-manager.io",
+						Name: "a", Kind: "Issuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 				gen.CertificateRequest("b",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "b", Kind: "ClusterIssuer", Group: "cert-manager.io",
+						Name: "b", Kind: "ClusterIssuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 			},
@@ -200,17 +200,17 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 				gen.CertificateRequest("a",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "a", Kind: "Issuer", Group: "cert-manager.io",
+						Name: "a", Kind: "Issuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 				gen.CertificateRequest("b",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "b", Kind: "ClusterIssuer", Group: "cert-manager.io",
+						Name: "b", Kind: "ClusterIssuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 			},
@@ -230,17 +230,17 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 				gen.CertificateRequest("a",
 					gen.SetCertificateRequestNamespace("another-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "a", Kind: "Issuer", Group: "cert-manager.io",
+						Name: "a", Kind: "Issuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 				gen.CertificateRequest("b",
 					gen.SetCertificateRequestNamespace("another-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "b", Kind: "ClusterIssuer", Group: "cert-manager.io",
+						Name: "b", Kind: "ClusterIssuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 			},
@@ -260,17 +260,17 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 				gen.CertificateRequest("a",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "a", Kind: "Issuer", Group: "cert-manager.io",
+						Name: "a", Kind: "Issuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 				gen.CertificateRequest("b",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "b", Kind: "ClusterIssuer", Group: "cert-manager.io",
+						Name: "b", Kind: "ClusterIssuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 			},
@@ -287,17 +287,17 @@ func Test_certificatesRequestsForSecret(t *testing.T) {
 				gen.CertificateRequest("a",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "a", Kind: "Issuer", Group: "cert-manager.io",
+						Name: "a", Kind: "Issuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 				gen.CertificateRequest("b",
 					gen.SetCertificateRequestNamespace("test-namespace"),
 					gen.SetCertificateRequestAnnotations(map[string]string{
-						"cert-manager.io/private-key-secret-name": "test-secret",
+						"anthos-cert-manager.io/private-key-secret-name": "test-secret",
 					}), gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-						Name: "b", Kind: "ClusterIssuer", Group: "cert-manager.io",
+						Name: "b", Kind: "ClusterIssuer", Group: "anthos-cert-manager.io",
 					}),
 				),
 			},

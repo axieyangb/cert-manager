@@ -40,7 +40,7 @@ type dns01Provider interface {
 	addon.Addon
 }
 
-const testingACMEEmail = "e2e@cert-manager.io"
+const testingACMEEmail = "e2e@anthos-cert-manager.io"
 const testingACMEPrivateKey = "test-acme-private-key"
 
 var _ = framework.CertManagerDescribe("ACME CertificateRequest (DNS01)", func() {

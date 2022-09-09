@@ -740,9 +740,9 @@ func (s *Suite) Define() {
 
 				By("Creating an Ingress with the issuer name annotation set")
 				ingress, err := ingClient.Create(context.TODO(), e2eutil.NewIngress(name, secretName, map[string]string{
-					"cert-manager.io/issuer":       issuerRef.Name,
-					"cert-manager.io/issuer-kind":  issuerRef.Kind,
-					"cert-manager.io/issuer-group": issuerRef.Group,
+					"anthos-cert-manager.io/issuer":       issuerRef.Name,
+					"anthos-cert-manager.io/issuer-kind":  issuerRef.Kind,
+					"anthos-cert-manager.io/issuer-group": issuerRef.Group,
 				}, e2eutil.RandomSubdomain(s.DomainSuffix)), metav1.CreateOptions{})
 				Expect(err).NotTo(HaveOccurred())
 				certName = ingress.Spec.TLS[0].SecretName
@@ -753,9 +753,9 @@ func (s *Suite) Define() {
 
 				By("Creating an Ingress with the issuer name annotation set")
 				ingress, err := ingClient.Create(context.TODO(), e2eutil.NewV1Beta1Ingress(name, secretName, map[string]string{
-					"cert-manager.io/issuer":       issuerRef.Name,
-					"cert-manager.io/issuer-kind":  issuerRef.Kind,
-					"cert-manager.io/issuer-group": issuerRef.Group,
+					"anthos-cert-manager.io/issuer":       issuerRef.Name,
+					"anthos-cert-manager.io/issuer-kind":  issuerRef.Kind,
+					"anthos-cert-manager.io/issuer-group": issuerRef.Group,
 				}, e2eutil.RandomSubdomain(s.DomainSuffix)), metav1.CreateOptions{})
 				Expect(err).NotTo(HaveOccurred())
 				certName = ingress.Spec.TLS[0].SecretName
@@ -801,17 +801,17 @@ func (s *Suite) Define() {
 
 				By("Creating an Ingress with annotations for issuerRef and other Certificate fields")
 				ingress, err := ingClient.Create(context.TODO(), e2eutil.NewIngress(name, secretName, map[string]string{
-					"cert-manager.io/issuer":                      issuerRef.Name,
-					"cert-manager.io/issuer-kind":                 issuerRef.Kind,
-					"cert-manager.io/issuer-group":                issuerRef.Group,
-					"cert-manager.io/common-name":                 domain,
-					"cert-manager.io/duration":                    duration.String(),
-					"cert-manager.io/renew-before":                renewBefore.String(),
-					"cert-manager.io/revision-history-limit":      strconv.FormatInt(int64(*revisionHistoryLimit), 10),
-					"cert-manager.io/private-key-algorithm":       string(privateKeyAlgorithm),
-					"cert-manager.io/private-key-encoding":        string(privateKeyEncoding),
-					"cert-manager.io/private-key-size":            strconv.Itoa(privateKeySize),
-					"cert-manager.io/private-key-rotation-policy": string(privateKeyRotationPolicy),
+					"anthos-cert-manager.io/issuer":                      issuerRef.Name,
+					"anthos-cert-manager.io/issuer-kind":                 issuerRef.Kind,
+					"anthos-cert-manager.io/issuer-group":                issuerRef.Group,
+					"anthos-cert-manager.io/common-name":                 domain,
+					"anthos-cert-manager.io/duration":                    duration.String(),
+					"anthos-cert-manager.io/renew-before":                renewBefore.String(),
+					"anthos-cert-manager.io/revision-history-limit":      strconv.FormatInt(int64(*revisionHistoryLimit), 10),
+					"anthos-cert-manager.io/private-key-algorithm":       string(privateKeyAlgorithm),
+					"anthos-cert-manager.io/private-key-encoding":        string(privateKeyEncoding),
+					"anthos-cert-manager.io/private-key-size":            strconv.Itoa(privateKeySize),
+					"anthos-cert-manager.io/private-key-rotation-policy": string(privateKeyRotationPolicy),
 				}, domain), metav1.CreateOptions{})
 				Expect(err).NotTo(HaveOccurred())
 
@@ -824,17 +824,17 @@ func (s *Suite) Define() {
 
 				By("Creating an Ingress with annotations for issuerRef and other Certificate fields")
 				ingress, err := ingClient.Create(context.TODO(), e2eutil.NewV1Beta1Ingress(name, secretName, map[string]string{
-					"cert-manager.io/issuer":                      issuerRef.Name,
-					"cert-manager.io/issuer-kind":                 issuerRef.Kind,
-					"cert-manager.io/issuer-group":                issuerRef.Group,
-					"cert-manager.io/common-name":                 domain,
-					"cert-manager.io/duration":                    duration.String(),
-					"cert-manager.io/renew-before":                renewBefore.String(),
-					"cert-manager.io/revision-history-limit":      strconv.FormatInt(int64(*revisionHistoryLimit), 10),
-					"cert-manager.io/private-key-algorithm":       string(privateKeyAlgorithm),
-					"cert-manager.io/private-key-encoding":        string(privateKeyEncoding),
-					"cert-manager.io/private-key-size":            strconv.Itoa(privateKeySize),
-					"cert-manager.io/private-key-rotation-policy": string(privateKeyRotationPolicy),
+					"anthos-cert-manager.io/issuer":                      issuerRef.Name,
+					"anthos-cert-manager.io/issuer-kind":                 issuerRef.Kind,
+					"anthos-cert-manager.io/issuer-group":                issuerRef.Group,
+					"anthos-cert-manager.io/common-name":                 domain,
+					"anthos-cert-manager.io/duration":                    duration.String(),
+					"anthos-cert-manager.io/renew-before":                renewBefore.String(),
+					"anthos-cert-manager.io/revision-history-limit":      strconv.FormatInt(int64(*revisionHistoryLimit), 10),
+					"anthos-cert-manager.io/private-key-algorithm":       string(privateKeyAlgorithm),
+					"anthos-cert-manager.io/private-key-encoding":        string(privateKeyEncoding),
+					"anthos-cert-manager.io/private-key-size":            strconv.Itoa(privateKeySize),
+					"anthos-cert-manager.io/private-key-rotation-policy": string(privateKeyRotationPolicy),
 				}, domain), metav1.CreateOptions{})
 				Expect(err).NotTo(HaveOccurred())
 
@@ -889,12 +889,12 @@ func (s *Suite) Define() {
 
 			By("Creating a Gateway with annotations for issuerRef and other Certificate fields")
 			gw := e2eutil.NewGateway(name, f.Namespace.Name, secretName, map[string]string{
-				"cert-manager.io/issuer":       issuerRef.Name,
-				"cert-manager.io/issuer-kind":  issuerRef.Kind,
-				"cert-manager.io/issuer-group": issuerRef.Group,
-				"cert-manager.io/common-name":  domain,
-				"cert-manager.io/duration":     duration.String(),
-				"cert-manager.io/renew-before": renewBefore.String(),
+				"anthos-cert-manager.io/issuer":       issuerRef.Name,
+				"anthos-cert-manager.io/issuer-kind":  issuerRef.Kind,
+				"anthos-cert-manager.io/issuer-group": issuerRef.Group,
+				"anthos-cert-manager.io/common-name":  domain,
+				"anthos-cert-manager.io/duration":     duration.String(),
+				"anthos-cert-manager.io/renew-before": renewBefore.String(),
 			}, domain)
 
 			gw, err := f.GWClientSet.GatewayV1alpha2().Gateways(f.Namespace.Name).Create(context.TODO(), gw, metav1.CreateOptions{})

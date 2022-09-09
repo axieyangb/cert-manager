@@ -30,7 +30,7 @@ import (
 )
 
 var correctRequestResource = &metav1.GroupVersionResource{
-	Group:    "cert-manager.io",
+	Group:    "anthos-cert-manager.io",
 	Version:  "v1",
 	Resource: "certificaterequests",
 }
@@ -41,7 +41,7 @@ func TestMutate(t *testing.T) {
 	err := plugin.Mutate(context.Background(), admissionv1.AdmissionRequest{
 		Operation: admissionv1.Create,
 		RequestResource: &metav1.GroupVersionResource{
-			Group:    "cert-manager.io",
+			Group:    "anthos-cert-manager.io",
 			Version:  "v1",
 			Resource: "certificaterequests",
 		},
@@ -80,15 +80,15 @@ func TestMutate_Ignores(t *testing.T) {
 		"ignores if resource is not 'certificaterequests'": {
 			op: admissionv1.Create,
 			gvr: &metav1.GroupVersionResource{
-				Group:    "cert-manager.io",
+				Group:    "anthos-cert-manager.io",
 				Version:  "v1",
 				Resource: "not-certificaterequests",
 			},
 		},
-		"ignores if group is not 'cert-manager.io'": {
+		"ignores if group is not 'anthos-cert-manager.io'": {
 			op: admissionv1.Create,
 			gvr: &metav1.GroupVersionResource{
-				Group:    "not-cert-manager.io",
+				Group:    "not-anthos-cert-manager.io",
 				Version:  "v1",
 				Resource: "certificaterequests",
 			},
@@ -96,7 +96,7 @@ func TestMutate_Ignores(t *testing.T) {
 		"ignores if operation is not Create": {
 			op: admissionv1.Update,
 			gvr: &metav1.GroupVersionResource{
-				Group:    "cert-manager.io",
+				Group:    "anthos-cert-manager.io",
 				Version:  "v1",
 				Resource: "certificaterequests",
 			},

@@ -1,4 +1,4 @@
-apiVersion: cert-manager.io/v1beta1
+apiVersion: anthos-cert-manager.io/v1beta1
 kind: Certificate
 metadata:
   creationTimestamp: null
@@ -8,7 +8,7 @@ spec:
   commonName: my-csi-app
   isCA: true
   issuerRef:
-    group: cert-manager.io
+    group: anthos-cert-manager.io
     kind: Issuer
     name: selfsigned-issuer
   secretName: ca-key-pair

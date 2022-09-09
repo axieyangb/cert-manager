@@ -17,5 +17,5 @@ limitations under the License.
 // +k8s:deepcopy-gen=package,register
 
 // Package webhook is the internal version of the webhook config API.
-// +groupName=webhook.config.cert-manager.io
+// +groupName=webhook.config.anthos-cert-manager.io
 package webhook

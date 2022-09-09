@@ -19,5 +19,5 @@ limitations under the License.
 // +k8s:defaulter-gen=TypeMeta
 // +k8s:defaulter-gen-input=github.com/cert-manager/cert-manager/pkg/apis/meta/v1
 
-// +groupName=meta.cert-manager.io
+// +groupName=meta.anthos-cert-manager.io
 package v1

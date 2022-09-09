@@ -97,7 +97,7 @@ func TestCheck(t *testing.T) {
 }
 
 func TestReachabilityCustomDnsServers(t *testing.T) {
-	site := "https://cert-manager.io"
+	site := "https://anthos-cert-manager.io"
 	u, err := url.Parse(site)
 	if err != nil {
 		t.Fatalf("Failed to parse url %s: %v", site, err)

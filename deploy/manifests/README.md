@@ -2,7 +2,7 @@
 
 This directory previously contained the Kubernetes manifests needed to deploy cert-manager.
 
-For full information on deploying cert-manager, see the [getting started guide](https://cert-manager.io/docs/installation/kubernetes/).
+For full information on deploying cert-manager, see the [getting started guide](https://anthos-cert-manager.io/docs/installation/kubernetes/).
 
 ## Where are the manifests now?
 

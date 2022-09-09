@@ -20,9 +20,9 @@ package approval
 // modify `status.conditions[type="Approved"]` or `status.conditions[type="Denied"]`
 // have permission to do so (granted via RBAC).
 // Entities will need to be able to `approve` (verb) `signers` (resource type) in
-// `cert-manager.io` (group) with the name `<issuer-type>.<issuer-group>/[<certificaterequest-namespace>.]<issuer-name>`.
-// For example: `issuers.cert-manager.io/my-namespace.my-issuer-name`.
-// A wildcard signerName format is also supported: `issuers.cert-manager.io/*`.
+// `anthos-cert-manager.io` (group) with the name `<issuer-type>.<issuer-group>/[<certificaterequest-namespace>.]<issuer-name>`.
+// For example: `issuers.anthos-cert-manager.io/my-namespace.my-issuer-name`.
+// A wildcard signerName format is also supported: `issuers.anthos-cert-manager.io/*`.
 
 import (
 	"context"
@@ -78,7 +78,7 @@ func NewPlugin() admission.Interface {
 }
 
 func (c *certificateRequestApproval) Validate(ctx context.Context, request admissionv1.AdmissionRequest, oldObj, obj runtime.Object) (warnings []string, err error) {
-	if request.RequestResource.Group != "cert-manager.io" ||
+	if request.RequestResource.Group != "anthos-cert-manager.io" ||
 		request.RequestResource.Resource != "certificaterequests" ||
 		request.RequestSubResource != "status" {
 		return nil, nil
@@ -94,7 +94,7 @@ func (c *certificateRequestApproval) Validate(ctx context.Context, request admis
 	// TODO: move this defaulting into the Scheme (registered as default functions) so
 	//       these will be set when the CertificateRequest is decoded.
 	if group == "" {
-		group = "cert-manager.io"
+		group = "anthos-cert-manager.io"
 	}
 	if kind == "" {
 		kind = "Issuer"
@@ -234,7 +234,7 @@ func isAuthorizedForSignerName(ctx context.Context, authz authorizer.Authorizer,
 	}
 
 	// If not, check if the user has wildcard permissions to 'approve' for the domain portion of the signerName, e.g.
-	// 'issuers.cert-manager.io/*'.
+	// 'issuers.anthos-cert-manager.io/*'.
 	attr = buildWildcardAttributes(info, verb, signerName)
 	decision, _, err = authz.Authorize(ctx, attr)
 	switch {
@@ -252,7 +252,7 @@ func buildAttributes(info user.Info, verb, signerName string) authorizer.Attribu
 		User:            info,
 		Verb:            verb,
 		Name:            signerName,
-		APIGroup:        "cert-manager.io",
+		APIGroup:        "anthos-cert-manager.io",
 		APIVersion:      "*",
 		Resource:        "signers",
 		ResourceRequest: true,

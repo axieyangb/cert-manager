@@ -62,7 +62,7 @@ func Test_Apply(t *testing.T) {
 			IssuerRef: cmmeta.ObjectReference{
 				Name:  "issuer",
 				Kind:  "Issuer",
-				Group: "cert-manager.io",
+				Group: "anthos-cert-manager.io",
 			},
 		},
 	}

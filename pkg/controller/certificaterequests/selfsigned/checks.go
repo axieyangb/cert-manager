@@ -36,7 +36,7 @@ import (
 // handleSecretReferenceWorkFunc is a function that returns am informer event
 // handler work function, which is used to sync CertificateRequests that
 // reference the synced Secret through the
-// "cert-manager.io/private-key-secret-name" annotation.
+// "anthos-cert-manager.io/private-key-secret-name" annotation.
 func handleSecretReferenceWorkFunc(log logr.Logger,
 	lister clientv1.CertificateRequestLister,
 	helper issuer.Helper,
@@ -69,7 +69,7 @@ func handleSecretReferenceWorkFunc(log logr.Logger,
 
 // certificateRequestsForSecret returns a list of CertificateRequests in the
 // same Namespace as the given Secret, reference the given Secret via the
-// "cert-manager.io/private-key-secret-name" annotation, and the request
+// "anthos-cert-manager.io/private-key-secret-name" annotation, and the request
 // targets a SelfSigned Issuer or Cluster Issuer.
 func certificateRequestsForSecret(log logr.Logger,
 	lister clientv1.CertificateRequestLister,

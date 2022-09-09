@@ -129,12 +129,12 @@ func (o *Options) Complete() error {
 // Run executes renew command
 func (o *Options) Run(ctx context.Context, args []string) error {
 	_, err := NewMigrator(o.client, o.skipStoredVersionCheck, o.Out, o.ErrOut).Run(ctx, "v1", []string{
-		"certificates.cert-manager.io",
-		"certificaterequests.cert-manager.io",
-		"issuers.cert-manager.io",
-		"clusterissuers.cert-manager.io",
-		"orders.acme.cert-manager.io",
-		"challenges.acme.cert-manager.io",
+		"certificates.anthos-cert-manager.io",
+		"certificaterequests.anthos-cert-manager.io",
+		"issuers.anthos-cert-manager.io",
+		"clusterissuers.anthos-cert-manager.io",
+		"orders.acme.anthos-cert-manager.io",
+		"challenges.acme.anthos-cert-manager.io",
 	})
 	return err
 }

@@ -129,12 +129,12 @@ func TestProcessItem(t *testing.T) {
 				{
 					Type:               cmapi.CertificateRequestConditionApproved,
 					Status:             cmmeta.ConditionTrue,
-					Reason:             "cert-manager.io",
+					Reason:             "anthos-cert-manager.io",
 					Message:            ApprovedMessage,
 					LastTransitionTime: &metaNow,
 				},
 			},
-			expectedEvent: "Normal cert-manager.io Certificate request has been approved by cert-manager.io",
+			expectedEvent: "Normal anthos-cert-manager.io Certificate request has been approved by anthos-cert-manager.io",
 		},
 		"approve CertificateRequest has 'Ready' Pending condition": {
 			request: &cmapi.CertificateRequest{
@@ -158,12 +158,12 @@ func TestProcessItem(t *testing.T) {
 				{
 					Type:               cmapi.CertificateRequestConditionApproved,
 					Status:             cmmeta.ConditionTrue,
-					Reason:             "cert-manager.io",
+					Reason:             "anthos-cert-manager.io",
 					Message:            ApprovedMessage,
 					LastTransitionTime: &metaNow,
 				},
 			},
-			expectedEvent: "Normal cert-manager.io Certificate request has been approved by cert-manager.io",
+			expectedEvent: "Normal anthos-cert-manager.io Certificate request has been approved by anthos-cert-manager.io",
 		},
 	}
 	for name, test := range tests {

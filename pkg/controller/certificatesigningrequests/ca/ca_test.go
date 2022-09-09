@@ -129,7 +129,7 @@ func TestSign(t *testing.T) {
 	baseCSRNotApproved := gen.CertificateSigningRequest("test-cr",
 		gen.SetCertificateSigningRequestIsCA(true),
 		gen.SetCertificateSigningRequestRequest(testCSR),
-		gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/"+gen.DefaultTestNamespace+"."+baseIssuer.Name),
+		gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/"+gen.DefaultTestNamespace+"."+baseIssuer.Name),
 		gen.SetCertificateSigningRequestDuration("1440h"),
 		gen.SetCertificateSigningRequestUsername("user-1"),
 		gen.SetCertificateSigningRequestGroups([]string{"group-1", "group-2"}),
@@ -143,7 +143,7 @@ func TestSign(t *testing.T) {
 			Type:               certificatesv1.CertificateDenied,
 			Status:             corev1.ConditionTrue,
 			Reason:             "Foo",
-			Message:            "Certificate request has been denied by cert-manager.io",
+			Message:            "Certificate request has been denied by anthos-cert-manager.io",
 			LastTransitionTime: metaFixedClockStart,
 		}),
 	)
@@ -151,8 +151,8 @@ func TestSign(t *testing.T) {
 		gen.SetCertificateSigningRequestStatusCondition(certificatesv1.CertificateSigningRequestCondition{
 			Type:               certificatesv1.CertificateApproved,
 			Status:             corev1.ConditionTrue,
-			Reason:             "cert-manager.io",
-			Message:            "Certificate request has been approved by cert-manager.io",
+			Reason:             "anthos-cert-manager.io",
+			Message:            "Certificate request has been approved by anthos-cert-manager.io",
 			LastTransitionTime: metaFixedClockStart,
 		}),
 	)
@@ -621,7 +621,7 @@ func TestCA_Sign(t *testing.T) {
 			})),
 			givenCSR: gen.CertificateSigningRequest("csr-1",
 				gen.SetCertificateSigningRequestRequest(testCSR),
-				gen.SetCertificateSigningRequestSignerName("issers.cert-manager.io/"+gen.DefaultTestNamespace+".issuer-1"),
+				gen.SetCertificateSigningRequestSignerName("issers.anthos-cert-manager.io/"+gen.DefaultTestNamespace+".issuer-1"),
 				gen.SetCertificateSigningRequestDuration("30m"),
 			),
 			assertSignedCert: func(t *testing.T, got *x509.Certificate) {
@@ -656,7 +656,7 @@ func TestCA_Sign(t *testing.T) {
 			})),
 			givenCSR: gen.CertificateSigningRequest("csr-1",
 				gen.SetCertificateSigningRequestRequest(testCSR),
-				gen.SetCertificateSigningRequestSignerName("issers.cert-manager.io/"+gen.DefaultTestNamespace+".issuer-1"),
+				gen.SetCertificateSigningRequestSignerName("issers.anthos-cert-manager.io/"+gen.DefaultTestNamespace+".issuer-1"),
 				gen.SetCertificateSigningRequestExpirationSeconds(654),
 			),
 			assertSignedCert: func(t *testing.T, got *x509.Certificate) {
@@ -691,7 +691,7 @@ func TestCA_Sign(t *testing.T) {
 			})),
 			givenCSR: gen.CertificateSigningRequest("csr-1",
 				gen.SetCertificateSigningRequestRequest(testCSR),
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/"+gen.DefaultTestNamespace+".issuer-1"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/"+gen.DefaultTestNamespace+".issuer-1"),
 				gen.SetCertificateSigningRequestIsCA(true),
 			),
 			assertSignedCert: func(t *testing.T, got *x509.Certificate) {
@@ -706,7 +706,7 @@ func TestCA_Sign(t *testing.T) {
 			})),
 			givenCSR: gen.CertificateSigningRequest("cr-1",
 				gen.SetCertificateSigningRequestRequest(testCSR),
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/"+gen.DefaultTestNamespace+".issuer-1"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/"+gen.DefaultTestNamespace+".issuer-1"),
 			),
 			assertSignedCert: func(t *testing.T, got *x509.Certificate) {
 				assert.Equal(t, []string{"http://ocsp-v3.example.org"}, got.OCSPServer)
@@ -721,7 +721,7 @@ func TestCA_Sign(t *testing.T) {
 			givenCSR: gen.CertificateSigningRequest("cr-1",
 				gen.SetCertificateSigningRequestIsCA(true),
 				gen.SetCertificateSigningRequestRequest(testCSR),
-				gen.SetCertificateSigningRequestSignerName("issuers.cert-manager.io/"+gen.DefaultTestNamespace+".issuer-1"),
+				gen.SetCertificateSigningRequestSignerName("issuers.anthos-cert-manager.io/"+gen.DefaultTestNamespace+".issuer-1"),
 			),
 			assertSignedCert: func(t *testing.T, gotCA *x509.Certificate) {
 				assert.Equal(t, []string{"http://www.example.com/crl/test.crl"}, gotCA.CRLDistributionPoints)

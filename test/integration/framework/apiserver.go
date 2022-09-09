@@ -245,7 +245,7 @@ func getValidatingWebhookConfig(url string, caPEM []byte) client.Object {
 		},
 		Webhooks: []admissionregistrationv1.ValidatingWebhook{
 			{
-				Name: "webhook.cert-manager.io",
+				Name: "webhook.anthos-cert-manager.io",
 				ClientConfig: admissionregistrationv1.WebhookClientConfig{
 					URL:      &validateURL,
 					CABundle: caPEM,
@@ -257,7 +257,7 @@ func getValidatingWebhookConfig(url string, caPEM []byte) client.Object {
 							admissionregistrationv1.Update,
 						},
 						Rule: admissionregistrationv1.Rule{
-							APIGroups:   []string{"cert-manager.io", "acme.cert-manager.io"},
+							APIGroups:   []string{"anthos-cert-manager.io", "acme.anthos-cert-manager.io"},
 							APIVersions: []string{"*"},
 							Resources:   []string{"*/*"},
 						},
@@ -283,7 +283,7 @@ func getMutatingWebhookConfig(url string, caPEM []byte) client.Object {
 		},
 		Webhooks: []admissionregistrationv1.MutatingWebhook{
 			{
-				Name: "webhook.cert-manager.io",
+				Name: "webhook.anthos-cert-manager.io",
 				ClientConfig: admissionregistrationv1.WebhookClientConfig{
 					URL:      &validateURL,
 					CABundle: caPEM,
@@ -295,7 +295,7 @@ func getMutatingWebhookConfig(url string, caPEM []byte) client.Object {
 							admissionregistrationv1.Update,
 						},
 						Rule: admissionregistrationv1.Rule{
-							APIGroups:   []string{"cert-manager.io", "acme.cert-manager.io"},
+							APIGroups:   []string{"anthos-cert-manager.io", "acme.anthos-cert-manager.io"},
 							APIVersions: []string{"*"},
 							Resources:   []string{"*/*"},
 						},

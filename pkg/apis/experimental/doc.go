@@ -14,10 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// +groupName=experimental.cert-manager.io
+// +groupName=experimental.anthos-cert-manager.io
 // +groupGoName=Experimental
 
 // Package experimental contains the group containing experimental APIs.
 package experimental
 
-const GroupName = "experimental.cert-manager.io"
+const GroupName = "experimental.anthos-cert-manager.io"

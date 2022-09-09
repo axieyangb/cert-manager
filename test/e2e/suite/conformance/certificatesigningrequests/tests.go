@@ -183,7 +183,7 @@ func (s *Suite) Define() {
 				keyAlgo: x509.RSA,
 				csrModifiers: func() []gen.CSRModifier {
 					return []gen.CSRModifier{
-						gen.SetCSREmails([]string{"alice@example.com", "bob@cert-manager.io"}),
+						gen.SetCSREmails([]string{"alice@example.com", "bob@anthos-cert-manager.io"}),
 					}
 				},
 				kubeCSRUsages: []certificatesv1.KeyUsage{
@@ -401,7 +401,7 @@ func (s *Suite) Define() {
 				kubeCSR.Status.Conditions = append(kubeCSR.Status.Conditions, certificatesv1.CertificateSigningRequestCondition{
 					Type:    certificatesv1.CertificateApproved,
 					Status:  corev1.ConditionTrue,
-					Reason:  "e2e.cert-manager.io",
+					Reason:  "e2e.anthos-cert-manager.io",
 					Message: "Request approved for e2e testing.",
 				})
 				kubeCSR, err = f.KubeClientSet.CertificatesV1().CertificateSigningRequests().UpdateApproval(context.TODO(), kubeCSR.Name, kubeCSR, metav1.UpdateOptions{})

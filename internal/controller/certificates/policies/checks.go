@@ -208,7 +208,7 @@ func CurrentCertificateHasExpired(c clock.Clock) Func {
 
 func formatIssuerRef(name, kind, group string) string {
 	if group == "" {
-		group = "cert-manager.io"
+		group = "anthos-cert-manager.io"
 	}
 	if kind == "" {
 		kind = "Issuer"
@@ -217,7 +217,7 @@ func formatIssuerRef(name, kind, group string) string {
 }
 
 const defaultIssuerKind = "Issuer"
-const defaultIssuerGroup = "cert-manager.io"
+const defaultIssuerGroup = "anthos-cert-manager.io"
 
 func issuerKindsEqual(l, r string) bool {
 	if l == "" {

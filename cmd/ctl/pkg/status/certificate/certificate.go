@@ -354,9 +354,9 @@ func getGenericIssuer(cmClient cmclient.Interface, ctx context.Context, crt *cma
 		issuerKind = "Issuer"
 	}
 
-	if crt.Spec.IssuerRef.Group != "cert-manager.io" && crt.Spec.IssuerRef.Group != "" {
+	if crt.Spec.IssuerRef.Group != "anthos-cert-manager.io" && crt.Spec.IssuerRef.Group != "" {
 		// TODO: Support Issuers/ClusterIssuers from other groups as well
-		return nil, "", fmt.Errorf("The %s %q is not of the group cert-manager.io, this command currently does not support third party issuers.\nTo get more information about %q, try 'kubectl describe'\n",
+		return nil, "", fmt.Errorf("The %s %q is not of the group anthos-cert-manager.io, this command currently does not support third party issuers.\nTo get more information about %q, try 'kubectl describe'\n",
 			issuerKind, crt.Spec.IssuerRef.Name, crt.Spec.IssuerRef.Name)
 	} else if issuerKind == "Issuer" {
 		issuer, issuerErr := cmClient.CertmanagerV1().Issuers(crt.Namespace).Get(ctx, crt.Spec.IssuerRef.Name, metav1.GetOptions{})

@@ -139,8 +139,8 @@ func TestSync(t *testing.T) {
 		gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
 			Type:               cmapi.CertificateRequestConditionApproved,
 			Status:             cmmeta.ConditionTrue,
-			Reason:             "cert-manager.io",
-			Message:            "Certificate request has been approved by cert-manager.io",
+			Reason:             "anthos-cert-manager.io",
+			Message:            "Certificate request has been approved by anthos-cert-manager.io",
 			LastTransitionTime: &nowMetaTime,
 		}),
 	)
@@ -157,8 +157,8 @@ func TestSync(t *testing.T) {
 		gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
 			Type:               cmapi.CertificateRequestConditionApproved,
 			Status:             cmmeta.ConditionTrue,
-			Reason:             "cert-manager.io",
-			Message:            "Certificate request has been approved by cert-manager.io",
+			Reason:             "anthos-cert-manager.io",
+			Message:            "Certificate request has been approved by anthos-cert-manager.io",
 			LastTransitionTime: &nowMetaTime,
 		}),
 	)
@@ -170,10 +170,10 @@ func TestSync(t *testing.T) {
 	certECPEMExpired := generateSelfSignedCert(t, baseCREC, skEC, fixedClockStart.Add(-time.Hour*13), fixedClockStart.Add(-time.Hour*12))
 
 	tests := map[string]testT{
-		"should return nil (no action) if group name if not 'cert-manager.io' or ''": {
+		"should return nil (no action) if group name if not 'anthos-cert-manager.io' or ''": {
 			certificateRequest: gen.CertificateRequestFrom(baseCR,
 				gen.SetCertificateRequestIssuer(cmmeta.ObjectReference{
-					Group: "not-cert-manager.io",
+					Group: "not-anthos-cert-manager.io",
 				}),
 			),
 			builder: &testpkg.Builder{
@@ -196,7 +196,7 @@ func TestSync(t *testing.T) {
 					Type:               cmapi.CertificateRequestConditionDenied,
 					Status:             cmmeta.ConditionTrue,
 					Reason:             "Foo",
-					Message:            "Certificate request has been denied by cert-manager.io",
+					Message:            "Certificate request has been denied by anthos-cert-manager.io",
 					LastTransitionTime: &nowMetaTime,
 				}),
 			),
@@ -213,7 +213,7 @@ func TestSync(t *testing.T) {
 								Type:               cmapi.CertificateRequestConditionDenied,
 								Status:             cmmeta.ConditionTrue,
 								Reason:             "Foo",
-								Message:            "Certificate request has been denied by cert-manager.io",
+								Message:            "Certificate request has been denied by anthos-cert-manager.io",
 								LastTransitionTime: &nowMetaTime,
 							}),
 							gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
@@ -235,7 +235,7 @@ func TestSync(t *testing.T) {
 					Type:               cmapi.CertificateRequestConditionDenied,
 					Status:             cmmeta.ConditionTrue,
 					Reason:             "Foo",
-					Message:            "Certificate request has been denied by cert-manager.io",
+					Message:            "Certificate request has been denied by anthos-cert-manager.io",
 					LastTransitionTime: &nowMetaTime,
 				}),
 				gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
@@ -260,7 +260,7 @@ func TestSync(t *testing.T) {
 								Type:               cmapi.CertificateRequestConditionDenied,
 								Status:             cmmeta.ConditionTrue,
 								Reason:             "Foo",
-								Message:            "Certificate request has been denied by cert-manager.io",
+								Message:            "Certificate request has been denied by anthos-cert-manager.io",
 								LastTransitionTime: &nowMetaTime,
 							}),
 							gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
@@ -282,7 +282,7 @@ func TestSync(t *testing.T) {
 					Type:               cmapi.CertificateRequestConditionDenied,
 					Status:             cmmeta.ConditionTrue,
 					Reason:             "Foo",
-					Message:            "Certificate request has been denied by cert-manager.io",
+					Message:            "Certificate request has been denied by anthos-cert-manager.io",
 					LastTransitionTime: &nowMetaTime,
 				}),
 				gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
@@ -301,7 +301,7 @@ func TestSync(t *testing.T) {
 							Type:               cmapi.CertificateRequestConditionDenied,
 							Status:             cmmeta.ConditionTrue,
 							Reason:             "Foo",
-							Message:            "Certificate request has been denied by cert-manager.io",
+							Message:            "Certificate request has been denied by anthos-cert-manager.io",
 							LastTransitionTime: &nowMetaTime,
 						}),
 						gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
@@ -324,7 +324,7 @@ func TestSync(t *testing.T) {
 					Type:               cmapi.CertificateRequestConditionDenied,
 					Status:             cmmeta.ConditionTrue,
 					Reason:             "Foo",
-					Message:            "Certificate request has been denied by cert-manager.io",
+					Message:            "Certificate request has been denied by anthos-cert-manager.io",
 					LastTransitionTime: &nowMetaTime,
 				}),
 				gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
@@ -348,7 +348,7 @@ func TestSync(t *testing.T) {
 								Type:               cmapi.CertificateRequestConditionDenied,
 								Status:             cmmeta.ConditionTrue,
 								Reason:             "Foo",
-								Message:            "Certificate request has been denied by cert-manager.io",
+								Message:            "Certificate request has been denied by anthos-cert-manager.io",
 								LastTransitionTime: &nowMetaTime,
 							}),
 							gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
@@ -369,7 +369,7 @@ func TestSync(t *testing.T) {
 				gen.SetCertificateRequestStatusCondition(cmapi.CertificateRequestCondition{
 					Type:               cmapi.CertificateRequestConditionApproved,
 					Status:             cmmeta.ConditionFalse,
-					Reason:             "cert-manager.io",
+					Reason:             "anthos-cert-manager.io",
 					Message:            "Certificate request has not been approved",
 					LastTransitionTime: &nowMetaTime,
 				}),
@@ -417,7 +417,7 @@ func TestSync(t *testing.T) {
 			builder: &testpkg.Builder{
 				CertManagerObjects: []runtime.Object{baseCR},
 				ExpectedEvents: []string{
-					`Normal IssuerNotFound Referenced "Issuer" not found: issuer.cert-manager.io "test-issuer" not found`,
+					`Normal IssuerNotFound Referenced "Issuer" not found: issuer.anthos-cert-manager.io "test-issuer" not found`,
 				},
 				ExpectedActions: []testpkg.Action{
 					testpkg.NewAction(coretesting.NewUpdateSubresourceAction(
@@ -429,7 +429,7 @@ func TestSync(t *testing.T) {
 								Type:               cmapi.CertificateRequestConditionReady,
 								Status:             cmmeta.ConditionFalse,
 								Reason:             "Pending",
-								Message:            `Referenced "Issuer" not found: issuer.cert-manager.io "test-issuer" not found`,
+								Message:            `Referenced "Issuer" not found: issuer.anthos-cert-manager.io "test-issuer" not found`,
 								LastTransitionTime: &nowMetaTime,
 							}),
 						),

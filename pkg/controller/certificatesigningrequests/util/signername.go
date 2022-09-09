@@ -70,7 +70,7 @@ func SignerIssuerRefFromSignerName(name string) (SignerIssuerRef, bool) {
 	}, true
 }
 
-// IssuerKindFromType will return the cert-manager.io Issuer Kind from a
+// IssuerKindFromType will return the anthos-cert-manager.io Issuer Kind from a
 // resource type name.
 func IssuerKindFromType(issuerType string) (string, bool) {
 	switch issuerType {

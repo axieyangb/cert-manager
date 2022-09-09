@@ -13,7 +13,7 @@ to renew certificates at an appropriate time before expiry.
 ## Installing the Chart
 
 Full installation instructions, including details on how to configure extra
-functionality in cert-manager can be found in the [installation docs](https://cert-manager.io/docs/installation/kubernetes/).
+functionality in cert-manager can be found in the [installation docs](https://anthos-cert-manager.io/docs/installation/kubernetes/).
 
 Before installing the chart, you must first install the cert-manager CustomResourceDefinition resources.
 This is performed in a separate step to allow you to easily uninstall and reinstall cert-manager without deleting your installed custom resources.
@@ -36,18 +36,18 @@ In order to begin issuing certificates, you will need to set up a ClusterIssuer
 or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer).
 
 More information on the different types of issuers and how to configure them
-can be found in [our documentation](https://cert-manager.io/docs/configuration/).
+can be found in [our documentation](https://anthos-cert-manager.io/docs/configuration/).
 
 For information on how to configure cert-manager to automatically provision
 Certificates for Ingress resources, take a look at the
-[Securing Ingresses documentation](https://cert-manager.io/docs/usage/ingress/).
+[Securing Ingresses documentation](https://anthos-cert-manager.io/docs/usage/ingress/).
 
 > **Tip**: List all releases using `helm list`
 
 ## Upgrading the Chart
 
 Special considerations may be required when upgrading the Helm chart, and these
-are documented in our full [upgrading guide](https://cert-manager.io/docs/installation/upgrading/).
+are documented in our full [upgrading guide](https://anthos-cert-manager.io/docs/installation/upgrading/).
 
 **Please check here before performing upgrades!**
 

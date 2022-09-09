@@ -32,7 +32,7 @@ import (
 )
 
 const (
-	ApprovedMessage = "Certificate request has been approved by cert-manager.io"
+	ApprovedMessage = "Certificate request has been approved by anthos-cert-manager.io"
 )
 
 // Sync will set the "Approved" condition to True on synced
@@ -60,7 +60,7 @@ func (c *Controller) Sync(ctx context.Context, cr *cmapi.CertificateRequest) (er
 	apiutil.SetCertificateRequestCondition(cr,
 		cmapi.CertificateRequestConditionApproved,
 		cmmeta.ConditionTrue,
-		"cert-manager.io",
+		"anthos-cert-manager.io",
 		ApprovedMessage,
 	)
 
@@ -68,7 +68,7 @@ func (c *Controller) Sync(ctx context.Context, cr *cmapi.CertificateRequest) (er
 	if err := c.updateStatusOrApply(ctx, cr); err != nil {
 		return err
 	}
-	c.recorder.Event(cr, corev1.EventTypeNormal, "cert-manager.io", ApprovedMessage)
+	c.recorder.Event(cr, corev1.EventTypeNormal, "anthos-cert-manager.io", ApprovedMessage)
 
 	log.V(logf.DebugLevel).Info("approved certificate request")
 

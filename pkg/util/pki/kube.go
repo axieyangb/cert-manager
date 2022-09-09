@@ -48,7 +48,7 @@ func GenerateTemplateFromCertificateSigningRequest(csr *certificatesv1.Certifica
 
 // DurationFromCertificateSigningRequest returns the duration that the user may
 // have requested using the annotation
-// "experimental.cert-manager.io/request-duration" or via the CSR
+// "experimental.anthos-cert-manager.io/request-duration" or via the CSR
 // spec.expirationSeconds field (the annotation is preferred since it predates
 // the field which is only available in Kubernetes v1.22+).
 // Returns the cert-manager default certificate duration when the user hasn't

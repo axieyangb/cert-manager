@@ -55,7 +55,7 @@ func TestValidate(t *testing.T) {
 			{
 				Type:    certmanager.CertificateRequestConditionApproved,
 				Status:  meta.ConditionTrue,
-				Reason:  "cert-manager.io",
+				Reason:  "anthos-cert-manager.io",
 				Message: "",
 			},
 		},
@@ -75,7 +75,7 @@ func TestValidate(t *testing.T) {
 			req: &admissionv1.AdmissionRequest{
 				Operation: admissionv1.Update,
 				RequestResource: &metav1.GroupVersionResource{
-					Group:    "cert-manager.io",
+					Group:    "anthos-cert-manager.io",
 					Resource: "issuers",
 				},
 				RequestSubResource: "status",
@@ -84,11 +84,11 @@ func TestValidate(t *testing.T) {
 			discoverclient: expNoDiscovery,
 			expErr:         nil,
 		},
-		"if the request is not for cert-manager.io, exit nil": {
+		"if the request is not for anthos-cert-manager.io, exit nil": {
 			req: &admissionv1.AdmissionRequest{
 				Operation: admissionv1.Update,
 				RequestResource: &metav1.GroupVersionResource{
-					Group:    "foo.cert-manager.io",
+					Group:    "foo.anthos-cert-manager.io",
 					Resource: "certificaterequests",
 				},
 				RequestSubResource: "status",
@@ -100,7 +100,7 @@ func TestValidate(t *testing.T) {
 			req: &admissionv1.AdmissionRequest{
 				Operation: admissionv1.Update,
 				RequestResource: &metav1.GroupVersionResource{
-					Group:    "cert-manager.io",
+					Group:    "anthos-cert-manager.io",
 					Resource: "certificaterequests",
 				},
 				RequestSubResource: "status",
@@ -122,7 +122,7 @@ func TestValidate(t *testing.T) {
 				},
 				Operation: admissionv1.Update,
 				RequestResource: &metav1.GroupVersionResource{
-					Group:    "cert-manager.io",
+					Group:    "anthos-cert-manager.io",
 					Resource: "certificaterequests",
 				},
 				RequestSubResource: "status",
@@ -168,7 +168,7 @@ func TestValidate(t *testing.T) {
 				},
 				Operation: admissionv1.Update,
 				RequestResource: &metav1.GroupVersionResource{
-					Group:    "cert-manager.io",
+					Group:    "anthos-cert-manager.io",
 					Resource: "certificaterequests",
 				},
 				RequestSubResource: "status",
@@ -212,7 +212,7 @@ func TestValidate(t *testing.T) {
 				},
 				Operation: admissionv1.Update,
 				RequestResource: &metav1.GroupVersionResource{
-					Group:    "cert-manager.io",
+					Group:    "anthos-cert-manager.io",
 					Resource: "certificaterequests",
 				},
 				RequestSubResource: "status",
@@ -256,7 +256,7 @@ func TestValidate(t *testing.T) {
 				},
 				Operation: admissionv1.Update,
 				RequestResource: &metav1.GroupVersionResource{
-					Group:    "cert-manager.io",
+					Group:    "anthos-cert-manager.io",
 					Resource: "certificaterequests",
 				},
 				RequestSubResource: "status",
@@ -328,7 +328,7 @@ func (f fakeAuthorizer) Authorize(ctx context.Context, a authorizer.Attributes) 
 	if a.GetVerb() != f.verb {
 		return authorizer.DecisionDeny, fmt.Sprintf("unrecognised verb '%s'", a.GetVerb()), nil
 	}
-	if a.GetAPIGroup() != "cert-manager.io" {
+	if a.GetAPIGroup() != "anthos-cert-manager.io" {
 		return authorizer.DecisionDeny, fmt.Sprintf("unrecognised groupName '%s'", a.GetAPIGroup()), nil
 	}
 	if a.GetAPIVersion() != "*" {

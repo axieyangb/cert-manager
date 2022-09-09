@@ -52,7 +52,7 @@ func ApplyStatus(ctx context.Context, cl cmclient.Interface, fieldManager string
 // namespace, and status field values will be copied and encoded into the
 // serialized slice. All other fields will be left at their zero value.
 // TypeMeta will be populated with the Kind "Order" and API Version
-// "acme.cert-manager.io/v1" respectively.
+// "acme.anthos-cert-manager.io/v1" respectively.
 func serializeApplyStatus(order *cmacme.Order) ([]byte, error) {
 	order = &cmacme.Order{
 		TypeMeta:   metav1.TypeMeta{Kind: cmacme.OrderKind, APIVersion: cmacme.SchemeGroupVersion.Identifier()},

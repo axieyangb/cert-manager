@@ -62,7 +62,7 @@ var _ = framework.CertManagerDescribe("Certificate AdditionalCertificateOutputFo
 				SecretName: secretName,
 				PrivateKey: &cmapi.CertificatePrivateKey{RotationPolicy: cmapi.RotationPolicyAlways},
 				IssuerRef: cmmeta.ObjectReference{
-					Name: issuerName, Kind: "Issuer", Group: "cert-manager.io",
+					Name: issuerName, Kind: "Issuer", Group: "anthos-cert-manager.io",
 				},
 				AdditionalOutputFormats: aof,
 			},

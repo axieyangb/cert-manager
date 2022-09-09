@@ -30,25 +30,25 @@ func TestAPIDeprecation(t *testing.T) {
 		req      *admissionv1.AdmissionRequest
 		warnings []string
 	}{
-		"should print warnings for all non-v1 cert-manager.io types": {
+		"should print warnings for all non-v1 anthos-cert-manager.io types": {
 			req: &admissionv1.AdmissionRequest{
 				RequestResource: &metav1.GroupVersionResource{
-					Group:    "cert-manager.io",
+					Group:    "anthos-cert-manager.io",
 					Version:  "something-not-v1",
 					Resource: "somethings",
 				},
 			},
-			warnings: []string{"somethings.cert-manager.io/something-not-v1 is deprecated in v1.4+, unavailable in v1.6+; use somethings.cert-manager.io/v1"},
+			warnings: []string{"somethings.anthos-cert-manager.io/something-not-v1 is deprecated in v1.4+, unavailable in v1.6+; use somethings.anthos-cert-manager.io/v1"},
 		},
-		"should print warnings for all non-v1 acme.cert-manager.io types": {
+		"should print warnings for all non-v1 acme.anthos-cert-manager.io types": {
 			req: &admissionv1.AdmissionRequest{
 				RequestResource: &metav1.GroupVersionResource{
-					Group:    "acme.cert-manager.io",
+					Group:    "acme.anthos-cert-manager.io",
 					Version:  "something-not-v1",
 					Resource: "somethings",
 				},
 			},
-			warnings: []string{"somethings.acme.cert-manager.io/something-not-v1 is deprecated in v1.4+, unavailable in v1.6+; use somethings.acme.cert-manager.io/v1"},
+			warnings: []string{"somethings.acme.anthos-cert-manager.io/something-not-v1 is deprecated in v1.4+, unavailable in v1.6+; use somethings.acme.anthos-cert-manager.io/v1"},
 		},
 		"should not print warnings for non-v1 types in other groups": {
 			req: &admissionv1.AdmissionRequest{

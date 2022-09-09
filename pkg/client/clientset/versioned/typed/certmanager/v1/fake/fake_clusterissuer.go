@@ -35,9 +35,9 @@ type FakeClusterIssuers struct {
 	Fake *FakeCertmanagerV1
 }
 
-var clusterissuersResource = schema.GroupVersionResource{Group: "cert-manager.io", Version: "v1", Resource: "clusterissuers"}
+var clusterissuersResource = schema.GroupVersionResource{Group: "anthos-cert-manager.io", Version: "v1", Resource: "clusterissuers"}
 
-var clusterissuersKind = schema.GroupVersionKind{Group: "cert-manager.io", Version: "v1", Kind: "ClusterIssuer"}
+var clusterissuersKind = schema.GroupVersionKind{Group: "anthos-cert-manager.io", Version: "v1", Kind: "ClusterIssuer"}
 
 // Get takes name of the clusterIssuer, and returns the corresponding clusterIssuer object, and an error if there is any.
 func (c *FakeClusterIssuers) Get(ctx context.Context, name string, options v1.GetOptions) (result *certmanagerv1.ClusterIssuer, err error) {

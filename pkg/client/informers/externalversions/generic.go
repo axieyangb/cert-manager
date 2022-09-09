@@ -53,13 +53,13 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=acme.cert-manager.io, Version=v1
+	// Group=acme.anthos-cert-manager.io, Version=v1
 	case v1.SchemeGroupVersion.WithResource("challenges"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Acme().V1().Challenges().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("orders"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Acme().V1().Orders().Informer()}, nil
 
-		// Group=cert-manager.io, Version=v1
+		// Group=anthos-cert-manager.io, Version=v1
 	case certmanagerv1.SchemeGroupVersion.WithResource("certificates"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Certmanager().V1().Certificates().Informer()}, nil
 	case certmanagerv1.SchemeGroupVersion.WithResource("certificaterequests"):

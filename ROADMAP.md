@@ -41,7 +41,7 @@ Enable best-practice PKI management with cert-manager.
 - Make cert-manager a viable way to create and manage private PKI deployments at scale
 - Trust root distribution: handle distributing all trust roots within a cluster, allowing for certs to be verified within a cluster
 
-See also [cert-manager/trust](https://cert-manager.io/docs/projects/trust/)
+See also [cert-manager/trust](https://anthos-cert-manager.io/docs/projects/trust/)
 
 ### End-user experience
 

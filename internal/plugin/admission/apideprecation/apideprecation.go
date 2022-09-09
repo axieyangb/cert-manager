@@ -46,13 +46,13 @@ func (p apiDeprecation) Handles(_ admissionv1.Operation) bool {
 }
 
 func (p apiDeprecation) Validate(ctx context.Context, request admissionv1.AdmissionRequest, oldObj, obj runtime.Object) (warnings []string, err error) {
-	// Only generate warning messages for cert-manager.io and acme.cert-manager.io APIs
+	// Only generate warning messages for anthos-cert-manager.io and acme.anthos-cert-manager.io APIs
 	if request.RequestResource.Group != certmanager.GroupName &&
 		request.RequestResource.Group != acme.GroupName {
 		return nil, nil
 	}
 
-	// All non-v1 API resources in cert-manager.io and acme.cert-manager.io are now deprecated
+	// All non-v1 API resources in anthos-cert-manager.io and acme.anthos-cert-manager.io are now deprecated
 	if request.RequestResource.Version == "v1" {
 		return nil, nil
 	}

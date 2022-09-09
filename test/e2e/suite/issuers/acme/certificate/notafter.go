@@ -48,7 +48,7 @@ var _ = framework.CertManagerDescribe("ACME Certificate (HTTP01 + Not After)", f
 	certificateSecretName := "test-acme-certificate"
 	// fixedIngressName is the name of an ingress resource that is configured
 	// with a challenge solve.
-	// To utilise this solver, add the 'testing.cert-manager.io/fixed-ingress: "true"' label.
+	// To utilise this solver, add the 'testing.anthos-cert-manager.io/fixed-ingress: "true"' label.
 	fixedIngressName := "testingress"
 
 	// ACME Issuer does not return a ca.crt. See:
@@ -68,7 +68,7 @@ var _ = framework.CertManagerDescribe("ACME Certificate (HTTP01 + Not After)", f
 			{
 				Selector: &cmacme.CertificateDNSNameSelector{
 					MatchLabels: map[string]string{
-						"testing.cert-manager.io/fixed-ingress": "true",
+						"testing.anthos-cert-manager.io/fixed-ingress": "true",
 					},
 				},
 				HTTP01: &cmacme.ACMEChallengeSolverHTTP01{

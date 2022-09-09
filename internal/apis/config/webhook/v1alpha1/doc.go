@@ -19,5 +19,5 @@ limitations under the License.
 // +k8s:defaulter-gen=TypeMeta
 // +k8s:defaulter-gen-input=github.com/cert-manager/cert-manager/pkg/apis/config/webhook/v1alpha1
 
-// +groupName=webhook.config.cert-manager.io
+// +groupName=webhook.config.anthos-cert-manager.io
 package v1alpha1

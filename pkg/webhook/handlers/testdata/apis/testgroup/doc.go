@@ -16,7 +16,7 @@ limitations under the License.
 
 // +k8s:deepcopy-gen=package,register
 
-// +groupName=testgroup.testing.cert-manager.io
+// +groupName=testgroup.testing.anthos-cert-manager.io
 package testgroup
 
-const GroupName = "testgroup.testing.cert-manager.io"
+const GroupName = "testgroup.testing.anthos-cert-manager.io"

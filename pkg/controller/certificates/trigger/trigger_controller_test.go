@@ -107,7 +107,7 @@ func Test_controller_ProcessItem(t *testing.T) {
 				Secret: gen.Secret("secret-1", gen.SetSecretNamespace("testns")),
 				CurrentRevisionRequest: gen.CertificateRequest("cr-1", gen.SetCertificateRequestNamespace("testns"),
 					gen.AddCertificateRequestOwnerReferences(gen.CertificateRef("cert-1", "cert-1-uid")),
-					gen.SetCertificateRequestAnnotations(map[string]string{"cert-manager.io/certificate-revision": "2"}),
+					gen.SetCertificateRequestAnnotations(map[string]string{"anthos-cert-manager.io/certificate-revision": "2"}),
 				),
 			},
 			wantShouldReissueCalled: true,
@@ -122,7 +122,7 @@ func Test_controller_ProcessItem(t *testing.T) {
 						),
 						CurrentRevisionRequest: gen.CertificateRequest("cr-1", gen.SetCertificateRequestNamespace("testns"),
 							gen.AddCertificateRequestOwnerReferences(gen.CertificateRef("cert-1", "cert-1-uid")),
-							gen.SetCertificateRequestAnnotations(map[string]string{"cert-manager.io/certificate-revision": "2"}),
+							gen.SetCertificateRequestAnnotations(map[string]string{"anthos-cert-manager.io/certificate-revision": "2"}),
 						),
 						Secret: gen.Secret("secret-1", gen.SetSecretNamespace("testns")),
 					}

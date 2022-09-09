@@ -34,7 +34,7 @@ type CertmanagerV1Interface interface {
 	IssuersGetter
 }
 
-// CertmanagerV1Client is used to interact with features provided by the cert-manager.io group.
+// CertmanagerV1Client is used to interact with features provided by the anthos-cert-manager.io group.
 type CertmanagerV1Client struct {
 	restClient rest.Interface
 }

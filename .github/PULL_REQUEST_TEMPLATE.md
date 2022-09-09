@@ -2,9 +2,9 @@
 
 Thanks for opening a pull request! Here are some tips to get everything merged smoothly:
 
-1. Read our contributor guidelines: https://cert-manager.io/docs/contributing/
+1. Read our contributor guidelines: https://anthos-cert-manager.io/docs/contributing/
 
-2. Make sure your commits are signed off: https://cert-manager.io/docs/contributing/sign-off/
+2. Make sure your commits are signed off: https://anthos-cert-manager.io/docs/contributing/sign-off/
 
 3. If the PR is unfinished, raise it as a draft or prefix the title with "WIP:" so it's clear to everyone.
 

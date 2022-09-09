@@ -34,7 +34,7 @@ import (
 )
 
 var certificateGVK = schema.GroupVersionKind{
-	Group:   "cert-manager.io",
+	Group:   "anthos-cert-manager.io",
 	Version: "v1",
 	Kind:    "Certificate",
 }
